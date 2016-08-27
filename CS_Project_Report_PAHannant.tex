@@ -18,7 +18,7 @@
 \LARGE\author{Author: \textbf{Philip Hannant}, Supervisor: \textbf{Professor Steve Maybank}\\
 \\Birkbeck, University of London\\
 Department of Computer Science and Information Systems\\
-\\Project Proposal\\
+\\Project Report\\
 MSc Computer Science\\
 \\\monthyeardate\today
 }
@@ -60,6 +60,9 @@ MSc Computer Science\\
 \clearpage
 
 \maketitle{} \section{Introduction and Background}
+
+I propose to build a real-time drum beat tempo analysis system using the Short-Time Fourier Transform based Beatroot library and an implementation of the Tzanetakis \textit{et al} [11] beat detection algorithm. An extensive set of drum samples will then processed through the system to represent live audio and the results recorded. These results be analysed to determine if the two beat detection methods are suitable to be implemented in a real time training tool for drummers.
+
 Having played the drums for nearly twenty years, I have used a number of different training tools to help improve my timing. Until recently, these tools have been exclusive to MIDI driven electronic drum kits, which are able to include training tools within their drum modules. These tools use the events being triggered by the drummer to give live feedback on the exact timing and part of the drum kit being played. An example of such a system is the Roland DT-1 V-Drums tutor which is a software package that can be connected to a Roland V-Drum module in order to provide the drummer with an interactive experience that helps improve their rhythm, coordination and sight reading [5]. Such an extensive and accurate range of tutoring functions is only made possible by the MIDI events that are intrinsic to an electronic drum kits function; Figure 1 shows an example of the DT-1's GUI. These tutoring tools are not however available to a drummer who does not own an electronic drum kit. Such a drummer is restricted to using a metronome\footnote{Device which produces a regular metrical tick or beat which is settable in beats per minute} and his/her ear to determine his/her timing and rhythm. To address this, I intend to investigate two of the available audio tempo analysis and beat detection algorithms to ascertain if they are suitable to be implemented in a piece drum tutoring software for acoustic drums.
 \begin{figure}[h]
 \caption{Example of Roland DT-1 V-Drums tutor GUI [5]}
@@ -107,29 +110,9 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 
 As there is no current open source Java implementation of this algorithm. I will attempt to implement a version of this myself, which will be the DWT based beat detection component of this project.
 
-\maketitle{}
-\section{Aims and Objectives}
-For my project I propose to build a real time drum beat tempo analyser. This will use the Beatroot system described previously and an implementation of the Tzanetakis \textit{et al}'s' beat detection algorithm [11]. This will form the basis of an investigation into whether these are suitable to be used in a live drumming tempo training tool. I will elaborate on the key features of this work in the following sections.
 
 
-\subsection{Core Project Features}
-\begin{itemize}
-\item Live audio capturing and processing
-\item Implement the beat detection algorithm described by Tzanetakis \textit{et al} [11] 
-\item Build a system to record detailed comparative information regarding the efficiency and accuracy of Beatroot and Tzanetakis \textit{et al}'s algorithm in order to ascertain if they are accurate enough to be used in a training tool for drummers
-\item Design a User Interface (GUI) to provide real time feedback on the current tempo played and beats detected
-\item An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
-\end{itemize}
 
-\subsection{Non-Core Project Features}
-\begin{itemize}
-\item Investigate if it is possible for the system to learn the frequencies of the different drums being played
-\item Extend GUI to provide the user with real time notification on when a certain drum is played
-\end{itemize}
-
-\maketitle{} 
-\section{Development Plan for the Solution}
-A key part of my project involves the designing my own implementation of the beat detection algorithm described by Tzanetakis \textit{et al} [11]. This will then be incorporated in a beat detection system along with the Beatroot system in order to provide real time tempo analysis of an audio signal. 
 
 \subsection{Proposed Architecture}
 
@@ -218,126 +201,14 @@ The project will be developed in a combination of Java and Scala. Java is requir
 
 I will use the Intellij IDE to develop this system. Git will be used for version control, testing will be completed using JUnit for Java, and Scala Test for any functionality developed in Scala. In order to ensure that the parsed JSON is well formed it will be tested using the JSON validator found at - http://jsonlint.com/.
 
-\section{Challenges, Probability, Impact and Mitigation}
-The challenges associated with this project and their mitigation can be found in Table 1.
-\begin{table}[h]
-\caption{Key Project Challenges and Mitigation} 
-\centering
-\begin{tabular}{|p{6cm}|p{6cm}|c|c|}
- \hline
-\textbf{Challenge} & \textbf{Mitigation} & \textbf{Probability} & \textbf{Impact}\\ [0.5ex]
-\hline 
-Own implementation of Tzanetakis \textit{et al} [11] beat detection algorithm takes longer than expected & Adapt the Eng Eder de Souza Matlab implementation instead & Medium & High\\
-\hline
-Beatroot does not configure to work with real time audio & Find and use an alternative & Low & High\\ 
-\hline
-The two beat detection systems do not integrate well in a concurrent system & Create a two separate systems & Low & High\\
-\hline
-Not enough time to develop the GUI & Develop simple command line based user interface & Low & Low\\
-\hline
-\end{tabular}
-\end{table}
+
 
 \clearpage
-\maketitle{} 
-\section {Project Schedule}
-The start date for the project is Monday 13th June 2016 and the end date is Monday 19th September 2016, the non-core project features will only be completed if the project is ahead of schedule.
-\begin{table}[h]
-\caption{Project Timeline} 
-\centering
-\begin{tabular}{|p{4cm}|p{8cm}|}
- \hline
-\textbf{Dates} & \textbf{Task}\\ [0.5ex]
-\hline 
-w/c 13th June 2016 & Develop live audio capturing system\\
-\hline 
-w/c 20th June 2016 & Set up Beatroot library in development environment\\
-\hline 
-w/c 27th June 2016 & Implement DWT beat detection algorithm in Scala/Java\\
-\hline 
-w/c 4th July 2016 & Test systems with single live audio source\\
-\hline 
-w/c 11th July 2016 & Develop system to store data generated during tempo analysis\\
-\hline 
-w/c 18th July 2016 & Research and build appropriate framework to process captured audio in parallel e.g. akka actors\\
-\hline 
-w/c 1st August 2016 & Create sample set of drum beats\\
-\hline 
-w/c 8th August 2016 & Test system using full sample set\\
-\hline 
-w/c 15th August 2016 & Develop UI\\
-\hline 
-w/c 22nd August 2016 & Analyse logged data\\
-\hline 
-w/c 29th August 2026 & Write up report\\
-\hline 
-w/c 5th September 2016 & Present findings to project supervisor\\
-\hline 
-w/c 12th September 2016 & Finalise report\\
-\hline 
-w/c 19th September 2016 & Submit report\\
-\hline
-\end{tabular}
-\end{table}
-\clearpage
-\maketitle{} 
-\section{Summary}
-I propose to build a real-time drum beat tempo analysis system using the Short-Time Fourier Transform based Beatroot library and an implementation of the Tzanetakis \textit{et al} [11] beat detection algorithm. An extensive set of drum samples will then processed through the system to represent live audio and the results recorded. These results be analysed to determine if the two beat detection methods are suitable to be implemented in a real time training tool for drummers.
-
-
-\maketitle{} 
-\section{References}
-\begin{enumerate}
-\item https://en.wikipedia.org/wiki/Downbeat
-\item https://en.wikipedia.org/wiki/Bar\_(music)
-\item http://www.instructables.com/id/What-is-MIDI/ %22
-\item https://en.wikipedia.org/wiki/Time\_signature
-\item http://www.roland.co.uk/blog/exploring-roland-dt-1-v-drums-tutor-software/ %1
-\item Allen and Dannenberg (1990), Tracking Musical Beats in Real Time, International Computer Music Conference, International Computer Music Association, pp. 140-143 %2
-\item P. Desain and H. Honing (1989), The Quantization of Musical Time: A Connectionist Approach, Computer Music Journal, Vol. 13 No. 3 (Autumn), pp. 56-66 %3
-\item H. C Longuet-Higgins (1976), Perception of melodies, Nature Vol. 263, pp. 646-653 %4
-\item M. Goto and Y. Muraoka (1994), A beat tracking system for acoustic signals of music, in Proceedings of the Second ACM International Conference on Multimedia, pp. 365-372 %5
-\item S. Dixon (2001), Automatic Extraction of Tempo and Beat from Expressive Performances, Journal of New Music Research, 30 (1), pp. 39-58. %6
-\item G. Tzanetakis, G. Essl and P. Cook (2001), Audio Analysis using the Discrete Wavelet Transform, Proc. WSES International Conference on Acoustics and Music: Theory and Applications (AMTA) %12
-\item https://en.wikipedia.org/wiki/Metre\_(music)
-\item S. Dixon (2003), On the Analysis of Musical Expression in Audio Signals, Storage and Retrieval for Media Databases, SPIE-IS\&T Electronic Imaging, SPIE Vol. 5021, pp. 122-132 %13
-\item Andreas de Vries (2006), Wavelets, FH Sudwestfalen University of Applied Sciences %27
-\item Juan Pablo Bello, Laurent Daudet, Samer Abdallah, Chris Duxbury, Mike Davies, and
-Mark B. Sandler (2005), IEEE TRANSACTIONS ON SPEECH AND AUDIO PROCESSING, VOL. 13, NO. 5, pp. 1035 - 1047
-\item https://en.wikipedia.org/wiki/Fourier\_transform
-\item http://users.rowan.edu/~polikar/WAVELETS/WTpart2.html %10 
-\item Gao, Robert X, Yan, Ruqiang (2011), Wavelets, Theory and Applications for Manufacturing %26
-\item Simon Dixon (2007), Evaluation of the Audio Beat Tracking System BeatRoot, Preprint for Journal of New Music Research, 36 %29
-\item http://uk.mathworks.com/help/signal/ref/downsample.html
-\item https://github.com/ederwander/Beat-Track %20
-\item https://github.com/cscheiblich/JWave
-\item http://www.json.org/xml.html %21
-\item http://www.soundonsound.com/sos/may02/articles/synthsecrets0502.asp
-\item http://www.agiledata.org/essays/tdd.html
-\item http://www.agiledata.org/essays/databaseRefactoring.html
-% \item http://www.music-ir.org/mirex/wiki/2005:Main\_Page %7
-% \item https://en.wikipedia.org/wiki/Onset\_(audio) %8
-% \item http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection %9
-
-% \item http://users.rowan.edu/~polikar/WAVELETS/WTpart4.html %11
-
-
-% \item https://en.wikipedia.org/wiki/Discrete\_wavelet\_transform %14
-% \item https://en.wikipedia.org/wiki/Pulse-code\_modulation %15
-% \item https://en.wikipedia.org/wiki/Endianness %16
-% \item http://www.jsresources.org/faq\_audio.html %17
-% \item https://en.wikipedia.org/wiki/Test-driven\_development %18
-% \item A. Robertson, A. Stark and M. E. P. Davies (2013), Percussive Beat tracking using real-time median filtering, 6th International Workshop on Machine Learning and Music %19
-% \item http://disp.ee.ntu.edu.tw/tutorial/WaveletTutorial.pdf %23
-% \item http://www.ieor.berkeley.edu/~ieor170/sp15/files/Intro-to\_Sonic\_Events\_Campion.pdf %24
 
 
 
-% \item Simon Dixon (2001), An Interactive Beat Tracking and Visualisation System %28
 
 
-% \item Graham Percival, Member, IEEE, and George Tzanetakis (2014) %32
-% \item http://dictionary.onmusic.org/appendix/topics/meters %33
 \end{enumerate}
 \end{document}
 
