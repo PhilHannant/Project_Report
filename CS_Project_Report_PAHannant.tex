@@ -72,14 +72,18 @@ Following the development of MIDI driven electronic drum kit came the developmen
 
 The aim of this project is to investigate whether some of the current beat detection algorithms available would be accurate enough to provide the basis for a training tool for dummers using an acoustic drum kit as opposed to an electronic drum kit.
 
+
+\maketitle{} \subsection{Anatomy of a Drum Kit}
+
+
 \maketitle{} \subsection{Drum Musical Theory}
 The theory set out in this section provides only a basic review of some of the key characteristics used in drum music alone. 
 \maketitle{} \subsubsection{Notation}
-In order to understand the fundamentals of musical timing some theory needs to be examined. Music is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp}, as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spcaes between represent a tonal where as for drum notation notes written on lines or spaces indicate a certain drum or cymbal. The staff is seperated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time.
+In order to understand the fundamentals of musical timing some theory needs to be examined. Music is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp}, as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is seperated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time.
 \maketitle{} \subsubsection{Notes}
-The notes dep
+The notes used to represent which percussive instrument also provide the duration for which that instrument should be played. Notes come in different lengths and in the American musical notation which will be used for this project the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteeth (1/16). For example two eighth notes represent the same time value as a single quarter note \cite{drum-note}. add in triplets
 \maketitle{} \subsubsection{Time Signatures}
-Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar. With the bottom number representing the size of the note that makes up the duration of one beat. For example the 4/4 or common time signature indicates 4 beats in each bar or measure where each beat is made up of 1 quarter note.
+Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar. With the bottom number representing the size of the note that makes up the duration of one beat. For example the 4/4 or common time signature indicates 4 beats in each bar or measure where each beat is made up of 1 quarter note \cite{drum-note}. need to write something about the 12/8 time signature can be used to play a jazz shuffle or swing beat. 
 
 
 \subsection{Beat Detection Background}
@@ -123,7 +127,6 @@ As there is no current open source Java implementation of this algorithm. I will
 
 
 
-\subsection{Proposed Architecture}
 
 
 
@@ -157,50 +160,6 @@ The beat detection algorithm described by Tzanetakis \textit{et al} [11] is base
 
 If the implementation of this algorithm takes longer than described in the schedule in   section 5. The Matlab implementation created by Eng Eder de Souza [21] will be adapted for use to be used in this system. 
 
-\subsubsection{JWave}
-The implementation of Tzanetakis \textit{et al} [11] beat detection algorithm will require the use of a library which provides DWT functionality. This will be provided by JWave. JWave is a Java library created by Christian Scheiblich which provides a number of different transform packages [22], including a wavelet package. For the purpose of this project the Daubechies wavelets classes within JWave will be used. The Daubechies wavelets are a form of discrete wavelet transform which were developed by Ingrid Daubechies in the late 1980's and are frequently used in applications [14]. 
-
-\subsection{Comparative Analysis of Beat Detection Algorithms}
-A key part of this project is to ascertain whether the two beat detection methods described in section 1 are accurate enough to create a training tool similar to the MIDI based software seen in figure 1. To achieve this the two systems will be run in parallel using real time audio and return details on the calculated tempo in beats per minute (bpm), the number of beats detected and the time it took to calculate the results. 
-% The tempo will be the beats per minute (bpm) recorded at the end of each processed frame, all of the bpm's within the sample set will be exact and in order to match the current midi software packages accuracy any returned bpm's should be exact as well. However, very small deviations in tempo can be very hard to detect to the human ear so some margin of error will be applied. To account for the fact that at the slower bpm's any beat out of place will be a lot easier to hear than at a higher bpm, the margin for error will be weighted by using the following equation;
-
-% \[ m = (bpm - 60) * 0.0001\]
-% \begin{flushleft}
-% where \(m\) represents the weighted value for the margin for error to be applied.
-% \end{flushleft}
-The data collected during this process will be recorded and stored in an appropriate format to allow it to be queried and analysed. Due to the relatively small amount of data which will be collected, it is not deemed necessary to create a database to store this. Instead the data will be stored in a JSON file. JSON was chosen over XML as it has a much simpler grammar and is able to map directly onto the data structures used in modern programming languages [23].
-
-\subsection{Build Extensive Drum Sample Set}
-The success of this project will rely heavily on the amount of live audio data that the system processes. A large set of drum beat samples will be required. The drum beats will be created using the Apple software package, Garageband. The sample set will contain beats from a variety of styles as well as samples with fluctuating tempos. The main aspects of the sample set are as follows:
-
-\begin{itemize}
-\item The tempo range will be 60 - 160 beats per minute. Some samples will be be created with varying tempos in order to model human playing more closely.
-\item The time signatures will be mainly in common time (4/4) to reflect normal playing styles, however some drum beats will use swing notes\footnote{A swing note is style where notes with equal time are played with an unequal durations, usually as alternating long and short durations [wiki]} which will be created by feel\footnote{By adapting the strength a drum or cymbal is being played at it is possible to infer a different style of music using feel, e.g. swing time can be created this way.}.
-\item Accenting\footnote{Accents are an emphasis placed on a specific note}, ghost notes\footnote{Ghost notes are a note which is played at a very low volume} and missed beats\footnote{Missed beats will be used to represent the drummer missing a drum or cymbal} will be added in line with a real playing style.
-\item The sample set will contain a wide range of drum beats, including; beats using one drum, those only with a back beat, beats incorporating single rests within a bar or for the whole duration of a bar and beats with large solos and loud cymbal hits\footnote{When a cymbal is played at high amplitudes (loudness) the vibrations it create become chaotic and its clearly identifiable signals disappear and it effectively becomes noise [24]. It will therefore be interesting to see if this noise affects the accuracy of the algorithms in any way.}.
-\end{itemize} 
-
-The main musical styles will be rock and pop, blues and jazz. Approximately ten unique drum beats will be created for each style, which will then be sampled at a range of bpms. There will also be a final set of simple single and multiple drum beats included. The aim will be to generate a total set of approximately seven hundred and fifty samples.
-
-\subsection{User Interface}
-The user interface will be developed using the JavaFX framework, enabling the system will to be cross-platform compatible. Its features will be kept simple initially, where it will only be required to provide a real time output of the current two tempo calculations and accumulative count of beats detected.
-
-\subsection{Non-Core Project Features}
-The non-core project features will be included only if the project is developed ahead of the schedule described in section 5. 
-
-\subsubsection{Frequency Learning}
-This non-core feature will investigate if it is possible to create a similar system to the one developed by Goto and Muraoka, which learnt the frequencies of the snare and kick drum in order to detect events triggered when these instruments were played [6]. The goal will be to enable the system to learn the frequencies of all of the separate parts of a drum kit (snare drum, bass drum, tom-tom, hi-hat and cymbals) being played and use this event to extend the GUI.
-
-\subsubsection{Extended User Interface}
-Developing this additional feature will only be possible if the previous non-core feature (3.7.1) is successfully developed. If so, the user interface will be extended to look similar to the drum kit visual seen in Figure 1, where a colour indicator will be displayed to represent which instrument was last played. The development of this final feature depends heavily on the accuracy and efficiency of the tempo analysis algorithms used.
-
-\subsection{Project Methodology}
-This project will be developed using the Test Driven Development (TDD) framework. TDD is a development process that combines the test-first development and refactoring. Test-first development involves writing a test before just enough production code is written to fulfill that test [25]. Refactoring is the process of making small changes to code in order to improve its design, making it easier to understand and modify [26]. I intend to use TDD due to the relatively short development time of this project. TDD will enable small steps to be taken during the process which is considered to be a more productive approach to writing software [25].
-
-\subsection{Development Languages and Testing}
-The project will be developed in a combination of Java and Scala. Java is required as both the Beatroot and JWave libraries are in this language, however any functional aspects of the project will be developed in Scala, as it offers a superior functional tool set when compared to those offered in Java 8. As previously discussed JSON will be used to store the collected data.
-
-I will use the Intellij IDE to develop this system. Git will be used for version control, testing will be completed using JUnit for Java, and Scala Test for any functionality developed in Scala. In order to ensure that the parsed JSON is well formed it will be tested using the JSON validator found at - http://jsonlint.com/.
 
 
 

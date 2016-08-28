@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  28 AUG 2016 20:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  28 AUG 2016 23:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -195,29 +195,30 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 [2] [3
 
-]
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 81.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 81.
-[4
+] [4
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 98.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 87.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 87.
+[5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 104.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 98.
-[5] [6] [7] [8] [9
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 104.
+[6] [7] [8] [9] [10
 
 ] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux)
  ) 
 Here is how much of TeX's memory you used:
- 2793 strings out of 493089
- 40436 string characters out of 6134843
- 117761 words of memory out of 5000000
- 6230 multiletter control sequences out of 15000+600000
+ 2795 strings out of 493089
+ 40460 string characters out of 6134843
+ 117767 words of memory out of 5000000
+ 6232 multiletter control sequences out of 15000+600000
  11132 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,8n,35p,1495b,236s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -234,10 +235,10 @@ xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (9 pages, 172715 bytes).
+_PAHannant.pdf (10 pages, 178490 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
+ 85 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
