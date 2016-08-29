@@ -10,6 +10,8 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/size11.clo
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/size11.clo
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty

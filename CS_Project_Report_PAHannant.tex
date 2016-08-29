@@ -1,9 +1,9 @@
 \documentclass[a4paper, 11pt]{article}
-\setlength{\topmargin}{-0.5in}
+\setlength{\topmargin}{0.0in}
 \setlength{\textheight}{9.5in}
 \setlength{\oddsidemargin}{-.1in}
 \setlength{\textwidth}{6.5in}
-\setlength{\parskip}{1em}
+\usepackage{parskip}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage{datetime}
@@ -47,7 +47,7 @@ MSc Computer Science\\
 \end{tabular}
 
 \section*{Definitions}
-\begin{tabular}{l p{4.5in}  }\\
+\begin{tabular}{l p{4.5in}}\\
 \textbf{Acoustic Drum Kit} & A collection of drums and cymbals which do not have electronic amplification. Typically made up of a bass drum, snare drum, tom-toms, hi-hat and 1 or more cymbals.\\\\
 \textbf{Beat} & For the purpose of this project a beat will be defined as the sequence of equally spaced pulses used to calculate the tempo being played by the drummer.\\\\
 \textbf{Downbeat} & Refers to beat one of a measure of music, called a downbeat to correspond to the motion a conductor's arm [1].\\\\
@@ -112,21 +112,44 @@ Most of the early work on beat detection was a by-product of research directed a
 	\label{fig: Onset}
 \end{figure}
 
+Since Longuet-Higgins' first work the are of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
 
-Since Longuet-Higgins' first work there have been a number of different approaches to beat detection. M. Goto and Y. Muraoka developed a system which learned the frequencies of the bass drum and snare drum, in order to detect events triggered by these instruments during a piece of music [9]. In 2001, Simon Dixon presented Beatroot, an interactive beat tracking and visualisation system which is able to estimate the tempo and times of musical beats in performed music [10]. In the same year Tzanetakis \textit{et al} [11] described an algorithm based on the Discrete Wavelet Transform (DWT) which is capable of detecting the beat attributes of music. 
+\subsection{Project}
+This project report presents the inviestigation into whether some of the beat detection algorthims available today are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. The application developed in order to carry out this analysis will herafter be referred to as RTT_Analyser\footnote{Where RTT stands for Real Time Tempo}. It is the aim of this project to process enough live audio through the the RTT_Analyser, to begin to understand the feasibility of creating a training tool application to be run on a mobile device.\par 
+
+To acheive this following core features of the RTT_Analyser are to be developed:
+
+\begin{enumerate}
+\item Live audio capturing and processing
+\item DWT beat detection algorithm
+\item Build a system to record detailed comparative information regarding the efficiency and accuracy of Beatroot and Tzanetakis \textit{et al}'s algorithm in order to ascertain if they are accurate enough to be used in a training tool for drummers
+\item Design a User Interface (GUI) to provide real time feedback on the current tempo played and beats detected
+\item An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
+\end{enumerate}
 
 
 
 
-% Due to the rapidly expanding research being carried out on beat detection, the 1st annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval [7]. The topics to be evaluated were proposed by the participants. In the first year, three of the nine topics concerned beat detection (Audio Drum Detection, Audio Onset Detection and Audio Tempo Extraction). 
-% There are a number of pieces of software available for real time tempo detection is limited to only a few live bpm detectors available in the App Store\footnote{Apple's application store - itunes.apple.com/uk/appstore‎} and Google Play\footnote{Google's application store for Android devices - play.google.com/store}. An example It is therefore a focus of this project to investigate if the beat detection system Beatroot and Tzanetakis \textit{et al's} [12] method are accurate enough to be implemented in a live tempo drum beat analyser.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\maketitle{} \section{Solution Design}
 
 \subsubsection{Beatroot}
 Beatroot is an audio beat detection system presented by Simon Dixon in 2001 and is described as a ``beat tracking system which finds the times of musical beats and tracks changes in tempo throughout a performance'' [13]. Beatroot works by first processing digital audio data to produce a list of onset (see Figure 2) or event times. The time intervals between these events are then analysed to generate tempo hypotheses concerning the rate and location of beats. Using the tempo hypotheses, searches are carried out to test the different hypotheses about the rate and timing of beats. The results of these searches are ranked and the beat times found in the highest ranked search are returned [10]. 
-
-
-
-
 
 \subsubsection{Short-Time Fourier Transform}
 To detect the onsets of a piece of digital audio Beatroot uses an onset detection function based on the Short-Time Fourier Transform (STFT). The STFT is a form of Fourier transform (FT) which was developed by Joseph Fourier in 1822 [16], which can be used to find out how much of each frequency exists in a signal. A drawback of the FT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time [17].}. A solution to this was to split a non-stationary signal up into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the FT could then be applied to. However, this did not fully solve the problem as the size of window function affects the quality of frequency resolution and time resolution:
@@ -134,6 +157,7 @@ To detect the onsets of a piece of digital audio Beatroot uses an onset detectio
 \item Narrow Window Function $\longrightarrow$  Good Time Resolution, Bad Frequency Resolution
 \item Wide Window Function $\longrightarrow$  Bad Time Resolution, Good Frequency Resolution [17]
 \end{itemize}
+
 
 \subsubsection{Discrete Wavelet Transform}
 The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT [11]. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. 
@@ -149,16 +173,6 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 \item Normalisation - each band is then normalised using mean removal
 \item AutoCorrelation - an autocorrelation function is then applied to the frequency bands, the first five peaks of this function are detected and their periodicities are calculated in beats per minute
 \end{itemize}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -180,7 +194,7 @@ The live audio will be processed using the Javax Sound package. The audio will b
 
 
 
-
+\newpage
 \begin{thebibliography}{99}
 \bibitem{brit-metro} 
 \textit{https://www.britannica.com/art/metronome}
@@ -200,6 +214,9 @@ H. C Longuet-Higgins
 \textit{Perception of melodies, Nature Vol. 263, 1976, pp. 646-653}
 \bibitem{dixon1}
 Simon Dixon
+\textit{Automatic Extraction of Tempo and Beat from Expressive Performances. Journal of New Music Research, 30 (1), 2001, pp 39-58}
+\bibitem{dixon2}
+Simon Dixon
 \textit{Onset Detection Revisited, Proceedings of the 9th International Conference on Digital Audio Effects, Montreal, September 2006, pp 133-137}
 \bibitem{mirex-onset}
 \textit{http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection}
@@ -208,6 +225,13 @@ Simon Dixon
 \bibitem{onset-tut}
 Juan Pablo Bello, Laurent Daudet, Samer Abdallah, Chris Duxbury, Mike Davies, and Mark B. Sandler 
 \textit{A Tutorial on Onset Detection in Music Signals, IEEE TRANSACTIONS ON SPEECH AND AUDIO PROCESSING, VOL. 13, NO. 5, 2005, pp. 1035 - 1047}
+\bibitem{mirex-main}
+\textit{http://www.music-ir.org/mirex/wiki/2005:Main\_Page}
+\bibitem{tzane1}
+George Tzanetakis, Georg Essl and Perry Cook
+\textit{Audio Analysis using the Discrete Wavelet Transform, Proc. WSES International Conference on Acoustics and Music: Theory and Applications (AMTA), 2001}
+\bibitem{mirex-06}
+\textit{http://www.music-ir.org/mirex/wiki/2006:Audio\_Beat\_Tracking\_Results}
 
 \end{thebibliography}
 \end{document}
