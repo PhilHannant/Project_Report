@@ -3,6 +3,7 @@
 \setlength{\textheight}{9.5in}
 \setlength{\oddsidemargin}{-.1in}
 \setlength{\textwidth}{6.5in}
+\setlength{\parskip}{1em}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage{datetime}
@@ -64,26 +65,29 @@ MSc Computer Science\\
 This project report presents my aim to develop a real-time drum beat tempo analysis system using different beat detection algorithms which is able to record the perfomance of each method concurrently when an extensive set of drum samples, representing a real drummer's perfomance, is processed through the system.
 
 \maketitle{} \subsection{Drumming Training Tools Background}
-Timing is the fundamental skill any good drummer should possess and is the staple by which they will be judged. For many years the only training tool available to a drummer to improve their timing was the metronome. An instrument used to mark musical tempo, erroenously attributed to Johann Nepomuk Maelzel in 1815 but was actually invented by a Dutchman, Dietrich Nikolaus Winkel a year earlier. The traditional metronome, based on Winkel's original design is a hand-wound clockwork instrument that uses a pendulum swung on a pivot to generate the ticking which depicts the desired tempo \cite{brit-metro} is still used today by musicians. 
-
-For drummers however the electronic versions of the metronome are much more widely used, to the point that metronomes are now developed with functionality specifically tailored to a drummers training requirements. The Tama Rhytham Watch was the first metronome designed specifically for drummers, providing enough volume to be used with real drums as well as allowing for the use of different time signatures and preset set rhythm patterns to help improve perfomance. (Tama rhythm watch image) 
-
-Following the development of MIDI driven electronic drum kit came the development of more advanced training tools that now were able to provide live feedback to drummer during any given perfomance. Today the leaders in this field are Roland, their v-drums line provide a variety of tutition packages including the SCOPE and more recently the COACH system provided in the v-drum modules, the v-drum Rhymthm Coach line is an advanced version of the traditional drummers practice pad and the extensive DT-1 V-Drums tutor software package. Roland have even now gamified this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media.
-
-The aim of this project is to investigate whether some of the current beat detection algorithms available would be accurate enough to provide the basis for a training tool for dummers using an acoustic drum kit as opposed to an electronic drum kit.
+Timing is the fundamental skill any good drummer should possess and is the staple by which they will be judged. For many years the only training tool available to a drummer to improve their timing was the metronome. An instrument used to mark musical tempo, erroenously attributed to Johann Nepomuk Maelzel in 1815 but was actually invented by a Dutchman, Dietrich Nikolaus Winkel a year earlier. The traditional metronome, based on Winkel's original design is a hand-wound clockwork instrument that uses a pendulum swung on a pivot to generate the ticking which depicts the desired tempo \cite{brit-metro} is still used today by musicians. \par
 
 
-\maketitle{} \subsection{Anatomy of a Drum Kit}
+For drummers however the electronic versions of the metronome are much more widely used, to the point that metronomes are now developed with functionality specifically tailored to a drummers training requirements. The Tama Rhytham Watch was the first metronome designed specifically for drummers, providing enough volume to be used with real drums as well as allowing for the use of different time signatures and preset set rhythm patterns to help improve perfomance. (Tama rhythm watch image) \par
 
+Following the development of MIDI driven electronic drum kit came the development of more advanced training tools that now were able to provide live feedback to drummer during any given perfomance. Today the leaders in this field are Roland, their v-drums line provide a variety of tutition packages including the SCOPE and more recently the COACH system provided in the v-drum modules, the v-drum Rhymthm Coach line is an advanced version of the traditional drummers practice pad and the extensive DT-1 V-Drums tutor software package. Roland have even now gamified this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media. \par
+
+The aim of this project is to investigate whether some of the current beat detection algorithms available would be accurate enough to provide the basis for a training tool for dummers using an acoustic drum kit as opposed to an electronic drum kit. \par
 
 \maketitle{} \subsection{Drum Musical Theory}
-The theory set out in this section provides only a basic review of some of the key characteristics used in drum music alone. 
+In order to understand the fundamentals of musical timing some theory needs to be examined but beforehand the concept of a drummer's time must be considered. Time, in a drumming sense is an informal term used to describe the consistent rhythmic pattern that a drummer will play on the hi-hat or ride cymbal \cite{drum-bible} and it can be considered one of the most important components of any drum beat. 
+
 \maketitle{} \subsubsection{Notation}
-In order to understand the fundamentals of musical timing some theory needs to be examined. Music is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp}, as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is seperated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time.
-\maketitle{} \subsubsection{Notes}
-The notes used to represent which percussive instrument also provide the duration for which that instrument should be played. Notes come in different lengths and in the American musical notation which will be used for this project the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteeth (1/16). For example two eighth notes represent the same time value as a single quarter note \cite{drum-note}. add in triplets
+Drum music notation is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp} and as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is seperated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time. 
+
 \maketitle{} \subsubsection{Time Signatures}
-Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar. With the bottom number representing the size of the note that makes up the duration of one beat. For example the 4/4 or common time signature indicates 4 beats in each bar or measure where each beat is made up of 1 quarter note \cite{drum-note}. need to write something about the 12/8 time signature can be used to play a jazz shuffle or swing beat. 
+Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar. With the bottom number representing the size of the note that makes up the duration of one beat. For example the 4/4 or common time signature indicates 4 beats in each bar or measure where each beat is made up of 1 quarter note \cite{drum-note}. Within these bar lines beats can be further divided by using a technique known as subdivision, which is a method for reducing the pulse or rhythm pattern into smaller parts than those originally written, for example counting a four four (4/4) measure in eighth (1/8) or sixteeth (1/16) notes. 
+
+\maketitle{} \subsubsection{Notes}
+The notes used to represent the percussive instrument to be played also provide the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteeth (1/16). For example two eighth notes represent the same time value as a single quarter note. It is possible to divide a note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there will be three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}.
+
+\maketitle{} \subsubsection{Playing Basics}
+ 
 
 
 \subsection{Beat Detection Background}
@@ -170,6 +174,9 @@ If the implementation of this algorithm takes longer than described in the sched
 \begin{thebibliography}{99}
 \bibitem{brit-metro} 
 \textit{https://www.britannica.com/art/metronome}
+\bibitem{drum-bible}
+Mick Berry and Jason Gianni
+\textit{The Drummer's Bible: How to Play Every Drum Style from Afro-Cuban to Zydeco, Second Edition, 2004, See Sharp Press}
 \bibitem{oxford-comp}
 Alison Latham
 \textit{The Oxford Companion to Music, 2002, Oxford University Press}
