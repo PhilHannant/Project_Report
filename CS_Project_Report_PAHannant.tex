@@ -40,7 +40,6 @@ MSc Computer Science\\
 \begin{tabular}{l p{4.5in}  }\\
 \textbf{BPM} & Beats Per Minute\\
 \textbf{DWT} & Discrete Wavelet Transform\\
-\textbf{FT} & Fourier Transform\\
 \textbf{FFT} & Fast Fourier Transform\\
 \textbf{JSON} & Javacript Object Notification\\
 \textbf{IDE} & Integrated Development Environment\\
@@ -104,18 +103,14 @@ With the basics of drum theory covered it is now possible to discuss the key ele
 
 
 \subsection{Beat Detection Background}
-Most of the early work on beat detection was a by-product of research directed at other areas of musicical understanding. The earliest work in this field can be attributed to H. C. Longuet-Higgins, who in 1976 while researching the psychological theory of how Western musicians perceive rhythmic and tonal relationships between notes. Produced an algorithm that was able to follow the beat of a performance and adjust the perceived tempo accordingly based on whether a note started earlier or later than expected \cite{allen-danneburg}. Longuet-Higgins' work was built on the premise that in order to percieve the rhythmic structure of a melody it is first necessary to identify the time at which each beat occurs \cite{longeut1}, otherwise know as onset detection.\par 
-
-The onset of a note is the instant which marks start of the variation in the frequency of a signal, a visualisation of this can be seen in Figure~\ref{fig: Onset}. Once detected it can then be used to measure the onset times of sonic events\footnote{A sonic event is a singular feature of a piece music which can be made up of one source or many\cite{sonic}, e.g. the hitting of a drum} within a pieceof music\cite{mirex-onset}.
+Most of the early work on beat detection was a by-product of research directed at other areas of musicical understanding. The earliest work in this field can be attributed to H. C. Longuet-Higgins, who in 1976 while researching the psychological theory of how Western musicians perceive rhythmic and tonal relationships between notes. Produced an algorithm that was able to follow the beat of a performance and adjust the perceived tempo accordingly based on whether a note started earlier or later than expected \cite{allen-danneburg}. Longuet-Higgins' work was built on the premise that in order to percieve the rhythmic structure of a melody it is first necessary to identify the time at which each beat occurs \cite{longeut1}, otherwise know as onset detection. The onset of a note is the instant which marks start of the variation in the frequency of a signal, a visualisation of this can be seen in Figure~\ref{fig: Onset}. Once detected it can then be used to measure the onset times of sonic events\footnote{A sonic event is a singular feature of a piece music which can be made up of one source or many\cite{sonic}, e.g. the hitting of a drum} within a piece of music\cite{mirex-onset}. These onset times are then used within a beat detection algorithm in order to calculate the piece of music's tempo. 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.40]{Onset}
-	\caption{The onset of a note is the instant which marks start of the variation in the frequency of a signal [11]}
+	\caption{The onset of a note is the instant which marks start of the variation in the frequency of a signal (Image Source: \cite{onset-tut})}
 	\label{fig: Onset}
 \end{figure}
-
-This process known as onset detection can be considered to be a well-defined task with the simple aim of finding the start time of each musical note \cite{dixon1}.
 
 
 Since Longuet-Higgins' first work there have been a number of different approaches to beat detection. M. Goto and Y. Muraoka developed a system which learned the frequencies of the bass drum and snare drum, in order to detect events triggered by these instruments during a piece of music [9]. In 2001, Simon Dixon presented Beatroot, an interactive beat tracking and visualisation system which is able to estimate the tempo and times of musical beats in performed music [10]. In the same year Tzanetakis \textit{et al} [11] described an algorithm based on the Discrete Wavelet Transform (DWT) which is capable of detecting the beat attributes of music. 
@@ -210,6 +205,9 @@ Simon Dixon
 \textit{http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection}
 \bibitem{sonic}
 \textit{http://www.ieor.berkeley.edu/~ieor170/sp15/files/Intro-to\_Sonic\_Events\_Campion.pdf}
+\bibitem{onset-tut}
+Juan Pablo Bello, Laurent Daudet, Samer Abdallah, Chris Duxbury, Mike Davies, and Mark B. Sandler 
+\textit{A Tutorial on Onset Detection in Music Signals, IEEE TRANSACTIONS ON SPEECH AND AUDIO PROCESSING, VOL. 13, NO. 5, 2005, pp. 1035 - 1047}
 
 \end{thebibliography}
 \end{document}
