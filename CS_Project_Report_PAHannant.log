@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  29 AUG 2016 10:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  29 AUG 2016 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -197,31 +197,35 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ] [4
 
-]
+] [5] <images/Onset.jpg, id=24, 531.9875pt x 315.1775pt>
+File: images/Onset.jpg Graphic file (type jpg)
+<use images/Onset.jpg>
+Package pdftex.def Info: images/Onset.jpg used on input line 105.
+(pdftex.def)             Requested size: 212.79123pt x 126.06876pt.
+[6 </Users/philhannant/Documents/Project_Report/images/Onset.jpg>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 91.
+(Font)              <9> on input line 121.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 91.
-[5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 108.
+(Font)              <5> on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 123.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
-[6] [7] [8
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
+[7] [8] [9
 
 ] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux)
  ) 
 Here is how much of TeX's memory you used:
- 2795 strings out of 493089
- 40460 string characters out of 6134843
- 116767 words of memory out of 5000000
- 6232 multiletter control sequences out of 15000+600000
+ 2808 strings out of 493089
+ 40620 string characters out of 6134843
+ 116779 words of memory out of 5000000
+ 6241 multiletter control sequences out of 15000+600000
  11132 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,8n,35p,1495b,236s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,8n,35p,1320b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
@@ -235,10 +239,10 @@ xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (8 pages, 163636 bytes).
+_PAHannant.pdf (9 pages, 202751 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 83 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
