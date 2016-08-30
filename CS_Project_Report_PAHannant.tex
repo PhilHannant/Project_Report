@@ -131,7 +131,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 \end{enumerate}
 
 \maketitle{} \section{Solution Design}
-The basic premised for the RTT_Analyser is to provide enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT_Analyser opens the inbuilt microphone of the device upon which the software is being run. 
+The basic premised for the RTT_Analyser is to provide enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT_Analyser can be seen in Figure (add in).
 
 \subsection{Live Audio Processing}
 
@@ -167,14 +167,13 @@ The multiple agent architecture of Beatroot's beat tracking subsystem is then em
 \subsubsection{Discrete Wavelet Transform and Beat Detection Method}
 The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT\cite{tzane1}. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. The DWT can essentially be considered to be a filterbank, where a filterbank is a system used to separate subbands by using an array or bank of filters, where each of the filters corresponds to half frequency range of the closest centre higher frequency. Thus each filter will have half or twice the bandwith of any of its adjacent filters. 
 
-\subsubsection{Tzanetakis \textit{et al} Beat Detection Method}
 In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio\cite{tzane1}. Their beat detection algorithm was based on detecting the most prominent signals which are repeated over a period of time within the analysed audio and is made up of the following stages: 
 
 \begin{enumerate}
 \item First the signal is processed by the DWT into a number of frequency bands 
 \item Low Pass Filtering - a low pass filter is then applied to the signal in order to allow the lower frequencies of the signal to be analysed
 \item Full Wave Rectification - each frequency band is then converted to one constant polarity (positive or negative)[wiki]. A visual representation can be seen in Figure 4
-\item Downsampling - the sampling rate of the signal is decreased by an integer factor [20]
+\item Downsampling - Due to the large perodicities that can occur in beat analysis, downsampling the signal reduces the computation time of the autocorrelation stage without causing any negative effects on the performance or the algorithm
 \item Normalisation - each band is then normalised using mean removal
 \item AutoCorrelation - an autocorrelation function is then applied to the frequency bands, the first five peaks of this function are detected and their periodicities are calculated in beats per minute
 \end{itemize}
@@ -250,6 +249,9 @@ Lyons
 \bibitem{tzane2}
 Tao Li, Mitsunori Ogihara, George Tzanetakis
 \textit{Music Data Mining, CRC Press, 2002, pp 45-53}
+\bibitem{tzane3}
+George Tzanetakis and Perry Cook
+\textit{Musical Genre Classification of Audio Signals}
 \end{thebibliography}
 \end{document}
 
