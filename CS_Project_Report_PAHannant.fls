@@ -111,9 +111,15 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /Users/philhannant/Documents/Project_Report/images/Onset.jpg
 INPUT /Users/philhannant/Documents/Project_Report/images/Onset.jpg
 INPUT /Users/philhannant/Documents/Project_Report/images/Onset.jpg
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /Users/philhannant/Documents/Project_Report/images/hamWin.jpg
+INPUT /Users/philhannant/Documents/Project_Report/images/hamWin.jpg
+INPUT /Users/philhannant/Documents/Project_Report/images/hamWin.jpg
+INPUT /Users/philhannant/Documents/Project_Report/images/br-clusters.jpg
+INPUT /Users/philhannant/Documents/Project_Report/images/br-clusters.jpg
+INPUT /Users/philhannant/Documents/Project_Report/images/br-clusters.jpg
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb

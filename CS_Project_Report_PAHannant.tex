@@ -115,36 +115,49 @@ Most of the early work on beat detection was a by-product of research directed a
 Since Longuet-Higgins' first work the are of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform (DWT) by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
 
 \subsection{Project Aims}
-The primary aim of this project is to investigation whether some of the currently avaliable beat detection algorthims are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. In order to achieve this the developed software package, hereafter referred to as  RTT_Analyser\footnote{Where RTT stands for Real Time Tempo}, will need to process enough live audio in form of preconstructed drum beats and record each of the chosen beat detection algorithms accuracy. 
+The primary aim of this project is to investigation whether some of the currently avaliable beat detection algorthims are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. In order to achieve this the developed software package, hereafter referred to as  RTT\_Analyser\footnote{Where RTT stands for Real Time Tempo}, will need to process enough live audio in form of preconstructed drum beats and record each of the chosen beat detection algorithms accuracy. 
 
-The original core features of the RTT_Analyser developed for this project are:
+The original core features of the RTT\_Analyser developed for this project are:
 
 \begin{enumerate}
 \item A live audio tempo analysis tool, that compares and records the performance of selected beat detection algorithms
-\item The RTT_Analyser implements an adapted version of the beat tracking system Beatroot and Discrete Wavelet Transform algorithm described by Tzanetakis \textit{et al}'s\cite{tzane1} which process live audio as opposed to originally designed off-line audio files.
-\item RTT_Analyser implements a concurrent system that provides the same captured live audio data to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
-\item While processing live audio the RTT_Analyser stores a predetermined data set in order to allow for performance analysis of the beat detection algorithms.
-\item The RTT_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
+\item The RTT\_Analyser implements an adapted version of the beat tracking system Beatroot and Discrete Wavelet Transform algorithm described by Tzanetakis \textit{et al}'s\cite{tzane1} which process live audio as opposed to originally designed off-line audio files.
+\item RTT\_Analyser implements a concurrent system that provides the same captured live audio data to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
+\item While processing live audio the RTT\_Analyser stores a predetermined data set in order to allow for performance analysis of the beat detection algorithms.
+\item The RTT\_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
 \item In order to An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
 \end{enumerate}
 
 \maketitle{} \section{Solution Design}
 add something about work flow of system plus detailed work flow diagram
 
-\subsection{RTT_Analyser Beat Detection}
+\subsection{RTT\underline{{ }}Analyser Beat Detection}
 The original proposed solution incorporated two beat detection logarithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However during the development the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
 
-The project report will now discuss all of the beat detection alogrithms that were incorporated in the RTT_Analyser as well as the system used to allow for simultaneous tempo calculation.  
+The project report will now discuss all of the beat detection alogrithms that were incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
 
 \subsubsection{Beatroot}
-Beatroot is an audio beat detection system presented by Simon Dixon in 2001 and is described as a ``beat tracking system which finds the times of musical beats and tracks changes in tempo throughout a performance'' [13]. Beatroot works by first processing digital audio data to produce a list of onset (see Figure 2) or event times. The time intervals between these events are then analysed to generate tempo hypotheses concerning the rate and location of beats. Using the tempo hypotheses, searches are carried out to test the different hypotheses about the rate and timing of beats. The results of these searches are ranked and the beat times found in the highest ranked search are returned [10]. 
+Beatroot is a beat detection software package created by Simon Dixon \cite{dixon1}, which was orignally designed extract musical expression information musical recordings\cite{dixon3}. Beatroot was included in the RTT{\_}Analyser as the algortihm designed by Dixon was considered to be sufficiently fast enough to be implemented as part of a real-time system\cite{dixon4}.\par
 
-\subsubsection{Short-Time Fourier Transform}
-To detect the onsets of a piece of digital audio Beatroot uses an onset detection function based on the Short-Time Fourier Transform (STFT). The STFT is a form of Fourier transform (FT) which was developed by Joseph Fourier in 1822 [16], which can be used to find out how much of each frequency exists in a signal. A drawback of the FT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time [17].}. A solution to this was to split a non-stationary signal up into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the FT could then be applied to. However, this did not fully solve the problem as the size of window function affects the quality of frequency resolution and time resolution:
-\begin{itemize}
-\item Narrow Window Function $\longrightarrow$  Good Time Resolution, Bad Frequency Resolution
-\item Wide Window Function $\longrightarrow$  Bad Time Resolution, Good Frequency Resolution [17]
-\end{itemize}
+Beatroot works by first obtaining a time-frequency representation of the signal based on a Short Time Fourier Transform (STFT) using a Hamming window\cite{dixon2}. The STFT is a form of Fourier transform (FT), which can be used to find out how much of each frequency exists in a signal. Th A negative of the FT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time\cite{polikapt2}}. A solution to this is to split a non-stationary signal up into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the FT could then be applied to. The STFT will then be able to blah blah. The Hamming window function is used to reduce leakage and is characterised by the reducing amplitudes of its sidelobes and the appearence that it is raised on a \textit{pedestal}\cite{lyons}. A visualisation of a Hamming window can be seen in Figure~\ref{fig: hamWin}. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.36]{hamWin}
+	\caption{(Image Source: \cite{lyons})}
+	\label{fig: hamWin}
+\end{figure}
+
+Once the time-frequency representation is returned the next stage is to the spectral flux onset detection function, which is a method for measuring the change in magnitude of each returned frequency bin\cite{dixon2}. The onsets are then selected from the spectral flux onset detection function by a peak-picking algorithm which finds local maxima within the dectection function. The next stage is to apply the tempo induction algorithm which is used to compute clusters of inter-onset intervals (IOI) by using the calculated onset times. Each cluster represents a hypothetical tempo, in seconds per beat \cite{dixon1}. The clustering algorithm works by assigning an IOI to a cluster if its difference from the cluster is less than 25ms. The cluster information is then combined by recognising the approximate integer relationships between clusters. An example of this can be seen in Figure~\ref{fig: br-clusters} where cluster C2 is twice as long as C1 and C4 is twice that of C2. This information along with the number of IOIs within a cluster is then used to weight each cluster which is then returned as a ranked list of tempo hypotheses\cite{dixon4}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.25]{br-clusters}
+	\caption{(Image Source: \cite{dixon4})}
+	\label{fig: br-clusters}
+\end{figure}
+
+The multiple agent architecture of Beatroot's beat tracking subsystem is then employed to find the sequences of events that closest match the original tempo hypotheses, each of these sequences is then rated and the most likely set of beat times is determined.
 
 
 \subsubsection{Discrete Wavelet Transform}
@@ -181,7 +194,6 @@ The live audio will be processed using the Javax Sound package. The audio will b
 \end{itemize}
 
 
-
 \newpage
 \begin{thebibliography}{99}
 \bibitem{brit-metro} 
@@ -208,7 +220,7 @@ Simon Dixon
 \textit{Onset Detection Revisited, Proceedings of the 9th International Conference on Digital Audio Effects, Montreal, September 2006, pp 133-137}
 \bibitem{dixon3}
 Simon Dixon
-\textit{On the Analysis of Musical Expression in Audio Signals. Storage and Retrieval for Media Databases, SPIE-IS&T Electronic Imaging, SPIE Vol. 5021, 2003 pp 122-132}
+\textit{On the Analysis of Musical Expression in Audio Signals. Storage and Retrieval for Media Databases, SPIE-IS\&T Electronic Imaging, SPIE Vol. 5021, 2003 pp 122-132}
 \bibitem{mirex-onset}
 \textit{http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection}
 \bibitem{sonic}
@@ -223,7 +235,14 @@ George Tzanetakis, Georg Essl and Perry Cook
 \textit{Audio Analysis using the Discrete Wavelet Transform, Proc. WSES International Conference on Acoustics and Music: Theory and Applications (AMTA), 2001}
 \bibitem{mirex-06}
 \textit{http://www.music-ir.org/mirex/wiki/2006:Audio\_Beat\_Tracking\_Results}
-
+\bibitem{dixon4}
+Simon Dixon
+\textit{Evaluation of the Audio Beat Tracking System BeatRoot. Journal of New Music Research, 36, 1, 2007, pp 39-50}
+\bibitem{polikapt2}
+\textit{http://users.rowan.edu/ polikar/WAVELETS/WTpart2.html}
+\bibitem{lyons}
+Lyons
+\textit{Understanding Digital Signal Processing}
 \end{thebibliography}
 \end{document}
 
