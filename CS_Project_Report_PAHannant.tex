@@ -112,41 +112,29 @@ Most of the early work on beat detection was a by-product of research directed a
 	\label{fig: Onset}
 \end{figure}
 
-Since Longuet-Higgins' first work the are of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
+Since Longuet-Higgins' first work the are of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform (DWT) by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
 
-\subsection{Project}
-This project report presents the inviestigation into whether some of the beat detection algorthims available today are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. The application developed in order to carry out this analysis will herafter be referred to as RTT_Analyser\footnote{Where RTT stands for Real Time Tempo}. It is the aim of this project to process enough live audio through the the RTT_Analyser, to begin to understand the feasibility of creating a training tool application to be run on a mobile device.\par 
+\subsection{Project Aims}
+The primary aim of this project is to investigation whether some of the currently avaliable beat detection algorthims are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. In order to achieve this the developed software package, hereafter referred to as  RTT_Analyser\footnote{Where RTT stands for Real Time Tempo}, will need to process enough live audio in form of preconstructed drum beats and record each of the chosen beat detection algorithms accuracy. 
 
-To acheive this following core features of the RTT_Analyser are to be developed:
+The original core features of the RTT_Analyser developed for this project are:
 
 \begin{enumerate}
-\item Live audio capturing and processing
-\item DWT beat detection algorithm
-\item Build a system to record detailed comparative information regarding the efficiency and accuracy of Beatroot and Tzanetakis \textit{et al}'s algorithm in order to ascertain if they are accurate enough to be used in a training tool for drummers
-\item Design a User Interface (GUI) to provide real time feedback on the current tempo played and beats detected
-\item An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
+\item A live audio tempo analysis tool, that compares and records the performance of selected beat detection algorithms
+\item The RTT_Analyser implements an adapted version of the beat tracking system Beatroot and Discrete Wavelet Transform algorithm described by Tzanetakis \textit{et al}'s\cite{tzane1} which process live audio as opposed to originally designed off-line audio files.
+\item RTT_Analyser implements a concurrent system that provides the same captured live audio data to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
+\item While processing live audio the RTT_Analyser stores a predetermined data set in order to allow for performance analysis of the beat detection algorithms.
+\item The RTT_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
+\item In order to An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
 \end{enumerate}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \maketitle{} \section{Solution Design}
+add something about work flow of system plus detailed work flow diagram
+
+\subsection{RTT_Analyser Beat Detection}
+The original proposed solution incorporated two beat detection logarithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However during the development the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
+
+The project report will now discuss all of the beat detection alogrithms that were incorporated in the RTT_Analyser as well as the system used to allow for simultaneous tempo calculation.  
 
 \subsubsection{Beatroot}
 Beatroot is an audio beat detection system presented by Simon Dixon in 2001 and is described as a ``beat tracking system which finds the times of musical beats and tracks changes in tempo throughout a performance'' [13]. Beatroot works by first processing digital audio data to produce a list of onset (see Figure 2) or event times. The time intervals between these events are then analysed to generate tempo hypotheses concerning the rate and location of beats. Using the tempo hypotheses, searches are carried out to test the different hypotheses about the rate and timing of beats. The results of these searches are ranked and the beat times found in the highest ranked search are returned [10]. 
@@ -218,6 +206,9 @@ Simon Dixon
 \bibitem{dixon2}
 Simon Dixon
 \textit{Onset Detection Revisited, Proceedings of the 9th International Conference on Digital Audio Effects, Montreal, September 2006, pp 133-137}
+\bibitem{dixon3}
+Simon Dixon
+\textit{On the Analysis of Musical Expression in Audio Signals. Storage and Retrieval for Media Databases, SPIE-IS&T Electronic Imaging, SPIE Vol. 5021, 2003 pp 122-132}
 \bibitem{mirex-onset}
 \textit{http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection}
 \bibitem{sonic}
