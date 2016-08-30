@@ -6,7 +6,9 @@
 \usepackage{parskip}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
 \usepackage{datetime}
+\usepackage[font={small,it}]{caption}
 
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
@@ -131,7 +133,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 \maketitle{} \section{Solution Design}
 add something about work flow of system plus detailed work flow diagram
 
-\subsection{RTT\underline{{ }}Analyser Beat Detection}
+\subsection{RTT\_Analyser Beat Detection}
 The original proposed solution incorporated two beat detection logarithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However during the development the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
 
 The project report will now discuss all of the beat detection alogrithms that were incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
@@ -161,10 +163,10 @@ The multiple agent architecture of Beatroot's beat tracking subsystem is then em
 
 
 \subsubsection{Discrete Wavelet Transform}
-The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT [11]. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. 
+The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT\cite{tzane1}. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. The DWT can essentially be considered to be a filterbank, where a filterbank is a system used to separate subbands by using an array or bank of filters, where each of the filters corresponds to half frequency range of the closest centre higher frequency. Thus each filter will have half or twice the bandwith of any of its adjacent filters. 
 
 \subsubsection{Tzanetakis \textit{et al} Beat Detection Method}
-In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio [11]. Their beat detection algorithm was based on detecting the most prominent signals which are repeated over a period of time within the analysed audio and was is split into the following stages: 
+In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio\cite{tzane1}. Their beat detection algorithm was based on detecting the most prominent signals which are repeated over a period of time within the analysed audio and is made up of the following stages: 
 
 \begin{itemize}
 \item DWT - First the signal is processed by the DWT into a number of frequency bands 
@@ -243,6 +245,9 @@ Simon Dixon
 \bibitem{lyons}
 Lyons
 \textit{Understanding Digital Signal Processing}
+\bibitem{tzane2}
+Tao Li, Mitsunori Ogihara, George Tzanetakis
+\textit{Music Data Mining, CRC Press, 2002, pp 45-53}
 \end{thebibliography}
 \end{document}
 

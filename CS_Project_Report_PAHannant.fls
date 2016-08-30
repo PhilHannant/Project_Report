@@ -52,6 +52,10 @@ INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fc-english.def
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fc-english.def
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/datetime/datetime-defaults.sty
 INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/datetime/datetime-defaults.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
+INPUT /usr/local/texlive/2015/texmf-dist/tex/latex/caption/caption3.sty
 INPUT /Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux
 INPUT /Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux
 OUTPUT /Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux
@@ -102,6 +106,7 @@ OUTPUT /Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.t
 INPUT /Users/philhannant/Documents/Project_Report/images/TradMet.jpg
 INPUT /Users/philhannant/Documents/Project_Report/images/TradMet.jpg
 INPUT /Users/philhannant/Documents/Project_Report/images/TradMet.jpg
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /Users/philhannant/Documents/Project_Report/images/RW200.png
 INPUT /Users/philhannant/Documents/Project_Report/images/RW200.png
 INPUT /Users/philhannant/Documents/Project_Report/images/RW200.png
