@@ -185,6 +185,10 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 After these steps each frequency band os normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}.
 
 \subsubsection{Performance Worm}
+The final beat detection algorithm employed in the RTT\_Analyser is the Performance Worm (PW) system, designed by Simon Dixon, Werner Goebl and Gerhard Widmer\cite{dixonGoeblWidmer}. The PW is based on a real time algorithm which is able to determine the tempo of the input raw audio, while keeping track of other possible tempo hypotheses that are rated and updated dynamically. Allowing for the most recently highest ranked tempo hypothesis to be returned to the user\cite{dixonGoeblWidmer}. 
+
+First the PW processes the raw audio which can either taken from a static recording or directly from a live input with a smoothing filter in order to obtain the RMS amplitude of the signal taken from a 40ms window (explain RMS and smoothing filter). The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}.
+
 
 \subsubsection{Akka Actors}
 
@@ -265,6 +269,9 @@ Steven W. Smith
 \bibitem{pallas}
 Ramón Pallás-Areny and John G. Webster
 \textit{Analog Signal Processing, Wiley, 199, pp. 231}
+\bibitem{dixonGoeblWidmer}
+Simon Dixon, Werner Goebl and Gerhard Widmer
+\textit{The Performance Worm: Real Time Visualisation of Expression based on Langner’s Tempo-Loudness Animation, International Computer Music Conference, 16 - 21 September 2002, Göteborg, Sweden, pp 361-364.}
 \end{thebibliography}
 \end{document}
 

@@ -12,5 +12,7 @@
 \contentsline {subsection}{\numberline {2.2}RTT\_Analyser Beat Detection}{8}
 \contentsline {subsubsection}{\numberline {2.2.1}Beatroot}{8}
 \contentsline {subsubsection}{\numberline {2.2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
+\contentsline {subsubsection}{\numberline {2.2.3}Performance Worm}{11}
+\contentsline {subsubsection}{\numberline {2.2.4}Akka Actors}{11}
 \contentsline {section}{\numberline {3}Implementation}{11}
 \contentsline {subsection}{\numberline {3.1}Live Audio Processing}{11}
