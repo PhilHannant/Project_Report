@@ -8,9 +8,9 @@
 \contentsline {subsection}{\numberline {1.3}Beat Detection Background}{6}
 \contentsline {subsection}{\numberline {1.4}Project Aims}{7}
 \contentsline {section}{\numberline {2}Solution Design}{8}
-\contentsline {subsection}{\numberline {2.1}RTT\_Analyser Beat Detection}{8}
-\contentsline {subsubsection}{\numberline {2.1.1}Beatroot}{8}
-\contentsline {subsubsection}{\numberline {2.1.2}Discrete Wavelet Transform}{10}
-\contentsline {subsubsection}{\numberline {2.1.3}Tzanetakis \textit {et al} Beat Detection Method}{10}
-\contentsline {section}{\numberline {3}Implementation}{10}
-\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{10}
+\contentsline {subsection}{\numberline {2.1}Live Audio Processing}{8}
+\contentsline {subsection}{\numberline {2.2}RTT\_Analyser Beat Detection}{8}
+\contentsline {subsubsection}{\numberline {2.2.1}Beatroot}{8}
+\contentsline {subsubsection}{\numberline {2.2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
+\contentsline {section}{\numberline {3}Implementation}{11}
+\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{11}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  30 AUG 2016 23:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  31 AUG 2016 00:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -213,7 +213,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 [2] [3
 
-] <images/TradMet.jpg, id=18, 642.4pt x 481.8pt>
+] <images/TradMet.jpg, id=17, 642.4pt x 481.8pt>
 File: images/TradMet.jpg Graphic file (type jpg)
 <use images/TradMet.jpg>
 Package pdftex.def Info: images/TradMet.jpg used on input line 72.
@@ -238,52 +238,54 @@ File: images/Onset.jpg Graphic file (type jpg)
 <use images/Onset.jpg>
 Package pdftex.def Info: images/Onset.jpg used on input line 112.
 (pdftex.def)             Requested size: 212.79123pt x 126.06876pt.
-[7 </Users/philhannant/Documents/Project_Report/images/Onset.jpg>] <images/hamW
-in.jpg, id=38, 337.26pt x 244.915pt>
+[7 </Users/philhannant/Documents/Project_Report/images/Onset.jpg>] [8] <images/
+hamWin.jpg, id=41, 337.26pt x 244.915pt>
 File: images/hamWin.jpg Graphic file (type jpg)
 <use images/hamWin.jpg>
-Package pdftex.def Info: images/hamWin.jpg used on input line 148.
+Package pdftex.def Info: images/hamWin.jpg used on input line 150.
 (pdftex.def)             Requested size: 121.4135pt x 88.16933pt.
-[8] <images/br-clusters.jpg, id=42, 1236.62pt x 616.3025pt>
+<images/br-clusters.jpg, id=42, 1236.62pt x 616.3025pt>
 File: images/br-clusters.jpg Graphic file (type jpg)
 <use images/br-clusters.jpg>
-Package pdftex.def Info: images/br-clusters.jpg used on input line 157.
+Package pdftex.def Info: images/br-clusters.jpg used on input line 159.
 (pdftex.def)             Requested size: 309.15424pt x 154.07524pt.
-[9 </Users/philhannant/Documents/Project_Report/images/hamWin.jpg> </Users/phil
-hannant/Documents/Project_Report/images/br-clusters.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 172.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 </Users/philhannant/Documents/Project_Report/images/hamWin.jpg>] [10 </Users
+/philhannant/Documents/Project_Report/images/br-clusters.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 190.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 172.
-[10] [11] [12] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_P
-AHannant.aux) ) 
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 190.
+[11] [12] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHann
+ant.aux) ) 
 Here is how much of TeX's memory you used:
- 3909 strings out of 493089
- 60592 string characters out of 6134843
- 137484 words of memory out of 5000000
+ 3908 strings out of 493089
+ 60573 string characters out of 6134843
+ 137489 words of memory out of 5000000
  7330 multiletter control sequences out of 15000+600000
- 10774 words of font info for 37 fonts, out of 8000000 for 9000
+ 10415 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,9n,92p,1500b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmbxti10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r17.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6
-.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+ 53i,9n,92p,1915b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
+0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (12 pages, 672806 bytes).
+_PAHannant.pdf (12 pages, 665812 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 89 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

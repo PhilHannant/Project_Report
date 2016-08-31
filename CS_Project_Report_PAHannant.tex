@@ -107,7 +107,7 @@ With the basics of drum theory covered it is now possible to discuss the key ele
 \subsection{Beat Detection Background}
 Most of the early work on beat detection was a by-product of research directed at other areas of musicical understanding. The earliest work in this field can be attributed to H. C. Longuet-Higgins, who in 1976 while researching the psychological theory of how Western musicians perceive rhythmic and tonal relationships between notes. Produced an algorithm that was able to follow the beat of a performance and adjust the perceived tempo accordingly based on whether a note started earlier or later than expected \cite{allen-danneburg}. Longuet-Higgins' work was built on the premise that in order to percieve the rhythmic structure of a melody it is first necessary to identify the time at which each beat occurs \cite{longeut1}, otherwise know as onset detection. The onset of a note is the instant which marks start of the variation in the frequency of a signal, a visualisation of this can be seen in Figure~\ref{fig: Onset}. Once detected it can then be used to measure the onset times of sonic events\footnote{A sonic event is a singular feature of a piece music which can be made up of one source or many\cite{sonic}, e.g. the hitting of a drum} within a piece of music\cite{mirex-onset}. These onset times are then used within a beat detection algorithm in order to calculate the piece of music's tempo. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.40]{Onset}
 	\caption{The onset of a note is the instant which marks start of the variation in the frequency of a signal (Image Source: \cite{onset-tut})}
@@ -131,7 +131,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 \end{enumerate}
 
 \maketitle{} \section{Solution Design}
-The basic premised for the RTT_Analyser is to provide enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT_Analyser can be seen in Figure (add in).
+The basic premised for the RTT\_Analyser is to provide enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT\_Analyser can be seen in Figure (add in).
 
 \subsection{Live Audio Processing}
 
@@ -145,7 +145,7 @@ Beatroot is a beat detection software package created by Simon Dixon \cite{dixon
 
 Beatroot works by first obtaining a time-frequency representation of the signal based on a Short Time Fourier Transform (STFT) using a Hamming window\cite{dixon2}. The STFT is a form of Fourier transform (FT), which can be used to find out how much of each frequency exists in a signal. Th A negative of the FT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time\cite{polikapt2}}. A solution to this is to split a non-stationary signal up into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the FT could then be applied to. By splitting the signal into smaller segments the STFT is able to apply the DFT to these segments and essentially express a signal as a linear combination of elementary signals that are easily manipulated. The DFT returns a spectrum that contains information about how the energy held within the signal is distributed in the time and frequency domains\cite{tzane2}. The use of a Hamming window function in the STFT employed by Beatroot is an attempt to reduce the amount of additional frequencies appearing in the returned DFT spectrum, known as spectral leakage, which is caused when the steep sloped of the a rectangular window causes the frequecies to become distorted. The Hamming window counteracts this by using a bell shape, which has the effect of reducing amplitudes of its sidelobes\cite{lyons} and ensures the spectrum returned is less spread out and closer to the ideal theoretical result\cite{tzane2}. A visualisation of a Hamming window can be seen in Figure~\ref{fig: hamWin}. 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.36]{hamWin}
 	\caption{(Image Source: \cite{lyons})}
@@ -154,7 +154,7 @@ Beatroot works by first obtaining a time-frequency representation of the signal 
 
 Once the time-frequency representation is returned the next stage is to the spectral flux onset detection function, which is a method for measuring the change in magnitude of each returned frequency bin\cite{dixon2}. The onsets are then selected from the spectral flux onset detection function by a peak-picking algorithm which finds local maxima within the detection function. The next stage is to apply the tempo induction algorithm which is used to compute clusters of inter-onset intervals (IOI) by using the calculated onset times. Each cluster represents a hypothetical tempo, in seconds per beat \cite{dixon1}. The clustering algorithm works by assigning an IOI to a cluster if its difference from the cluster is less than 25ms. The cluster information is then combined by recognising the approximate integer relationships between clusters. An example of this can be seen in Figure~\ref{fig: br-clusters} where cluster C2 is twice as long as C1 and C4 is twice that of C2. This information along with the number of IOIs within a cluster is then used to weight each cluster which is then returned as a ranked list of tempo hypotheses\cite{dixon4}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.25]{br-clusters}
 	\caption{(Image Source: \cite{dixon4})}
@@ -167,19 +167,26 @@ The multiple agent architecture of Beatroot's beat tracking subsystem is then em
 \subsubsection{Discrete Wavelet Transform and Beat Detection Method}
 The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT\cite{tzane1}. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. The DWT can essentially be considered to be a filterbank, where a filterbank is a system used to separate subbands by using an array or bank of filters, where each of the filters corresponds to half frequency range of the closest centre higher frequency. Thus each filter will have half or twice the bandwith of any of its adjacent filters. 
 
-In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio\cite{tzane1}. Their beat detection algorithm was based on detecting the most prominent signals which are repeated over a period of time within the analysed audio and is made up of the following stages: 
+In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio\cite{tzane1}. Their beat detection algorithm was based on the detecting the most prominent signals which are repeated over a period of time within the analysed audio. The first stage is to process is to split the signal into a number of octave\footnote{define an octave} frequency bands with the DWT. This allows for the time domain amplitude envelopes of each frequency band to be extracted separately. The extraction of these envelopes is completed in the following three steps:
 
 \begin{enumerate}
-\item First the signal is processed by the DWT into a number of frequency bands 
-\item Low Pass Filtering - a low pass filter is then applied to the signal in order to allow the lower frequencies of the signal to be analysed
-\item Full Wave Rectification - each frequency band is then converted to one constant polarity (positive or negative)[wiki]. A visual representation can be seen in Figure 4
-\item Downsampling - Due to the large perodicities that can occur in beat analysis, downsampling the signal reduces the computation time of the autocorrelation stage without causing any negative effects on the performance or the algorithm
-\item Normalisation - each band is then normalised using mean removal
-\item AutoCorrelation - an autocorrelation function is then applied to the frequency bands, the first five peaks of this function are detected and their periodicities are calculated in beats per minute
-\end{itemize}
+\item Full Wave Rectification - process of converting the amplitude of each frequency band to one polarity\cite{pallas}, which can be either positive or negative. A visual representation can be seen in Figure~\ref{fig: fwr}.
+\item Low Pass Filtering - Low pass filtering is a signal processing technique which is designed to allow frequencies below a cutoff frequency through but blocks any frequencies above the cutoff frequency\cite{smith}.
+\item Downsampling - Due to the large perodicities that can occur in beat analysis, downsampling the signal reduces the computation time of the autocorrelation stage without causing any negative effects on the performance or the algorithm\cite{tzane3}
+\end{enumerate}
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{FWR2}
+	\caption{Visual representation of Full Wave Rectification (diagram adaptedfrom https://en.wikipedia.org/wiki/Rectifier)}
+	\label{fig: fwr}
+\end{figure}
 
+After these steps each frequency band os normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}.
 
+\subsubsection{Performance Worm}
+
+\subsubsection{Akka Actors}
 
 
 \maketitle{} \section{Implementation}
@@ -252,6 +259,12 @@ Tao Li, Mitsunori Ogihara, George Tzanetakis
 \bibitem{tzane3}
 George Tzanetakis and Perry Cook
 \textit{Musical Genre Classification of Audio Signals}
+\bibitem{smith}
+Steven W. Smith
+\textit{The Scientist and Engineer's Guide to Digital Signal Processing, California Technical Publishing, 2011, Chapter 3}
+\bibitem{pallas}
+Ramón Pallás-Areny and John G. Webster
+\textit{Analog Signal Processing, Wiley, 199, pp. 231}
 \end{thebibliography}
 \end{document}
 
