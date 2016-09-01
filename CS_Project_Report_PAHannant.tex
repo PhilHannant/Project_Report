@@ -9,6 +9,7 @@
 
 \usepackage{datetime}
 \usepackage[font={small,it}]{caption}
+\usepackage{listings}
 
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
@@ -187,8 +188,30 @@ After these steps each frequency band os normalised through a method of mean rem
 \subsubsection{Performance Worm}
 The final beat detection algorithm employed in the RTT\_Analyser is the Performance Worm (PW) system, designed by Simon Dixon, Werner Goebl and Gerhard Widmer\cite{dixonGoeblWidmer}. The PW is based on a real time algorithm which is able to determine the tempo of the input raw audio, while keeping track of other possible tempo hypotheses that are rated and updated dynamically. Allowing for the most recently highest ranked tempo hypothesis to be returned to the user\cite{dixonGoeblWidmer}. 
 
-First the PW processes the raw audio which can either taken from a static recording or directly from a live input with a smoothing filter in order to obtain the RMS amplitude of the signal taken from a 40ms window (explain RMS and smoothing filter). The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}.
+First the PW processes the raw audio which can either taken from a static recording or directly from a live input with a smoothing filter in order to obtain the RMS amplitude of the signal taken from a 40ms window (explain RMS and smoothing filter). The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}. 
 
+The signal is then processed by the multiple tempo tracking subsytem which uses a similar approach to the beatroot system. The time intervals (inter-onset intervals or IOIs) of event pairs are first calculated. A clustering algorithm (Figure~\ref{fig: clusterAl}) is then applied in order to determine the significant clusters of IOIs, which are subsequently assumed to be the musical units held within the signal. As in the beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. While running the clustering algorithm keeps 5 seconds of onset times within memory and begins processing by determining all IOIs between the onsets in memory\cite{dixonGoeblWidmer}. 
+
+For IOI times $\mathit{t}$ from 100ms to 2500ms in 10ms steps
+\begin{figure}[ht]
+	\hspace{10mm} For each new onset\\
+	\hspace*{20mm} For IOI times $\mathit{t}$ from 100ms to 2500ms in 10ms steps\\
+	\hspace*{30mm} Find pairs of onsets which are $\mathit{t}$ apart\\
+	\hspace*{30mm} Sum the mean amplitude of these onset pairs\\
+	\hspace*{20mm} Loop until all IOI time points are used\\
+	\hspace*{30mm} For times $\mathit{t}$ from 100ms to 2500ms in 10ms steps\\
+	\hspace*{40mm} Calculate window size $\mathit{s}$ as function of $\mathit{t}$\\
+	\hspace*{40mm} Find average amplitude of IOIs in window $\mathit{[t, t + s]}$\\
+	\hspace*{40mm} Store $\mathit{t}$ which gives maximum average amplitude\\
+	\hspace*{30mm} Create a cluster containing the stored maximum window\\
+	\hspace*{30mm} Mark the IOIs in the cluster as used\\
+	\hspace*{20mm} For each cluster\\
+	\hspace*{30mm} Find related clusters (multiples or divisors)\\
+	\hspace*{30mm} Combine related clusters using weighted average\\
+	\hspace*{20mm} Match combined clusters to tempo hypotheses and update\\
+	\caption{Clustering algorithm used in the Performance Worm Multiple Tempo Tracking Subsystem\cite{dixonGoeblWidmer}}
+	\label{fig: clusterAl}
+\end{figure}
 
 \subsubsection{Akka Actors}
 

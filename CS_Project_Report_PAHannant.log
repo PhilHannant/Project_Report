@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  31 AUG 2016 22:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  1 SEP 2016 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -126,34 +126,56 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \caption@hangindent=\dimen112
 )
 \c@ContinuedFloat=\count115
-) (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux)
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count116
+\lst@gtempboxa=\box26
+\lst@token=\toks20
+\lst@length=\count117
+\lst@currlwidth=\dimen113
+\lst@column=\count118
+\lst@pos=\count119
+\lst@lostspace=\dimen114
+\lst@width=\dimen115
+\lst@newlines=\count120
+\lst@lineno=\count121
+\lst@maxwidth=\dimen116
+(/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count122
+\lst@skipnumbers=\count123
+\lst@framebox=\box27
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+(/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux)
 \openout1 = `CS_Project_Report_PAHannant.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count116
-\scratchdimen=\dimen113
-\scratchbox=\box26
-\nofMPsegments=\count117
-\nofMParguments=\count118
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count119
-\MPscratchDim=\dimen114
-\MPnumerator=\count120
-\makeMPintoPDFobject=\count121
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count124
+\scratchdimen=\dimen117
+\scratchbox=\box28
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen118
+\MPnumerator=\count128
+\makeMPintoPDFobject=\count129
+\everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -194,13 +216,15 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count130
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 36.
+(Font)              <12> on input line 37.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 36.
+(Font)              <8> on input line 37.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 36.
+(Font)              <6> on input line 37.
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users
@@ -216,7 +240,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ] <images/TradMet.jpg, id=17, 642.4pt x 481.8pt>
 File: images/TradMet.jpg Graphic file (type jpg)
 <use images/TradMet.jpg>
-Package pdftex.def Info: images/TradMet.jpg used on input line 72.
+Package pdftex.def Info: images/TradMet.jpg used on input line 73.
 (pdftex.def)             Requested size: 192.72148pt x 144.5411pt.
 [4
 
@@ -224,52 +248,57 @@ Package pdftex.def Info: images/TradMet.jpg used on input line 72.
 0.png, id=22, 652.4375pt x 768.8725pt>
 File: images/RW200.png Graphic file (type png)
 <use images/RW200.png>
-Package pdftex.def Info: images/RW200.png used on input line 82.
+Package pdftex.def Info: images/RW200.png used on input line 83.
 (pdftex.def)             Requested size: 163.10896pt x 192.21765pt.
 [5
 
  </Users/philhannant/Documents/Project_Report/images/RW200.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 108.
+(Font)              <9> on input line 109.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 108.
+(Font)              <5> on input line 109.
 [6] <images/Onset.jpg, id=30, 531.9875pt x 315.1775pt>
 File: images/Onset.jpg Graphic file (type jpg)
 <use images/Onset.jpg>
-Package pdftex.def Info: images/Onset.jpg used on input line 112.
+Package pdftex.def Info: images/Onset.jpg used on input line 113.
 (pdftex.def)             Requested size: 212.79123pt x 126.06876pt.
 [7 </Users/philhannant/Documents/Project_Report/images/Onset.jpg>] [8] <images/
 hamWin.jpg, id=41, 337.26pt x 244.915pt>
 File: images/hamWin.jpg Graphic file (type jpg)
 <use images/hamWin.jpg>
-Package pdftex.def Info: images/hamWin.jpg used on input line 150.
+Package pdftex.def Info: images/hamWin.jpg used on input line 151.
 (pdftex.def)             Requested size: 121.4135pt x 88.16933pt.
 <images/br-clusters.jpg, id=42, 1236.62pt x 616.3025pt>
 File: images/br-clusters.jpg Graphic file (type jpg)
 <use images/br-clusters.jpg>
-Package pdftex.def Info: images/br-clusters.jpg used on input line 159.
+Package pdftex.def Info: images/br-clusters.jpg used on input line 160.
 (pdftex.def)             Requested size: 309.15424pt x 154.07524pt.
 [9 </Users/philhannant/Documents/Project_Report/images/hamWin.jpg>] <images/FWR
 2.jpg, id=46, 1212.53pt x 275.0275pt>
 File: images/FWR2.jpg Graphic file (type jpg)
 <use images/FWR2.jpg>
-Package pdftex.def Info: images/FWR2.jpg used on input line 180.
+Package pdftex.def Info: images/FWR2.jpg used on input line 181.
 (pdftex.def)             Requested size: 303.13176pt x 68.7567pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--181
+Underfull \hbox (badness 10000) in paragraph at lines 182--182
 []\OT1/cmr/m/it/10 Figure 6: |Vi-sual rep-re-sen-ta-tion of Full Wave Rec-ti-fi
 -ca-tion (di-a-gram adapt-ed-from
  []
 
 [10 </Users/philhannant/Documents/Project_Report/images/br-clusters.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 198.
+Underfull \hbox (badness 10000) in paragraph at lines 197--212
+
+ []
+
+[11 </Users/philhannant/Documents/Project_Report/images/FWR2.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 224.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 198.
-[11 </Users/philhannant/Documents/Project_Report/images/FWR2.jpg>] [12]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 224.
+[12]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -282,28 +311,29 @@ Missing character: There is no ¶ in font cmti10!
 [13] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.a
 ux) ) 
 Here is how much of TeX's memory you used:
- 3917 strings out of 493089
- 60703 string characters out of 6134843
- 138510 words of memory out of 5000000
- 7338 multiletter control sequences out of 15000+600000
- 10415 words of font info for 36 fonts, out of 8000000 for 9000
+ 5102 strings out of 493089
+ 78199 string characters out of 6134843
+ 157079 words of memory out of 5000000
+ 8508 multiletter control sequences out of 15000+600000
+ 11810 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,9n,92p,1915b,358s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,9n,92p,1915b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (13 pages, 694114 bytes).
+_PAHannant.pdf (13 pages, 702693 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 61 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
