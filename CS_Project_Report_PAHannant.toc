@@ -7,12 +7,14 @@
 \contentsline {subsubsection}{\numberline {1.2.4}Playing Basics}{6}
 \contentsline {subsection}{\numberline {1.3}Beat Detection Background}{6}
 \contentsline {subsection}{\numberline {1.4}Project Aims}{7}
-\contentsline {section}{\numberline {2}Solution Design}{8}
-\contentsline {subsection}{\numberline {2.1}Live Audio Processing}{8}
-\contentsline {subsection}{\numberline {2.2}RTT\_Analyser Beat Detection}{8}
-\contentsline {subsubsection}{\numberline {2.2.1}Beatroot}{8}
-\contentsline {subsubsection}{\numberline {2.2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
-\contentsline {subsubsection}{\numberline {2.2.3}Performance Worm}{11}
-\contentsline {subsubsection}{\numberline {2.2.4}Akka Actors}{11}
-\contentsline {section}{\numberline {3}Implementation}{11}
-\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{11}
+\contentsline {section}{\numberline {2}RTT\_Analyser Beat Detection Algorthims}{8}
+\contentsline {subsection}{\numberline {2.1}Beatroot}{8}
+\contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
+\contentsline {subsection}{\numberline {2.3}Performance Worm}{11}
+\contentsline {section}{\numberline {3}Solution Design and Architecture}{12}
+\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{12}
+\contentsline {subsection}{\numberline {3.2}Akka Actors}{13}
+\contentsline {subsubsection}{\numberline {3.2.1}The Actors}{13}
+\contentsline {subsection}{\numberline {3.3}Design Methods}{14}
+\contentsline {section}{\numberline {4}Implementation}{14}
+\contentsline {subsection}{\numberline {4.1}Live Audio Capture}{14}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  1 SEP 2016 22:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  2 SEP 2016 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -266,39 +266,75 @@ Package pdftex.def Info: images/Onset.jpg used on input line 113.
 hamWin.jpg, id=41, 337.26pt x 244.915pt>
 File: images/hamWin.jpg Graphic file (type jpg)
 <use images/hamWin.jpg>
-Package pdftex.def Info: images/hamWin.jpg used on input line 151.
+Package pdftex.def Info: images/hamWin.jpg used on input line 148.
 (pdftex.def)             Requested size: 121.4135pt x 88.16933pt.
 <images/br-clusters.jpg, id=42, 1236.62pt x 616.3025pt>
 File: images/br-clusters.jpg Graphic file (type jpg)
 <use images/br-clusters.jpg>
-Package pdftex.def Info: images/br-clusters.jpg used on input line 160.
+Package pdftex.def Info: images/br-clusters.jpg used on input line 157.
 (pdftex.def)             Requested size: 309.15424pt x 154.07524pt.
-[9 </Users/philhannant/Documents/Project_Report/images/hamWin.jpg>] <images/FWR
-2.jpg, id=46, 1212.53pt x 275.0275pt>
+[9 </Users/philhannant/Documents/Project_Report/images/hamWin.jpg> </Users/phil
+hannant/Documents/Project_Report/images/br-clusters.jpg>] <images/FWR2.jpg, id=
+46, 1212.53pt x 275.0275pt>
 File: images/FWR2.jpg Graphic file (type jpg)
 <use images/FWR2.jpg>
-Package pdftex.def Info: images/FWR2.jpg used on input line 181.
+Package pdftex.def Info: images/FWR2.jpg used on input line 178.
 (pdftex.def)             Requested size: 303.13176pt x 68.7567pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 182--182
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
 []\OT1/cmr/m/it/10 Figure 6: |Vi-sual rep-re-sen-ta-tion of Full Wave Rec-ti-fi
 -ca-tion (di-a-gram adapt-ed-from
  []
 
-[10 </Users/philhannant/Documents/Project_Report/images/br-clusters.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 197--212
+[10 </Users/philhannant/Documents/Project_Report/images/FWR2.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 194--209
 
  []
 
-[11 </Users/philhannant/Documents/Project_Report/images/FWR2.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 224.
+[11]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 220.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 224.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
 [12]
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--241
+
+ []
+
+[13]
+Overfull \hbox (36.14027pt too wide) in paragraph at lines 261--262
+[][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+<images/addBytes.jpg, id=62, 1182.4175pt x 507.8975pt>
+File: images/addBytes.jpg Graphic file (type jpg)
+<use images/addBytes.jpg>
+Package pdftex.def Info: images/addBytes.jpg used on input line 270.
+(pdftex.def)             Requested size: 413.85233pt x 177.76678pt.
+[14] [15 </Users/philhannant/Documents/Project_Report/images/addBytes.jpg>]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -308,16 +344,30 @@ Missing character: There is no € in font cmti10!
 Missing character: There is no ™ in font cmti10!
 Missing character: There is no Ã in font cmti10!
 Missing character: There is no ¶ in font cmti10!
-[13] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.a
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+
+Underfull \hbox (badness 1292) in paragraph at lines 350--352
+[]\OT1/cmr/m/n/10.95 Jonas Bonr, Dave Far-ley, Roland Kuhn, and Mar-tin Thomp-s
+on \OT1/cmr/m/it/10.95 Re-ac-tive Man-i-festo,
+ []
+
+
+Overfull \hbox (48.64772pt too wide) in paragraph at lines 359--361
+[]\OT1/cmr/m/n/10.95 Oracle \OT1/cmr/m/it/10.95 https://docs.oracle.com/javase/
+8/docs/technotes/guides/sound/programmer[]guide/contents.html 
+ []
+
+[16] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.a
 ux) ) 
 Here is how much of TeX's memory you used:
- 5102 strings out of 493089
- 78199 string characters out of 6134843
- 157079 words of memory out of 5000000
- 8508 multiletter control sequences out of 15000+600000
+ 5118 strings out of 493089
+ 78426 string characters out of 6134843
+ 158115 words of memory out of 5000000
+ 8523 multiletter control sequences out of 15000+600000
  11810 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,9n,92p,1915b,361s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,9n,92p,1915b,839s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
 fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
@@ -330,10 +380,10 @@ l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (13 pages, 702693 bytes).
+_PAHannant.pdf (16 pages, 976572 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
