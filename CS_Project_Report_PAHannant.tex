@@ -131,17 +131,14 @@ The original core features of the RTT\_Analyser developed for this project are:
 \item In order to An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
 \end{enumerate}
 
-\maketitle{} \section{Solution Design}
-The basic premised for the RTT\_Analyser is to provide enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT\_Analyser can be seen in Figure (add in).
 
-\subsection{Live Audio Processing}
 
-\subsection{RTT\_Analyser Beat Detection}
+\maketitle{}\section{RTT\_Analyser Beat Detection Algorthims}
 The original proposed solution incorporated two beat detection algorithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However during the development the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
 
 The project report will now discuss all of the beat detection algorithms that were incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
 
-\subsubsection{Beatroot}
+\subsection{Beatroot}
 Beatroot is a beat detection software package created by Simon Dixon \cite{dixon1}, which was originally designed extract musical expression information musical recordings\cite{dixon3}. Beatroot was included in the RTT{\_}Analyser as the algorithm designed by Dixon was considered to be sufficiently fast enough to be implemented as part of a real-time system\cite{dixon4}.\par
 
 Beatroot works by first obtaining a time-frequency representation of the signal based on a Short Time Fourier Transform (STFT) using a Hamming window\cite{dixon2}. The STFT is a form of Fourier transform (FT), which can be used to find out how much of each frequency exists in a signal. Th A negative of the FT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time\cite{polikapt2}}. A solution to this is to split a non-stationary signal up into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the FT could then be applied to. By splitting the signal into smaller segments the STFT is able to apply the DFT to these segments and essentially express a signal as a linear combination of elementary signals that are easily manipulated. The DFT returns a spectrum that contains information about how the energy held within the signal is distributed in the time and frequency domains\cite{tzane2}. The use of a Hamming window function in the STFT employed by Beatroot is an attempt to reduce the amount of additional frequencies appearing in the returned DFT spectrum, known as spectral leakage, which is caused when the steep sloped of the a rectangular window causes the frequecies to become distorted. The Hamming window counteracts this by using a bell shape, which has the effect of reducing amplitudes of its sidelobes\cite{lyons} and ensures the spectrum returned is less spread out and closer to the ideal theoretical result\cite{tzane2}. A visualisation of a Hamming window can be seen in Figure~\ref{fig: hamWin}. 
@@ -165,7 +162,7 @@ Once the time-frequency representation is returned the next stage is to the spec
 The multiple agent architecture of Beatroot's beat tracking subsystem is then employed to find the sequences of events that closest match the original tempo hypotheses, each of these sequences is then rated and the most likely set of beat times is determined. Each of the agents in initialised with a tempo or beat rate hypothesis and an onset time. Further beats are then predicted by the agent based on these parameters. Any onsets corresponding with the predicted beat times are taken as a beat time, while those that fall outside of the are considered not to be a beat time, although the possibility that the onset is not on the beat is considered. Then agents then rate themselves based on an evaluatio function which looks at how evenly spaced the beat times are, the number of predicted beats which relate to actual events, and the salience\footnote{The salience is a measure of the note duration, density, pitch and density\cite{dixon1}, which is calculated from the spectral flux of the onset\cite{dixon4}} of the matched onsets. The agent with the highest score is then returned as the sequence of beats corresponding to the processed audio\cite{dixon4}. It is from the sequence of beats which this agent returns that overall tempo of the audio can be determined by using the ``inter-beat intervals, measured in beats per second''\cite{dixon1} to calculate beats per minute (bpm) of the audio.
 
 
-\subsubsection{Discrete Wavelet Transform and Beat Detection Method}
+\subsection{Discrete Wavelet Transform and Beat Detection Method}
 The first literature regarding the wavelet was provided by the mathematician Albert Haar in 1909 [18]. The wavelet transform is a technique for analysing signals which was developed as an alternative to the STFT\cite{tzane1}. Like the STFT, the DWT is able to provide time and frequency information, however, unlike the STFT the DWT is able to do this without the need for a window function. The DWT can essentially be considered to be a filterbank, where a filterbank is a system used to separate subbands by using an array or bank of filters, where each of the filters corresponds to half frequency range of the closest centre higher frequency. Thus each filter will have half or twice the bandwith of any of its adjacent filters. 
 
 In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform (DWT) could be used to extract information from non-speech audio\cite{tzane1}. Their beat detection algorithm was based on the detecting the most prominent signals which are repeated over a period of time within the analysed audio. The first stage is to process is to split the signal into a number of octave\footnote{define an octave} frequency bands with the DWT. This allows for the time domain amplitude envelopes of each frequency band to be extracted separately. The extraction of these envelopes is completed in the following three steps:
@@ -185,7 +182,7 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 
 After these steps each frequency band os normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}.
 
-\subsubsection{Performance Worm}
+\subsection{Performance Worm}
 The final beat detection algorithm employed in the RTT\_Analyser is the Performance Worm (PW) system, designed by Simon Dixon, Werner Goebl and Gerhard Widmer\cite{dixonGoeblWidmer}. The PW is based on a real time algorithm which is able to determine the tempo of the input raw audio, while keeping track of other possible tempo hypotheses that are rated and updated dynamically. Allowing for the most recently highest ranked tempo hypothesis to be returned to the user\cite{dixonGoeblWidmer}. 
 
 First the PW processes the raw audio which can either taken from a static recording or directly from a live input with a smoothing filter in order to obtain the RMS amplitude of the signal taken from a 40ms window (explain RMS and smoothing filter). The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}. 
@@ -213,15 +210,14 @@ The signal is then processed by the multiple tempo tracking subsytem which uses 
 	\label{fig: clusterAl}
 \end{figure}
 
-\subsubsection{Akka Actors}
+\maketitle{} \section{Solution Design and Architecture}
+The basic premise for the RTT\_Analyser is to enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT\_Analyser can be seen in Figure (add in).
 
-
-\maketitle{} \section{Implementation}
 \subsection{Live Audio Processing}
-The live audio will be processed using the Javax Sound package. The audio will be captured using a stereo microphone and processed to match CD quality with the Javax Sound AudioFormat class. The Beatroot system was not originally intended to be used as a real time system [19] so currently only works with prerecorded audio. It will therefore be will need to be modified in order for it to work with live audio. 
+The live audio is processed using the Javax Sound package. In order to make the results reflective of the quality of microphone that any future applications might use it was decided that the RTT\_Analyser was designed to be used with the built in to the device it was being executed on. In order to ensure the caputured audio matches CD quality the Javax Sound AudioFormat class was designed with the following constructors: 
 
 \begin{itemize}
-\item Encoding - This will be set to ``PCM.signed'', representing audio encoded to the native linear pulse code modulation, where quantization levels are linearly uniform [15].
+\item Encoding - This will be set to ``PCM.signed'', representing audio encoded to the native linear pulse code modulation, where pulse code modulation is the process of sampling and quantising the signal into discrete symbols for transmissions\cite{pulseWag}.
 \item Sample Rate - 44,100, set to match CD quality for the number of analog samples which will be analysed per second. 
 \item Sample Size in Bits - 24, based on a sound card with a 24 bit sample depth.
 \item Channels - 2, audio will be captured using a stereo microphone.
@@ -229,6 +225,31 @@ The live audio will be processed using the Javax Sound package. The audio will b
 \item Frame Rate - 44,100, same as sample rate.
 \item Big Endian (boolean) - false, as the project will be developed on an Intel core which uses a little-endian architecture\footnote{Endianess refers to the order of bytes which make up a digital word. Big endianess stores the most significant byte at a certain memory address and the remaining bytes being stored in the following higher memory addresses. The little-endian formate reverses the order storing the least significant at the lowest and most significant at the highest memory address [16].}.
 \end{itemize}
+
+The described audio format is then applied to the TargetDataLine, which provides access to the built in microphone of the device, if available. The TargetDataLine class is then attached to an instance of the Java AudioInputStream class which converts the captured audio into a stream of bytes for processing\cite{soundTrail}. In order to process the captured bytes the RTT_Analyser then required the use of a concurrent system to allow for each of the three beat detection algorithms to be run in parallel, which was provided by the Akka Actors system.
+
+\subsection{Akka Actors}
+The Akka Actor Model is specifically designed to provide the ability to write concurrent systems with a high level of abstraction that alleviates the developer from the need to handle locking and individual thread management. Therefore, making it much easier to write concurrent and parallel systems when compared to the traditional approaches used in Java\cite{akkaActors}.
+
+A fundamental construct of the Akka Actor system is that it strictly adheres too the Reactive Manifesto, which aims to ensure applications built under this are easier to develop and are amenable to change, allowing for a higher level of tolerance to failure and the ability to meet any such failure elegantly as opposed to disaster\cite{reactMan}. The Reactive Manifesto requires applications to satisfy one or more of the following requirements:
+
+\begin{itemize}
+\item \textbr{Responsive} - The system responds in a timely manner, if possible. By providing usability and utility responsiveness allows for any problems to be detected and resolved effectively.
+\item \textbr{Resilient} - The system should be able to remain responsive even in the event of a failure, which applies to all parts of the system not just the mission critical components. To achieve this each component needs to be isolated within the system, therefore allowing failed parts of the system to recover without effecting the responsiveness of the system as a whole.
+\item \textbr{Elastic} - The system will be able to maintain the same level of responsiveness despite varying workloads, reacting to changes in the rate of input by adapting the levels of resources allocated to service these inputs accordingly.
+\item \textbr{Message Driven} - Reactive systems rely on the use of asynchronous message passing in order to establish boudaries between components within the system, ensuring isolation, loose-coupling\footnote{add one} and location transparency\footnote{add another}. By utilising a non-blocking\footnote{another!} message-passing it is possible to ensure message recipents only comsume resources when active, leading to a much reduced system overhead\cite{reactMan}.
+
+
+\end{itemize}
+
+
+\subsection{Design Methods}
+
+\maketitle{} \section{Implementation}
+\subsection{Live Audio Processing}
+
+
+
 
 
 \newpage
@@ -295,6 +316,18 @@ Ramón Pallás-Areny and John G. Webster
 \bibitem{dixonGoeblWidmer}
 Simon Dixon, Werner Goebl and Gerhard Widmer
 \textit{The Performance Worm: Real Time Visualisation of Expression based on Langner’s Tempo-Loudness Animation, International Computer Music Conference, 16 - 21 September 2002, Göteborg, Sweden, pp 361-364.}
+\bibitem{pulseWag}
+Bill Waggener
+\textit{Pulse Code Modulation Techniques}
+\bibitem{soundTrail}
+Oracle
+\textit{https://docs.oracle.com/javase/tutorial/sound/}
+\bibitem{akkaActors}
+Akka
+\textit{http://doc.akka.io/docs/akka/2.4.9/scala/actors.html}
+\bibitem{reactMan}
+Jonas Bonér, Dave Farley, Roland Kuhn, and Martin Thompson
+\textit{Reactive Manifesto, http://www.reactivemanifesto.org/}
 \end{thebibliography}
 \end{document}
 
