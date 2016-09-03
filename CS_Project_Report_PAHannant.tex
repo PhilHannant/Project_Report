@@ -278,11 +278,11 @@ The need for the above code however became defunct with the design decision to i
 \end{figure}
 
 \subsection{DWT Beat Dectection Implementation}
-The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marco Ziccardi\cite{marcoZin} was part of a larger system which offered a number of other beat detection methods. The RTT_Analyser only required the class which implemented the DWT beat detection algorithm, WaveletBPMDetector.\\
+The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marco Ziccardi\cite{marcoZin} was part of a larger system which offered a number of other beat detection methods. The RTT\_Analyser only required the class which implemented the DWT beat detection algorithm, WaveletBPMDetector.\\
 
 NEED SOME GLUE\\
 
-The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted\cite{green}, however as the RTT_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was basd on three methods from Andrew Greensted's WavFile class\cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility, which is considered to create ``code that is both succint and obviously correct''\cite{mariusEr}. Where pattern matching is employed it is siginified by the match keyword. Additionally, the Scala compiler also employs an optimiser which ensures that there are not any runtime overheads to be paid for using tail recursive\footnote{add one} solutions. Writing tail recursive code often provides more elegant and concise solutions than when compared with loop-based solutions\cite{odesky}, therefore any loops in the WavFile class were converted into a tail recursive solution.  
+The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted\cite{green}, however as the RTT\_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was basd on three methods from Andrew Greensted's WavFile class\cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility, which is considered to create ``code that is both succint and obviously correct''\cite{mariusEr}. Where pattern matching is employed it is siginified by the match keyword. Additionally, the Scala compiler also employs an optimiser which ensures that there are not any runtime overheads to be paid for using tail recursive\footnote{add one} solutions. Writing tail recursive code often provides more elegant and concise solutions than when compared with loop-based solutions\cite{odesky}, therefore any loops in the WavFile class were converted into a tail recursive solution. The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containg the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. In order for the WaveletBPMDetector class to return a tempo result the a single window (matched to the size of the buffer byte array), the for loop was removed from the \textit{bpm} method.
 
 \begin{figure}[ht]
 	\centering
@@ -291,9 +291,15 @@ The WaveletBPMDetector originally relied on a Scala version of the WavFile Java 
 	\label{fig: liveAudPro}
 \end{figure}
 
-The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containg the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. 
+\subsection{Tempo, Analyser, Stats and JSON}
+In order for the RTT\_Analyser to be able to process the calculated tempo results the Tempo case class was implemented, comprising of the calculated and expected tempos, and difference between these values, an Option count of beats detected and the time at which the tempo result was calculated. For each tempo result calculates a Tempo object was created and added to a ListBuffer, chosen for its scalability,  within the Analyser implementation corresponding to the relevant beat detection algorithm. The Analyser implementations also contained an Option Stats value, which enabled the Stats to be added to the Analyser after the instantiation of the case class. The Stats case class is used to hold the average and median values of the calculated tempos, as well as the difference between the expected and calcuated tempo. To asses the efficiency of the algorithms the time taken to calculate a tempo within plus or minus one bpm of the expected value. The StatsCalculator case class carried out computation  these which utilised Scala's pattern matching on the List data structure and .. MORE?!
 
-\subsection{The Tempo Object}
+The storage of the data recorded by the RTT_Analyser was implemented using the ScalaJSON library provided by the play framework\cite{play}
+
+\subsection{The Actor System}
+
+
+
 
 \newpage
 \begin{thebibliography}{99}
@@ -393,6 +399,8 @@ Marius Eriksen\\
 \bibitem{odesky}
 Martin Odersky, Lex Spoon and Bill Venners\\
 \textit{Programming in Scala, Second Edition, Artima Press, 2010}
+\bibitem{play}
+\textit{https://www.playframework.com/documentation/2.5.x/ScalaJson}
 \end{thebibliography}
 \end{document}
 

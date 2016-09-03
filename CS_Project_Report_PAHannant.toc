@@ -18,3 +18,5 @@
 \contentsline {subsection}{\numberline {3.3}Design Methods}{14}
 \contentsline {section}{\numberline {4}Implementation}{14}
 \contentsline {subsection}{\numberline {4.1}Live Audio Capture}{14}
+\contentsline {subsection}{\numberline {4.2}DWT Beat Dectection Implementation}{15}
+\contentsline {subsection}{\numberline {4.3}Tempo, Analyser and Stats}{15}
