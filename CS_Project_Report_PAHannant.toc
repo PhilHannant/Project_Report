@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {2.1}Beatroot}{8}
 \contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
 \contentsline {subsection}{\numberline {2.3}Performance Worm}{11}
-\contentsline {section}{\numberline {3}Solution Design and Architecture}{12}
+\contentsline {section}{\numberline {3}Solution Design and Architecture}{11}
 \contentsline {subsection}{\numberline {3.1}Live Audio Processing}{12}
 \contentsline {subsection}{\numberline {3.2}Akka Actors}{13}
 \contentsline {subsubsection}{\numberline {3.2.1}The Actors}{13}

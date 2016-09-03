@@ -180,7 +180,10 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 	\label{fig: fwr}
 \end{figure}
 
+
 After these steps each frequency band os normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}.
+
+Originally, it was intended that Discrete Wavelet Transform beat detection component of the RTT\_Analyser would be implemented by the author. It was recognised in the project proposal that this could result in the rest of the project being delayed and therefore a mitigation to adapt the Matlab implementation of the Tzanetakis \textit{et al}\cite{tzane1} algorithm by Eng Eder de Souza\cite{desouze}. Due to the time spent in investigating how to adapt the Beatroot system to work with live audio a different solution was needed, this was provided by the Scala implementation by Marco Ziccardi\cite{marcoZin}.
 
 \subsection{Performance Worm}
 The final beat detection algorithm employed in the RTT\_Analyser is the Performance Worm (PW) system, designed by Simon Dixon, Werner Goebl and Gerhard Widmer\cite{dixonGoeblWidmer}. The PW is based on a real time algorithm which is able to determine the tempo of the input raw audio, while keeping track of other possible tempo hypotheses that are rated and updated dynamically. Allowing for the most recently highest ranked tempo hypothesis to be returned to the user\cite{dixonGoeblWidmer}. 
@@ -190,7 +193,7 @@ First the PW processes the raw audio which can either taken from a static record
 The signal is then processed by the multiple tempo tracking subsytem which uses a similar approach to the beatroot system. The time intervals (inter-onset intervals or IOIs) of event pairs are first calculated. A clustering algorithm (Figure~\ref{fig: clusterAl}) is then applied in order to determine the significant clusters of IOIs, which are subsequently assumed to be the musical units held within the signal. As in the beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. While running the clustering algorithm keeps 5 seconds of onset times within memory and begins processing by determining all IOIs between the onsets in memory. The tempo inducer then explouts a property of most Western music where time intervals are related by small approximate interger ratios. As the times held by the clusters can be considered to represent related notes, e.g. quarter and eighth notes. The tempo inducer then adjusts cluster times and weightings according to the information held by the sets of related clusters. Two clusters are considered to be related if the ratio of their time intervals is close to an interger. The highest weighted clusters are their respective tempo hypothesis is then returned as the tempo output\cite{dixonGoeblWidmer}.
 
 
-\begin{figure}[ht]
+\begin{figure}
 	\hspace{10mm} For each new onset\\
 	\hspace*{20mm} For IOI times $\mathit{t}$ from 100ms to 2500ms in 10ms steps\\
 	\hspace*{30mm} Find pairs of onsets which are $\mathit{t}$ apart\\
@@ -247,10 +250,12 @@ The actors within the actor model are objects which are used to encapsulate stat
 The design patterns used b     
 
 \maketitle{} \section{Implementation}
-The RTT\_Analyser is built using the Scala specific build tool, sbt (simple build too), which is a build tool that creates a stable build platform that increases productivity by utilising some good ideas from other build tools like, minimal configuration and built-in tasks including test, compile and publish. It is also able to support a reactive development environment that is able to re-run all tests when source code is updated\cite{sbt}. In terms of this project sbt was chosen as it supports mixed Scala/Java projects. Allowing for the Beatroot and Performance Worm systems written in Java to be easily incorporated with the Scala implementation of the Discrete Wavelet Transform and the Akka Actor system.
+The RTT\_Analyser is written in Java and Scala, due to the Beatroot and Peformance Worm both being written in Java, and the the author's familiarity with both languages and 
+
+the Scala specific build tool, sbt (simple build too), which is a build tool that creates a stable build platform that increases productivity by utilising some good ideas from other build tools like, minimal configuration and built-in tasks including test, compile and publish. It is also able to support a reactive development environment that is able to re-run all tests when source code is updated\cite{sbt}. In terms of this project sbt was chosen as it supports mixed Scala/Java projects. Allowing for the Beatroot and Performance Worm systems written in Java to be easily incorporated with the Scala implementation of the Discrete Wavelet Transform and the Akka Actor system.
 
 \subsection{Live Audio Capture}
-To implement the RTT\_Analyser's live audio capture system the Javax Sound package was used. Initially, the SoundCaptureImpl class was created in Java to be responsible for the live audio capture and holding of the raw audio in a circular buffer before being processed by the respective beat detection algorithms. The sound capturing components of this class were was based on those described in the Java Sound Programmer Guide\cite{javasound} and consisted of the following:
+To implement the RTT\_Analyser's live audio capture system the Javax Sound package was used. Initially, the SoundCaptureImpl class was created in Java to be responsible for the live audio capture and holding of the raw audio in a circular buffer before being processed by the respective beat detection algorithms. The sound capturing components of this class were based on those described in the Java Sound Programmer Guide\cite{javasound} and consisted of the code below:
 
 \begin{lstlisting}
     private AudioFormat format;
@@ -263,35 +268,59 @@ To implement the RTT\_Analyser's live audio capture system the Javax Sound packa
         input.open(format); 
 \end{lstlisting}
 
-This class however became defunct with the design decision to include the Performance Worm system within the RTT\_Analyser as the Performance Worm was already set up to capture live audio. Therefore the captured audio now needed to be stored by the Performance Worm in a manner which allowed for all three beat detection algorithms to be able to process the same captured audio. This was achieved by adding the method \textit{addBytes} (Figure~\ref{fig: addBytes}) to the AudioWorm class responsible for the capturing and processing of the live audio. The call to the \textit{addBytes} was added just below the .read call of the AudioInputStream, they byte array was then passed to the \textit{addBytes} method and stored within a ByteArrayOutputStream. 
+The need for the above code however became defunct with the design decision to include the Performance Worm system within the RTT\_Analyser as the Performance Worm was already set up to capture live audio. Therefore the captured audio now needed to be stored by the Performance Worm in a manner which allowed for all three beat detection algorithms to be able to process the same captured audio. This was achieved by adding the method \textit{addBytes} (Figure~\ref{fig: addBytes}) to the AudioWorm class, responsible for the capturing and processing of the live audio within the Performance Worm. The call to the \textit{addBytes} was added just below the \textit{.read} call of the AudioInputStream, the byte array was then passed to the \textit{addBytes} method and stored within a ByteArrayOutputStream to be processed later. The difference in processing windows of the Performance Worm to initally th
 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/addBytes.jpg}
+	\caption{}
+	\label{fig: addBytes}
+\end{figure}
+
+\subsection{DWT Beat Dectection Implementation}
+The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marco Ziccardi\cite{marcoZin} was part of a larger system which offered a number of other beat detection methods. The RTT_Analyser only required the class which implemented the DWT beat detection algorithm, WaveletBPMDetector.\\
+
+NEED SOME GLUE\\
+
+The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted\cite{green}, however as the RTT_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was basd on three methods from Andrew Greensted's WavFile class\cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility, which is considered to create ``code that is both succint and obviously correct''\cite{mariusEr}. Where pattern matching is employed it is siginified by the match keyword. Additionally, the Scala compiler also employs an optimiser which ensures that there are not any runtime overheads to be paid for using tail recursive\footnote{add one} solutions. Writing tail recursive code often provides more elegant and concise solutions than when compared with loop-based solutions\cite{odesky}, therefore any loops in the WavFile class were converted into a tail recursive solution.  
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/liveAudioPro.jpg}
+	\caption{LiveAudioProcessor}
+	\label{fig: liveAudPro}
+\end{figure}
+
+The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containg the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. 
+
+\subsection{The Tempo Object}
 
 \newpage
 \begin{thebibliography}{99}
 \bibitem{brit-metro} 
 \textit{https://www.britannica.com/art/metronome}
 \bibitem{drum-bible}
-Mick Berry and Jason Gianni
+Mick Berry and Jason Gianni\\
 \textit{The Drummer's Bible: How to Play Every Drum Style from Afro-Cuban to Zydeco, Second Edition, 2004, See Sharp Press}
 \bibitem{oxford-comp}
-Alison Latham
+Alison Latham\\
 \textit{The Oxford Companion to Music, 2002, Oxford University Press}
 \bibitem{drum-note}
 \textit{http://www.drummagazine.com/lessons/post/drumkey/}
 \bibitem{allen-danneburg}
-Allen and Dannenberg
+Allen and Dannenberg\\
 \textit{Tracking Musical Beats in Real Time, International Computer Music Conference, International Computer Music Association, 1990, pp. 140-143}
 \bibitem{longeut1}
-H. C Longuet-Higgins
+H. C Longuet-Higgins\\
 \textit{Perception of melodies, Nature Vol. 263, 1976, pp. 646-653}
 \bibitem{dixon1}
-Simon Dixon
+Simon Dixon\\
 \textit{Automatic Extraction of Tempo and Beat from Expressive Performances. Journal of New Music Research, 30 (1), 2001, pp 39-58}
 \bibitem{dixon2}
-Simon Dixon
+Simon Dixon\\
 \textit{Onset Detection Revisited, Proceedings of the 9th International Conference on Digital Audio Effects, Montreal, September 2006, pp 133-137}
 \bibitem{dixon3}
-Simon Dixon
+Simon Dixon\\
 \textit{On the Analysis of Musical Expression in Audio Signals. Storage and Retrieval for Media Databases, SPIE-IS\&T Electronic Imaging, SPIE Vol. 5021, 2003 pp 122-132}
 \bibitem{mirex-onset}
 \textit{http://www.music-ir.org/mirex/wiki/2016:Audio\_Onset\_Detection}
@@ -303,54 +332,67 @@ Juan Pablo Bello, Laurent Daudet, Samer Abdallah, Chris Duxbury, Mike Davies, an
 \bibitem{mirex-main}
 \textit{http://www.music-ir.org/mirex/wiki/2005:Main\_Page}
 \bibitem{tzane1}
-George Tzanetakis, Georg Essl and Perry Cook
+George Tzanetakis, Georg Essl and Perry Cook\\
 \textit{Audio Analysis using the Discrete Wavelet Transform, Proc. WSES International Conference on Acoustics and Music: Theory and Applications (AMTA), 2001}
 \bibitem{mirex-06}
 \textit{http://www.music-ir.org/mirex/wiki/2006:Audio\_Beat\_Tracking\_Results}
 \bibitem{dixon4}
-Simon Dixon
+Simon Dixon\\
 \textit{Evaluation of the Audio Beat Tracking System BeatRoot. Journal of New Music Research, 36, 1, 2007, pp 39-50}
 \bibitem{polikapt2}
 \textit{http://users.rowan.edu/ polikar/WAVELETS/WTpart2.html}
 \bibitem{lyons}
-Lyons
+Lyons\\
 \textit{Understanding Digital Signal Processing}
 \bibitem{tzane2}
-Tao Li, Mitsunori Ogihara, George Tzanetakis
+Tao Li, Mitsunori Ogihara, George Tzanetakis\\
 \textit{Music Data Mining, CRC Press, 2002, pp 45-53}
 \bibitem{tzane3}
-George Tzanetakis and Perry Cook
+George Tzanetakis and Perry Cook\\
 \textit{Musical Genre Classification of Audio Signals}
 \bibitem{smith}
-Steven W. Smith
+Steven W. Smith\\
 \textit{The Scientist and Engineer's Guide to Digital Signal Processing, California Technical Publishing, 2011, Chapter 3}
 \bibitem{pallas}
-Ramón Pallás-Areny and John G. Webster
+Ramón Pallás-Areny and John G. Webster\\
 \textit{Analog Signal Processing, Wiley, 199, pp. 231}
 \bibitem{dixonGoeblWidmer}
-Simon Dixon, Werner Goebl and Gerhard Widmer
+Simon Dixon, Werner Goebl and Gerhard Widmer\\
 \textit{The Performance Worm: Real Time Visualisation of Expression based on Langner’s Tempo-Loudness Animation, International Computer Music Conference, 16 - 21 September 2002, Göteborg, Sweden, pp 361-364.}
 \bibitem{pulseWag}
-Bill Waggener
+Bill Waggener\\
 \textit{Pulse Code Modulation Techniques}
 \bibitem{soundTrail}
-Oracle
+Oracle\\
 \textit{https://docs.oracle.com/javase/tutorial/sound/}
 \bibitem{akkaActors}
-Akka
+Akka\\
 \textit{http://doc.akka.io/docs/akka/2.4.9/scala/actors.html}
 \bibitem{reactMan}
-Jonas Bonér, Dave Farley, Roland Kuhn, and Martin Thompson
+Jonas Bonér, Dave Farley, Roland Kuhn, and Martin Thompson\\
 \textit{Reactive Manifesto, http://www.reactivemanifesto.org/}
 \bibitem{acotrsys}
-Akka
+Akka\\
 \textit{http://doc.akka.io/docs/akka/2.4.9/general/actor-systems.html}
 \bibitem{sbt}
-Josh Suereth and Matthew Farwell
+Josh Suereth and Matthew Farwell\\
 \textit{SBT in Action: The simple Scala build tool, Manning Publications, 2015}
 \bibitem{javasound}
-Oracle
+Oracle\\
 \textit{https://docs.oracle.com/javase/8/docs/technotes/guides/sound/programmer\_guide/contents.html}
+\bibitem{desouze}
+\textit{https://github.com/ederwander/Beat-Track}
+\bibitem{marcoZin}
+\textit{https://github.com/mziccard/scala-audio-file}
+\bibitem{green}
+Andrew Greensted
+\textit{http://www.labbookpages.co.uk/audio/javaWavFiles.html}
+\bibitem{mariusEr}
+Marius Eriksen\\
+\textit{Effective Scala, http://twitter.github.io/effectivescala/}
+\bibitem{odesky}
+Martin Odersky, Lex Spoon and Bill Venners\\
+\textit{Programming in Scala, Second Edition, Artima Press, 2010}
 \end{thebibliography}
 \end{document}
 
