@@ -19,4 +19,9 @@
 \contentsline {section}{\numberline {4}Implementation}{14}
 \contentsline {subsection}{\numberline {4.1}Live Audio Capture}{14}
 \contentsline {subsection}{\numberline {4.2}DWT Beat Dectection Implementation}{15}
-\contentsline {subsection}{\numberline {4.3}Tempo, Analyser and Stats}{15}
+\contentsline {subsection}{\numberline {4.3}Tempo, Analyser, Stats and JSON}{15}
+\contentsline {subsection}{\numberline {4.4}Adaption of Beatroot}{17}
+\contentsline {subsection}{\numberline {4.5}The Actor System}{17}
+\contentsline {subsection}{\numberline {4.6}RTT\_Analyser User Interface and HTML Results Viewer}{17}
+\contentsline {section}{\numberline {5}Testing}{18}
+\contentsline {section}{\numberline {6}Drum Beat Sample Set and RTT\_Analyser Data Capture}{18}
