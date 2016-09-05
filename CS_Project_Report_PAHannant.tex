@@ -10,6 +10,7 @@
 \usepackage{datetime}
 \usepackage[font={small,it}]{caption}
 \usepackage{listings}
+\usepackage[font={small,it}]{subcaption}
 
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
@@ -46,7 +47,7 @@ MSc Computer Science\\
 \textbf{DWT} & Discrete Wavelet Transform\\
 \textbf{FFT} & Fast Fourier Transform\\
 \textbf{JSON} & Javacript Object Notification\\
-\textbf{SBT} & Simple Build Tool
+\textbf{SBT} & Simple Build Tool\\
 \textbf{TDD} & Test Driven Development\\
 \end{tabular}
 
@@ -70,42 +71,65 @@ Timing is the fundamental skill any good drummer should possess and is the stapl
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.30]{TradMet}
+	\includegraphics[scale=0.25]{TradMet}
 	\caption{Traditional Metronome}% (Source: https://commons.wikimedia.org/w/index.php?curid=1058005)}
 	\label{fig: TradMet}
 \end{figure}
 
 For drummers however the electronic versions of the metronome are much more widely used, to the point that metronomes are now developed with functionality specifically tailored to a drummers training requirements. The Tama Rhythm Watch (Figure~\ref{fig: RW200}) was the first metronome designed specifically for drummers, providing enough volume to be used with real drums as well as allowing for the use of different time signatures\footnote{A details explanantion of time signatures can be found in section 1.2.2} and preset set rhythm patterns to help improve performance.\par
-\clearpage
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.15]{RW200}
+	\includegraphics[scale=0.2]{RW200}
 	\caption{Tama Rhythm Watch}% (Source: http://www.tama.com/eu/products/accessories/RW200.html)}
 	\label{fig: RW200}
 \end{figure}
 
 Following the development of the MIDI driven electronic drum kit came the development of more advanced training tools that were able to provide live feedback to drummer during any given performance. Today the leaders in this field are Roland, their V-Drums line provide a variety of tuition packages including the SCOPE and more recently the COACH system provided in the V-Drum modules. The SCOPE system provides live feedback to the drummer by plotting their performance on a grid representing the elements of the drum kit, Figure~\ref{fig: scope}. The COACH system offers an improved user experience by providing an accuracy figure relating to the number of hits which the drummer has played in time, Figure~\ref{fig: coach}.
-\begin{figure}
+\begin{figure}[ht]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.4\linewidth]{images/Scope.jpg}
+  \includegraphics[width=0.5\linewidth]{images/Scope.jpg}
   \caption{Screenshot of the SCOPE system}
   \label{fig: scope}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=.4\linewidth]{images/coach.jpg}
-  \caption{A subfigure}
+  \includegraphics[width=0.75\linewidth]{images/coach.jpg}
+  \caption{Screenshot of the COACH system}
   \label{fig: coach}
 \end{subfigure}
-\caption{Screenshot of the COACH system}
+\caption{SCOPE and COACH training tools}
 \label{fig: systems}
 \end{figure}
 
+The V-Drum Rhythm Coach line is an advanced version of the traditional drummers practice pad (Figure~\ref{fig: rmp-5} and the extensive DT-1 V-Drums tutor software package (Figure~\ref{fig: dt-1}. 
+\begin{figure}[ht]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.5\linewidth]{images/rmp-5.jpg}
+  \caption{The RMP-5 Rhythm coach practice pad}
+  \label{fig: rmp-5}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=0.75\linewidth]{images/dt-1_ss_main_notation_gal.jpg}
+  \caption{Screenshot of the DT-1 V-Drums Tutor}
+  \label{fig: dt-1}
+\end{subfigure}
+\caption{}
+\label{fig: roland systems}
+\end{figure}
+Roland have even used gamification within this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media, a screenshot can be seen in Figure~\ref{fig: friendjam}. \par
 
-The V-Drum Rhythm Coach line is an advanced version of the traditional drummers practice pad and the extensive DT-1 V-Drums tutor software package. Roland have even used gamification within this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media. \par
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.175]{images/friendjam.png}
+\caption{Example of the Roland Friend Jam software package}
+\label{fig: friendjam}
+\end{figure}
 
 Despite these developements there have been a limited number of tools available to be used with acoustic drums. A look at the the App Store\footnote{Apple's application store - itunes.apple.com/uk/appstore‎} and Google Play\footnote{Google's application store for Android devices - play.google.com/store}, reveals a small number of general live bpm detectors an no applications which are focused towards a drummers training needs.\par
 
@@ -115,12 +139,12 @@ In order to understand the fundamentals of musical timing some theory needs to b
 \subsubsection{Notation}
 Drum music notation is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp} and as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is separated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time, an example of a staff can be seen in Figure~\ref{fig: staff}. For the purpose of this project it is the count of these beats that will be used to calculate the tempo of a certain drum beat.
 
-\begin{Figure}
+\begin{figure}
 	\centering
-	\includegraphics[scale=0.5]{images/staff.jpg}
+	\includegraphics[scale=0.3]{images/staff.jpg}
 	\caption{Example of a staff used in musical notation}
 	\label{fig: staff}
-\end{Figure}
+\end{figure}
 
 \subsubsection{Time Signatures}
 Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar, as seen in Figure~\ref{fig: staff}. With the bottom number representing the size of the note that makes up the duration of one beat. For example the straight time four four (4/4) or common time signature indicates four beats in each bar or measure where each beat is made up of one quarter note \cite{drum-note}. Within these bar lines beats can be further divided by using a technique known as subdivision, which is a method for reducing the pulse or rhythm pattern into smaller parts than those originally written, for example counting a four four (4/4) measure in eighth (1/8) or sixteenth (1/16) notes. 
