@@ -352,14 +352,14 @@ To implement the RTT\_Analyser's live audio capture with the Java Sound API init
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=0.5]{images/startCap.jpg}
+\includegraphics[scale=0.3]{images/startCap.jpg}
 \caption{Example of the basis of live audio capture method in Scala}
 \label{fig: startcap}
 \end{figure}
 
 The audio format described in section ~\ref{sec: liveaudio} is then applied to the TargetDataLine, which provides access to the built in microphone of the device, if available. The TargetDataLine class is then attached to an instance of the Java AudioInputStream class which converts the captured audio into a stream of bytes for processing \cite{soundTrail}. 
 
-The need for the code in Figure ~\ref{fig: startcap} however became defunct with the design decision to include the Performance Worm system within the RTT\_Analyser as the Performance Worm was already set up to capture live audio. Therefore the captured audio now needed to be stored by the Performance Worm in a manner which allowed for all three beat detection algorithms to be able to process the same captured audio. This was achieved by adding the method \textit{addBytes} (Figure~\ref{fig: addBytes}) to the AudioWorm class, responsible for the capturing and processing of the live audio within the Performance Worm. The call to the \textit{addBytes} was added just below the \textit{.read} call of the AudioInputStream, the byte array was then passed to the \textit{addBytes} method and stored within a ByteArrayOutputStream to be processed later. The difference in processing windows of the Performance Worm to initally th
+The need for the code in Figure ~\ref{fig: startcap} however became defunct with the design decision to include the Performance Worm system within the RTT\_Analyser as the Performance Worm was already set up to capture live audio. Therefore the captured audio now needed to be stored by the Performance Worm in a manner which allowed for all three beat detection algorithms to be able to process the same captured audio. This was achieved by adding the method \textit{addBytes} (Figure~\ref{fig: addBytes}) to the AudioWorm class, responsible for the capturing and processing of the live audio within the Performance Worm. The call to the \textit{addBytes} was added just below the \textit{.read} call of the AudioInputStream, the byte array was then passed to the \textit{addBytes} method and stored within a ByteArrayOutputStream to be processed later. Once the sufficent number of bytes had been amassed the ProcessingActor was sent the ProcessBytes message using the Jave \textit{.tell} method which initiated the processing of the audio data by the Beatroot and DWT beat dectection systems.
 
 \begin{figure}[ht]
 	\centering
@@ -369,11 +369,7 @@ The need for the code in Figure ~\ref{fig: startcap} however became defunct with
 \end{figure}
 
 \subsection{DWT Beat Dectection Implementation}
-The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marco Ziccardi \cite{marcoZin} was part of a larger system which offered a number of other beat detection methods. The RTT\_Analyser only required the class which implemented the DWT beat detection algorithm, WaveletBPMDetector.\\
-
-NEED SOME GLUE\\
-
-The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted \cite{green}, however as the RTT\_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was based on three methods from Andrew Greensted's WavFile class \cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility and any loops in the WavFile class were converted into a tail recursive solution. The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containing the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. In order for the WaveletBPMDetector class to return a tempo result the a single window (matched to the size of the buffer byte array), the for loop was removed from the \textit{bpm} method.
+The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marco Ziccardi \cite{marcoZin} was part of a larger system which offered a number of other beat detection methods. The RTT\_Analyser only required the class which implemented the DWT beat detection algorithm, WaveletBPMDetector, which originally relied on a Scala version of the WavFile Java class created by Andrew Greensted \cite{green}, however as the RTT\_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was based on three methods from Andrew Greensted's WavFile class \cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility and any loops in the WavFile class were converted into a tail recursive solution. The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containing the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. In order for the WaveletBPMDetector class to return a tempo result the a single window (matched to the size of the buffer byte array), the for loop was removed from the \textit{bpm} method.
 
 \begin{figure}[ht]
 	\centering
@@ -393,13 +389,43 @@ Once the development of the RTT\_Analyser was considered to be sufficiently on s
 With the correct design decisions now taken the live audio adaption of Beatroot consisted of only a few minor steps. First, the \textit{processFile} method was amended to receive the byte array holding the audio data recorded by the Performance Worm. A ByteArrayInputStream was then instantiated to hold the data, allowing the \textit{processFrame} and \textit{getFrame} methods to work in the same manner as with a upload static audio file. After the captured audio was processed the ByteArrayInputStream was closed, a step necessary to ensure that no overlap existed between captured audio data sets sent to be processed.
 
 \subsection{The Actor System}
-The actor system employed within the RTT\_Analyser is constructed of five different actors in total. The LiveAudioActor assumes the role of the head parent of the system, being responsible for starting and stopping the live audio capture, as well as the termination of the RTT\_Analyser when appropriate. \par
+The actor system employed within the RTT\_Analyser is constructed of five different actors in total and a sealed trait (Figure~\ref{fig: messages}) containing case classes representing the messages permitted to be passed between the actors.\par
 
-The ProcessingActor, a child of the LiveAudioActor can be considered the coordinator of the storing and processing captured audio data, and the writing of the calculated tempos. In order to ensure the processing remains as isolated as possible the ProcessingActor employs two worker actors, BeatrootActor and DWTActor, carrying out the two tasks of sending the captured data and tempo calculation. The beat detection worker actors do not return any messages to the ProcessingActor, instead the immutable ActorRef handle which allows for the current instance of the respective actor is passed the respective beat detection system. Therefore, the calculated tempo values are then sent back directly to the ProcessingActor to be stored and subsequently saved to file when appropriate.\par
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{images/messages.jpg}
+\caption{The message case classes used by the RTT\_Analyser's actor system}
+\label{fig: messages}
+\end{figure} 
+
+The LiveAudioActor (Figure~\ref{fig: liveaudioactor}) assumes the role of the overseer  of the system, being responsible for starting and stopping the live audio capture, as well as the termination of the RTT\_Analyser when appropriate. \par
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{images/LiveAudioActor.jpg}
+\caption{LiveAudioActor class}
+\label{fig: liveaudioactor}
+\end{figure}
+
+The ProcessingActor (Figure~\ref{fig: processingActor}), a child of the LiveAudioActor can be considered the coordinator of the storing and processing captured audio data, and the writing of the calculated tempos. In order to ensure the processing remains as isolated as possible the ProcessingActor employs two worker actors, BeatrootActor and DWTActor, carrying out the two tasks of sending the captured data and tempo calculation. The beat detection worker actors do not return any messages to the ProcessingActor, instead the immutable ActorRef handle which allows for the current instance of the respective actor is passed the respective beat detection system. Therefore, the calculated tempo values are then sent back directly to the ProcessingActor to be stored and subsequently saved to file when appropriate.\par
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{images/processingRec.jpg}
+\caption{Recieve method of the ProcessingActor class}
+\label{fig: processingActor}
+\end{figure}
 
 The final RTT\_Analyser actor was a standalone actor on the same level as the LiveAudioActor within the actor hierarchy which was responsible for the timing of the beat detection test.\par
 
-All of the RTT\_Analyser's parent and child actors were all instantiated in the self contained Operator object. This ensured that potentially dangerous practice of declaring one actor and breaking actor encapsulation \cite{akkaActors} was avoided.  
+All of the RTT\_Analyser's parent and child actors were all instantiated in the self contained Operator object (Figure~\ref{fig: props}. This ensured that potentially dangerous practice of declaring one actor and breaking actor encapsulation \cite{akkaActors} was avoided.  
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{images/actorprops.jpg}
+\caption{Declaring of the RTT\_Analyser's actors}
+\label{fig: props}
+\end{figure}
 
 \subsection{RTT\_Analyser User Interface and HTML Results Viewer}
 The RTT\_Analyser's user interface was implemented using the ScalaFX, which sits on the top of the JavaFX API and uses the same declaration syntax as normal objects within Scala. Enabling developers to use the same operators and syntax to create and modify the scene graph\footnote{add one} \cite{scalafx}. It was designed with simplicity in mind. Before starting the user could begin live audio capture the expected bpm, file name and path were required. Once input, there are two modes available to the user. The first is to control the live audio beat detection manually using the start and stop buttons accordingly. The second, is the test mode which will runs the audio capture and beat detection for thirty seconds, before closing down audio inputs and storing the results. During execution the RTT\_Analyser in both of these modes the three calculated tempos are displayed to the user as a bpm value rounded to two decimal places. On completion within both modes the results are stored within a JSON file automatically and also written to an HTML file so the results can be viewed in a web browser using the \textit{Results} button.\par

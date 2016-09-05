@@ -106,55 +106,60 @@
 \citation{rms}
 \citation{dixonGoeblWidmer}
 \citation{dixonGoeblWidmer}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Flow diagram of the beat histogram method described by Tzanetakis \textit  {et al}\cite  {tzane3}\relax }}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Flow diagram of the beat histogram method described by Tzanetakis \textit  {et al} \cite  {tzane3}\relax }}{12}}
 \newlabel{fig: dwtFlow}{{11}{12}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Performance Worm}{12}}
 \citation{dixonGoeblWidmer}
 \citation{dixonGoeblWidmer}
-\citation{akkaActors}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Clustering algorithm used in the Performance Worm Multiple Tempo Tracking Subsystem\cite  {dixonGoeblWidmer}\relax }}{13}}
+\citation{javasound}
+\citation{pulseWag}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Clustering algorithm used in the Performance Worm Multiple Tempo Tracking Subsystem \cite  {dixonGoeblWidmer}\relax }}{13}}
 \newlabel{fig: clusterAl}{{12}{13}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Solution Design and Architecture}{13}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{13}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Akka Actors}{13}}
+\newlabel{sec: liveaudio}{{3.1}{13}}
+\citation{endiness}
+\citation{akkaActors}
 \citation{reactMan}
 \citation{reactMan}
 \citation{looseCouple}
 \citation{reactMan}
 \citation{reactMan}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Akka Actors}{14}}
 \citation{reactMan}
 \citation{reactMan}
 \citation{acotrsys}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Visualisation of the requirements of the Reactive Manifesto interact\cite  {reactMan}\relax }}{14}}
-\newlabel{fig: reacMan}{{13}{14}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}The Actors}{14}}
 \citation{designPatterns}
 \citation{designPatterns}
 \citation{designPatterns}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Visualisation of the requirements of the Reactive Manifesto interact \cite  {reactMan}\relax }}{15}}
+\newlabel{fig: reacMan}{{13}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}The Actors}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Design Pattern}{15}}
 \citation{designPatterns}
 \citation{applemvc}
 \citation{applemvc}
 \citation{mariusEr}
 \citation{odesky}
 \citation{odesky}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Design Pattern}{15}}
-\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The three components which make up Model View Controller design pattern\cite  {applemvc}\relax }}{15}}
-\newlabel{fig: mvc}{{14}{15}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{15}}
 \citation{sbt}
 \citation{javasound}
-\citation{pulseWag}
-\citation{soundTrail}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces The three components which make up Model View Controller design pattern \cite  {applemvc}\relax }}{16}}
+\newlabel{fig: mvc}{{14}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Implementation}{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Live Audio Capture}{16}}
+\citation{soundTrail}
 \citation{marcoZin}
 \citation{green}
 \citation{green}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \relax }}{17}}
-\newlabel{fig: addBytes}{{15}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Example of the basis of live audio capture method in Scala\relax }}{17}}
+\newlabel{fig: startcap}{{15}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \relax }}{17}}
+\newlabel{fig: addBytes}{{16}{17}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}DWT Beat Dectection Implementation}{17}}
 \citation{mariusEr}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces LiveAudioProcessor\relax }}{18}}
-\newlabel{fig: liveAudPro}{{16}{18}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces LiveAudioProcessor\relax }}{18}}
+\newlabel{fig: liveAudPro}{{17}{18}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Tempo, Analyser, Stats and JSON}{18}}
 \citation{json}
 \citation{play}
@@ -163,16 +168,24 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5}The Actor System}{19}}
 \citation{akkaActors}
 \citation{scalafx}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces The message case classes used by the RTT\_Analyser's actor system\relax }}{20}}
+\newlabel{fig: messages}{{18}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces LiveAudioActor class\relax }}{20}}
+\newlabel{fig: liveaudioactor}{{19}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Recieve method of the ProcessingActor class\relax }}{21}}
+\newlabel{fig: processingActor}{{20}{21}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Declaring of the RTT\_Analyser's actors\relax }}{21}}
+\newlabel{fig: props}{{21}{21}}
 \citation{tdd1}
 \citation{tdd2}
 \citation{testingScala}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}RTT\_Analyser User Interface and HTML Results Viewer}{20}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Software Testing}{20}}
 \citation{garage}
 \citation{soundonsound}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Drum Beat Sample Set and RTT\_Analyser Beat Detection Testing}{21}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces List of Drum Beats Used in RTT\_Analyser Tests\relax }}{22}}
-\newlabel{tab: beats}{{1}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}RTT\_Analyser User Interface and HTML Results Viewer}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Software Testing}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Drum Beat Sample Set and RTT\_Analyser Beat Detection Testing}{23}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces List of Drum Beats Used in RTT\_Analyser Tests\relax }}{24}}
+\newlabel{tab: beats}{{1}{24}}
 \bibcite{midi}{1}
 \bibcite{oxford-comp}{2}
 \bibcite{brit-metro}{3}
@@ -223,3 +236,4 @@
 \bibcite{looseCouple}{48}
 \bibcite{applemvc}{49}
 \bibcite{designPatterns}{50}
+\bibcite{endiness}{51}
