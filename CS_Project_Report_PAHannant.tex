@@ -42,10 +42,11 @@ MSc Computer Science\\
 \section*{Abbreviations}
 \begin{tabular}{l p{4.5in}  }\\
 \textbf{BPM} & Beats Per Minute\\
+\textbf{DFT} & Discrete Fourier Transform\\
 \textbf{DWT} & Discrete Wavelet Transform\\
 \textbf{FFT} & Fast Fourier Transform\\
 \textbf{JSON} & Javacript Object Notification\\
-\textbf{IDE} & Integrated Development Environment\\
+\textbf{SBT} & Simple Build Tool
 \textbf{TDD} & Test Driven Development\\
 \end{tabular}
 
@@ -53,17 +54,16 @@ MSc Computer Science\\
 \begin{tabular}{l p{4.5in}}\\
 \textbf{Acoustic Drum Kit} & A collection of drums and cymbals which do not have electronic amplification. Typically made up of a bass drum, snare drum, tom-toms, hi-hat and 1 or more cymbals.\\\\
 \textbf{Beat} & For the purpose of this project a beat will be defined as the sequence of equally spaced pulses used to calculate the tempo being played by the drummer.\\\\
-\textbf{Downbeat} & Refers to beat one of a measure of music, called a downbeat to correspond to the motion a conductor's arm [1].\\\\
 \textbf{Drum Module} & The device which serves as a central processing unit for an electronic drum kit, responsible for producing the sounds of the drum kit.\\\\
 \textbf{Electronic Drum Kit} & An electrical device which is played like an acoustic drum kit, producing sounds from a stored library of instruments and samples.\\\\
-\textbf{MIDI} & Musical Instrument Digital Interface is a protocol developed in the 1980's to allow electronic instruments and other digital musical tools to communicate with each other [3].\\\\
+\textbf{MIDI} & Musical Instrument Digital Interface is a protocol developed in the 1980's to allow electronic instruments and other digital musical tools to communicate with each other\cite{midi}.\\\\
 \textbf{Tempo} & The speed at which a piece of music is played \cite{oxford-comp} and counted in beats per minute (bpm).\\\\
 \end{tabular}
 \clearpage
 
 \maketitle{} \section{Introduction and Background}
 
-This project report presents my aim to develop a real-time drum beat tempo analysis system using different beat detection algorithms which is able to record the performance of each method concurrently when an extensive set of drum samples, representing a real drummer's performance, is processed through the system.
+This project report presents my aim to develop a real-time drum beat tempo analysis system using different beat detection algorithms which is able to record the performance of each method when an extensive set of drum samples, representing a real drummer's performance, is processed through the system.
 
 \subsection{Drumming Training Tools Background}
 Timing is the fundamental skill any good drummer should possess and is the staple by which they will be judged. For many years the only training tool available to a drummer to improve their timing was the metronome. An instrument used to mark musical tempo, erroneously attributed to Johann Nepomuk Maelzel in 1815 but was actually invented by a Dutchman, Dietrich Nikolaus Winkel a year earlier. The traditional metronome, based on Winkel's original design is a hand-wound clockwork instrument that uses a pendulum swung on a pivot to generate the ticking which depicts the desired tempo \cite{brit-metro} is still used today by musicians, as seen in Figure~\ref{fig: TradMet}. \par
@@ -75,38 +75,65 @@ Timing is the fundamental skill any good drummer should possess and is the stapl
 	\label{fig: TradMet}
 \end{figure}
 
-For drummers however the electronic versions of the metronome are much more widely used, to the point that metronomes are now developed with functionality specifically tailored to a drummers training requirements. The Tama Rhythm Watch (Figure~\ref{fig: RW200}) was the first metronome designed specifically for drummers, providing enough volume to be used with real drums as well as allowing for the use of different time signatures and preset set rhythm patterns to help improve performance.\par
+For drummers however the electronic versions of the metronome are much more widely used, to the point that metronomes are now developed with functionality specifically tailored to a drummers training requirements. The Tama Rhythm Watch (Figure~\ref{fig: RW200}) was the first metronome designed specifically for drummers, providing enough volume to be used with real drums as well as allowing for the use of different time signatures\footnote{A details explanantion of time signatures can be found in section 1.2.2} and preset set rhythm patterns to help improve performance.\par
 \clearpage
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.25]{RW200}
+	\includegraphics[scale=0.15]{RW200}
 	\caption{Tama Rhythm Watch}% (Source: http://www.tama.com/eu/products/accessories/RW200.html)}
 	\label{fig: RW200}
 \end{figure}
 
-Following the development of MIDI driven electronic drum kit came the development of more advanced training tools that now were able to provide live feedback to drummer during any given performance. Today the leaders in this field are Roland, their v-drums line provide a variety of tuition packages including the SCOPE and more recently the COACH system provided in the v-drum modules, the v-drum Rhythm Coach line is an advanced version of the traditional drummers practice pad and the extensive DT-1 V-Drums tutor software package. Roland have even used gamification within this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media. \par
+Following the development of the MIDI driven electronic drum kit came the development of more advanced training tools that were able to provide live feedback to drummer during any given performance. Today the leaders in this field are Roland, their V-Drums line provide a variety of tuition packages including the SCOPE and more recently the COACH system provided in the V-Drum modules. The SCOPE system provides live feedback to the drummer by plotting their performance on a grid representing the elements of the drum kit, Figure~\ref{fig: scope}. The COACH system offers an improved user experience by providing an accuracy figure relating to the number of hits which the drummer has played in time, Figure~\ref{fig: coach}.
+\begin{figure}
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{images/Scope.jpg}
+  \caption{Screenshot of the SCOPE system}
+  \label{fig: scope}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.4\linewidth]{images/coach.jpg}
+  \caption{A subfigure}
+  \label{fig: coach}
+\end{subfigure}
+\caption{Screenshot of the COACH system}
+\label{fig: systems}
+\end{figure}
 
-The aim of this project is to investigate whether some of the current beat detection algorithms available would be accurate enough to provide the basis for a training tool for drummers using an acoustic drum kit as opposed to an electronic drum kit. \par
+
+The V-Drum Rhythm Coach line is an advanced version of the traditional drummers practice pad and the extensive DT-1 V-Drums tutor software package. Roland have even used gamification within this field with their latest release, the V-Drums Friend Jam app. The application itself provides the player with live feedback and evaluates each performance in order to provide the player with a score which they can share over social media. \par
+
+Despite these developements there have been a limited number of tools available to be used with acoustic drums. A look at the the App Store\footnote{Apple's application store - itunes.apple.com/uk/appstore‎} and Google Play\footnote{Google's application store for Android devices - play.google.com/store}, reveals a small number of general live bpm detectors an no applications which are focused towards a drummers training needs.\par
 
 \subsection{Drum Musical Theory}
 In order to understand the fundamentals of musical timing some theory needs to be examined but beforehand the concept of a drummer playing time must be considered. Time, in a drumming sense is an informal term used to describe the consistent rhythmic pattern that a drummer will play on the hi-hat or ride cymbal \cite{drum-bible} and it can be considered one of the most important components of any drum beat. 
 
 \subsubsection{Notation}
-Drum music notation is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp} and as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is separated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time. For the purpose of this project it is the count of these beats that will be used to calculate the tempo of a certain drum beat.
+Drum music notation is written on staff that is made up of five individual lines, the clef is found on the far left of the staff which indicates the pitch of the notes \cite{oxford-comp} and as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation the lines and spaces between represent a tonal where as for drum notation, notes written on lines or spaces indicate a certain drum or cymbal. The staff is separated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time, an example of a staff can be seen in Figure~\ref{fig: staff}. For the purpose of this project it is the count of these beats that will be used to calculate the tempo of a certain drum beat.
+
+\begin{Figure}
+	\centering
+	\includegraphics[scale=0.5]{images/staff.jpg}
+	\caption{Example of a staff used in musical notation}
+	\label{fig: staff}
+\end{Figure}
 
 \subsubsection{Time Signatures}
-Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar. With the bottom number representing the size of the note that makes up the duration of one beat. For example the straight time four four (4/4) or common time signature indicates four beats in each bar or measure where each beat is made up of one quarter note \cite{drum-note}. Within these bar lines beats can be further divided by using a technique known as subdivision, which is a method for reducing the pulse or rhythm pattern into smaller parts than those originally written, for example counting a four four (4/4) measure in eighth (1/8) or sixteenth (1/16) notes. 
+Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar, as seen in Figure~\ref{fig: staff}. With the bottom number representing the size of the note that makes up the duration of one beat. For example the straight time four four (4/4) or common time signature indicates four beats in each bar or measure where each beat is made up of one quarter note \cite{drum-note}. Within these bar lines beats can be further divided by using a technique known as subdivision, which is a method for reducing the pulse or rhythm pattern into smaller parts than those originally written, for example counting a four four (4/4) measure in eighth (1/8) or sixteenth (1/16) notes. 
 
 \subsubsection{Notes}
-The notes used to represent the percussive instrument to be played also provide the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example two eighth notes represent the same time value as a single quarter note. It is possible to divide a note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there will be three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}.
+The notes used to represent what percussive instrument is to be played also provide the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example two eighth notes represent the same time value as a single quarter note. It is also possible to divide note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there will be three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}.
 
 \subsubsection{Playing Basics}
-With the basics of drum theory covered it is now possible to discuss the key elements of a drum beat, typically for a straight four four (4/4) bar the bass drum will be played on the first and third beat and the snare drum will be played on the second and forth beat both as quarter notes. This is more commonly known as a back beat \cite{drum-bible}. This just leaves the time element which will usually be played on the ride cymbal or hi-hat, this too could be played using quarter notes on the first, second, third and forth beats. However, in order to make the drum pattern more dynamic the time element will usually be played using subdivisions, typically using eighth note subdivisions. The ride cymbal or hi-hat will therefore be played on the first, second, third and forth beats as well as the eighth notes in-between each quarter note. This can be demonstrated by counting the one-and-two-and-three-and-four-and, where the and represents the subdivided eighth note. Additionally to this technique a drummer will usually ensure that there is difference in the volume of the eighth notes being played on the quarter notes and those being played on the and. This technique of emphasising certain beats is known as accenting. 
+With the basics of drum theory covered it is now possible to discuss the key elements of a drum beat, typically for a straight four four (4/4) beat, the bass drum will be played on the first and third beat and the snare drum will be played on the second and forth beat both as quarter notes. This is more commonly known as a back beat \cite{drum-bible}. This just leaves the time element which will usually be played on the ride cymbal or hi-hat, this too could be played using quarter notes on the first, second, third and forth beats. However, in order to make the drum pattern more dynamic the time element will usually be played using subdivisions, typically using eighth note subdivisions. The ride cymbal or hi-hat will therefore be played on the first, second, third and forth beats as well as the eighth notes in-between each quarter note. This can be demonstrated by counting the one-and-two-and-three-and-four-and, where the ``and'' represents the subdivided eighth note. Additionally to this technique a drummer will usually ensure that there is difference in the volume of the eighth notes being played on the quarter notes and those being played on the ``and''. This technique of emphasising certain beats is known as accenting. 
 
 
 \subsection{Beat Detection Background}
-Most of the early work on beat detection was a by-product of research directed at other areas of musical understanding. The earliest work in this field can be attributed to H. C. Longuet-Higgins, who in 1976 while researching the psychological theory of how Western musicians perceive rhythmic and tonal relationships between notes. Produced an algorithm that was able to follow the beat of a performance and adjust the perceived tempo accordingly based on whether a note started earlier or later than expected \cite{allen-danneburg}. Longuet-Higgins' work was built on the premise that in order to percieve the rhythmic structure of a melody it is first necessary to identify the time at which each beat occurs \cite{longeut1}, otherwise know as onset detection. The onset of a note is the instant which marks start of the variation in the frequency of a signal, a visualisation of this can be seen in Figure~\ref{fig: Onset}. Once detected it can then be used to measure the onset times of sonic events\footnote{A sonic event is a singular feature of a piece music which can be made up of one source or many\cite{sonic}, e.g. the hitting of a drum} within a piece of music\cite{mirex-onset}. These onset times are then used within a beat detection algorithm in order to calculate the piece of music's tempo. 
+Most of the early work on beat detection was a by-product of research directed at other areas of musical understanding. The earliest work in this field can be attributed to H. C. Longuet-Higgins, who in 1976 while researching the psychological theory of how Western musicians perceive rhythmic and tonal relationships between notes. Produced an algorithm that was able to follow the beat of a performance and adjust the perceived tempo accordingly based on whether a note started earlier or later than expected \cite{allen-danneburg}. Longuet-Higgins' work was built on the premise that in order to percieve the rhythmic structure of a melody it is first necessary to identify the time at which each beat occurs \cite{longeut1}, otherwise know as onset detection. The onset of a note is the instant which marks the start of the variation in the frequency of a signal, a visualisation of this can be seen in Figure~\ref{fig: Onset}. Once detected it can then be used to measure the onset times of sonic events\footnote{A sonic event is a singular feature of a piece music which can be made up of one source or many\cite{sonic}, e.g. the hitting of a drum} within a piece of music\cite{mirex-onset}. These onset times are then used within a beat detection algorithm in order to calculate a piece of music's tempo. 
 
 \begin{figure}[ht]
 	\centering
@@ -115,7 +142,7 @@ Most of the early work on beat detection was a by-product of research directed a
 	\label{fig: Onset}
 \end{figure}
 
-Since Longuet-Higgins' first work the are of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform (DWT) by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
+Since Longuet-Higgins' first work the area of beat detection has expanded rapidly, in 2005 the first annual Music Information Retrieval Evaluation eXchange (MIREX) was held in 2005. MIREX includes a contest with the goal of comparing state-of-the-art algorithms for music information retrieval \cite{mirex-main}. The topics to be evaluated are proposed by the participants. In the first year, three of the nine topics concerned beat detection, including audio onset detection and since it's first inclusion it has been an evalulated topic of all but one of the last twelve contests \cite{mirex-onset}. The beat detection algorithms proposed to perform the tempo analysis for this project, the Beatroot system developed by Simon Dixon \cite{dixon1} and a development on the original audio analysis using the Discrete Wavelet Transform (DWT) by Tzanetakis, Essel and Cook \cite{tzane1}. Are both former entrants to the MIREX contest, with the beatroot system receiving the highest score in the 2006 Audio Beat Tracking task \cite{mirex-06} 
 
 \subsection{Project Aims}
 The primary aim of this project is to investigation whether some of the currently available beat detection algorithms are accurate enough to form the basis for a training tool to be used by drummers practicing on an acoustic drum kit. In order to achieve this the developed software package, hereafter referred to as  RTT\_Analyser\footnote{Where RTT stands for Real Time Tempo}, will need to process enough live audio in form of sampled drum beats and record each of the chosen beat detection algorithms accuracy. 
@@ -125,18 +152,18 @@ The original core features of the RTT\_Analyser developed for this project are:
 \begin{enumerate}
 \item A live audio tempo analysis tool, that compares and records the performance of selected beat detection algorithms
 \item The RTT\_Analyser implements an adapted version of the beat tracking system Beatroot and Discrete Wavelet Transform algorithm described by Tzanetakis \textit{et al}'s\cite{tzane1} which process live audio as opposed to originally designed off-line audio files.
-\item RTT\_Analyser implements a concurrent system that provides the same captured live audio data to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
+\item RTT\_Analyser implements a system capable of parallel processing, allowing for the same captured live audio data to be sent to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
 \item While processing live audio the RTT\_Analyser stores a predetermined data set in order to allow for performance analysis of the beat detection algorithms.
 \item The RTT\_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
-\item In order to An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
+\item An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
 \end{enumerate}
 
 
 
 \maketitle{}\section{RTT\_Analyser Beat Detection Algorithms}
-The original proposed solution incorporated two beat detection algorithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However during the development the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
+The original proposed solution incorporated two beat detection algorithms, Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. However, the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. This meant that an alternative system needed to be found in order to mitigate this issue, conveniently the Beatroot software package also contained another beat detection system, the Performance Worm \cite{dixon3}. In order to ensure the project remained on track it was decided to substitute the Performance Worm for the Beatroot system. The intention was, if time allowed, to resume the adaptation of the Beatroot system to work with live audio once the project was ahead of schedule and this was successfully completed prior to the development of the user interface.
 
-The project report will now discuss all of the beat detection algorithms that were incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
+The project report will now discuss the beat detection algorithms incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
 
 \subsection{Beatroot}
 Beatroot is a beat detection software package created by Simon Dixon \cite{dixon1}, which was originally designed extract musical expression information musical recordings\cite{dixon3}. Beatroot was included in the RTT{\_}Analyser as the algorithm designed by Dixon was considered to be sufficiently fast enough to be implemented as part of a real-time system\cite{dixon4}.\par
@@ -408,14 +435,16 @@ SW-SH & Snare drum and hi-hat cymbal & Swing\\
 
 \newpage
 \begin{thebibliography}{99}
+\bibitem{midi}
+\textit{http://www.instructables.com/id/What-is-MIDI/}
+\bibitem{oxford-comp}
+Alison Latham\\
+\textit{The Oxford Companion to Music, 2002, Oxford University Press}
 \bibitem{brit-metro} 
 \textit{https://www.britannica.com/art/metronome}
 \bibitem{drum-bible}
 Mick Berry and Jason Gianni\\
 \textit{The Drummer's Bible: How to Play Every Drum Style from Afro-Cuban to Zydeco, Second Edition, 2004, See Sharp Press}
-\bibitem{oxford-comp}
-Alison Latham\\
-\textit{The Oxford Companion to Music, 2002, Oxford University Press}
 \bibitem{drum-note}
 \textit{http://www.drummagazine.com/lessons/post/drumkey/}
 \bibitem{allen-danneburg}
