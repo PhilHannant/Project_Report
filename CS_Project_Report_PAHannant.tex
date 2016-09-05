@@ -249,7 +249,7 @@ After these steps each frequency band is normalised through a method of mean rem
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[scale=0.25]{images/dwtflow.jpg}
+	\includegraphics[scale=0.35]{images/dwtflow.jpg}
 	\caption{Flow diagram of the beat histogram method described by Tzanetakis \textit{et al}\cite{tzane3}}
 	\label{fig: dwtFlow}
 \end{figure}
@@ -313,13 +313,26 @@ A fundamental construct of the Akka Actor system is that it strictly adheres too
 \subsubsection{The Actors}
 The actors within the actor model are objects which are used to encapsulate state and behaviour. They communicate exclusively through messages passed to a recipients mailbox and it can help to think of them as group of people being assigned subtasks within an organisational structure. One of the key features of an actor system is that tasks are split up and delegated until they become small enough to be handled in one piece. This process not only ensures that the tasks being carried out by the actors are clearly defined but also the actors themselves can be designed in terms of the messages they are able to receive and how they should react to these messages and any failures that might occur. The actors within a system will naturally form a set hierarchy. For example, an actor system where an actor assigned the task of overseeing a certain function might split this function into a number of smaller tasks which it assigns to some child actors that it supervises until the task is complete \cite{acotrsys}. The actors created within the RTT\_Analyser were a mix of stand alone actors and actors which were required to supervise subtasks carried out by child actors.
 
-\subsection{Design Methods}
-The design patterns used b     
+\subsection{Design Pattern}
+The RTT\_Analyser was developed using the Model View Controller (MVC) design pattern, as the MVC pattern is the tried-and-tested approach when designing applications with a graphical user interface\cite{designPatterns}. The MVC pattern is made up of the following components and a visualisation of the MVC can be seen in Figure~\ref{fig: mvc}. 
+
+\begin{itemize}
+\item \textbf{Model} - is represented by the data and associated applications\cite{designPatterns}, within the RTT\_Analyser the model is provided by the beat detection algorithms, the live audio capturing and processing components.\\
+\item \textbf{View} - is the graphical interface displayed to the user which updates itself automatically\cite{designPatterns}. For the RTT\_Analyser the view is represented by the user interface\\
+\item \textbf{Controller} - is the part of the application that responds to the user interactions, liasing with both the model and the view components\cite{designPatterns}. The controller for the RTT\_Analyser is the actor system, which is responsible for message passing between the model and view components.
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/mvc.png}
+	\caption{The three components which make up Model View Controller design pattern\cite{applemvc}}
+	\label{fig: mvc}
+\end{figure}
 
 \maketitle{} \section{Implementation}
-The RTT\_Analyser is written in Java and Scala, due to the Beatroot and Performance Worm both being written in Java, and the the author's familiarity with both languages and 
+The RTT\_Analyser is written in Java and Scala, due to the Beatroot and Performance Worm both being written in Java, and the author's familiarity with both languages. Using Scala also ensureed the twin constructs of pattern matching and case classes. Pattern matching is used to implement type switches and is considered to create ``code that is both succinct and obviously correct''\cite{mariusEr}. Case classes are Scala's way of allowing pattern matching to be performed on objects without the need for additional boilerplate code. Using Scala, also allows for more elegant and concise tail recursive\footnote{A recursive solution is considered to be tail recursive if the last operation carried out is to calculate the return value, it has the advantage over recursive calls of not building a stack trace and instead performing each operation in a single stack frame\cite{odesky}} solutions to be developed over loop-based solutions as the Scala compiler provides an optimiser which ensures that there are not any runtime overheads to be paid for employing tail recursion\cite{odesky}.
 
-the Scala specific build tool, sbt (simple build too), which is a build tool that creates a stable build platform that increases productivity by utilising some good ideas from other build tools like, minimal configuration and built-in tasks including test, compile and publish. It is also able to support a reactive development environment that is able to re-run all tests when source code is updated\cite{sbt}. In terms of this project sbt was chosen as it supports mixed Scala/Java projects. Allowing for the Beatroot and Performance Worm systems written in Java to be easily incorporated with the Scala implementation of the Discrete Wavelet Transform and the Akka Actor system.
+The Scala specific build tool, sbt (simple build too), a build tool that creates a stable build platform increasing productivity by utilising some good ideas from other build tools like, minimal configuration and built-in tasks including test, compile and publish. It is also able to support a reactive development environment that is able to re-run all tests when source code is updated\cite{sbt}. In terms of this project sbt was chosen as it supports mixed Scala/Java projects. Allowing for the Beatroot and Performance Worm systems written in Java to be easily incorporated with the Scala implementation of the Discrete Wavelet Transform and the Akka Actor system.
 
 \subsection{Live Audio Capture}
 To implement the RTT\_Analyser's live audio capture system the Javax Sound package was used. Initially, the SoundCaptureImpl class was created in Java to be responsible for the live audio capture and holding of the raw audio in a circular buffer before being processed by the respective beat detection algorithms. The sound capturing components of this class were based on those described in the Java Sound Programmer Guide\cite{javasound} and consisted of the code below:
@@ -363,7 +376,7 @@ The implementation of Tzanetakis \textit{et al} beat detection algorithm by Marc
 
 NEED SOME GLUE\\
 
-The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted\cite{green}, however as the RTT\_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was based on three methods from Andrew Greensted's WavFile class\cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility, which is considered to create ``code that is both succinct and obviously correct''\cite{mariusEr}. Where pattern matching is employed it is signified by the match keyword. Additionally, the Scala compiler also employs an optimiser which ensures that there are not any runtime overheads to be paid for using tail recursive\footnote{add one} solutions. Writing tail recursive code often provides more elegant and concise solutions than when compared with loop-based solutions\cite{odesky}, therefore any loops in the WavFile class were converted into a tail recursive solution. The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containing the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. In order for the WaveletBPMDetector class to return a tempo result the a single window (matched to the size of the buffer byte array), the for loop was removed from the \textit{bpm} method.
+The WaveletBPMDetector originally relied on a Scala version of the WavFile Java class created by Andrew Greensted\cite{green}, however as the RTT\_Analyser was not required to decode WAV files this class was adapted to form the LiveAudioProcessor class (Figure~\ref{fig: liveAudPro}). The class was based on three methods from Andrew Greensted's WavFile class\cite{green}, \textit{readFrames}, an overloaded \textit{readFrames} and the \textit{getSample} method. Rather than being simply a Scala version of the Jave code, where possible these methods were written using Scala's pattern matching facility and any loops in the WavFile class were converted into a tail recursive solution. The final addition to the LiveAudioProcessor class was the inclusion of the \textit{addData} method that takes a byte array containing the raw live audio bytes to be processed and assigns them to the buffer variable which is processed in the \textit{getSample} method. In order for the WaveletBPMDetector class to return a tempo result the a single window (matched to the size of the buffer byte array), the for loop was removed from the \textit{bpm} method.
 
 \begin{figure}[ht]
 	\centering
@@ -373,7 +386,7 @@ The WaveletBPMDetector originally relied on a Scala version of the WavFile Java 
 \end{figure}
 
 \subsection{Tempo, Analyser, Stats and JSON}
-In order for the RTT\_Analyser to be able to process the calculated tempo results the Tempo case class was implemented, comprising of the calculated and expected tempos, and difference between these values, an Option count of beats detected and the time at which the tempo result was calculated. For each tempo result calculates a Tempo object was created and added to a ListBuffer, chosen for its scalability,  within the Analyser implementation corresponding to the relevant beat detection algorithm. The Analyser implementations also contained an Option Stats value, which enabled the Stats to be added to the Analyser after the instantiation of the case class. The Stats case class is used to hold the average and median values of the calculated tempos, as well as the difference between the expected and calculated tempo. To asses the efficiency of the algorithms the time taken to calculate a tempo within plus or minus one bpm of the expected value. The StatsCalculator case class carried out computation  these which utilised Scala's pattern matching on the List data structure and .. MORE?!
+In order for the RTT\_Analyser to be able to process the calculated tempo results the Tempo case class was implemented, comprising of the calculated and expected tempos, and difference between these values, an Option\footnote{The Option type is Scala's alternative to Java's null value, the Option type is in fact a container which either holds a value or is empty. It provides a much safe alternative to the error prone null value\cite{mariusEr}.} count of beats detected and the time at which the tempo result was calculated. For each tempo result calculates a Tempo object was created and added to a ListBuffer, chosen for its scalability,  within the Analyser implementation corresponding to the relevant beat detection algorithm. The Analyser implementations also contained an Option Stats value, which enabled the Stats to be added to the Analyser after the instantiation of the case class. The Stats case class is used to hold the average and median values of the calculated tempos, as well as the difference between the expected and calculated tempo. To asses the efficiency of the algorithms the time taken to calculate a tempo within plus or minus one bpm of the expected value. The StatsCalculator case class carried out computation  these which utilised Scala's pattern matching on the List data structure and .. MORE?!
 
 The implementation of the data storage system of the RTT\_Analyser used the JavaScript Object Notation (JSON) as the data generated was considered not large enough to warrant the creation and management of an SQL database. JSON's lightweight data-interchange format\cite{json} ensured the the conversion from Scala case class to JSON object would be straightforward. The JSON was generated the ScalaJSON library provided by the play framework\cite{play}, specifically the \textit{Writes} object which converts an object into a JSON representation held encapsulated within a \textit{JsValue} object. Three methods were written in order to account for the three implementations of the Analyser trait, an example of the code can be seen in Figure(add one). As JSON is written in a text format\cite{json}, the parsing of generated JSON was performed by simpling converting the JSON objects generated by the respective \textit{writes} methods to a string which was then written to a JSON file using the \textit{flush} method in Figure{add one}, where the path was provided from the user interaction with the RTT\_Analyser's user interface.
 
@@ -600,20 +613,25 @@ Martin Odersky, Lex Spoon and Bill Venners\\
 \bibitem{tdd2}
 \textit{http://www.agiledata.org/essays/databaseRefactoring.html}
 \bibitem{testingScala}
-Daniel Hinojosa
+Daniel Hinojosa\\
 \textit{Testing in Scala, O’Reilly Media, 2013}
 \bibitem{garage}
 \textit{http://www.apple.com/uk/mac/garageband/}
 \bibitem{soundonsound}
 \textit{http://www.soundonsound.com/sos/may02/articles/synthsecrets0502.asp}
 \bibitem{pragmaticSig}
-Tom O'Haver
+Tom O'Haver\\
 \textit{A Pragmatic Introduction to Signal Processing with applications in scientific measurement, https://terpconnect.umd.edu/~toh/spectrum/, last update 2016}
 \bibitem{rms}
 \textit{https://csd.wisc.edu/vcd202/rms.html}
 \bibitem{looseCouple}
-Doug Kaye
+Doug Kaye\\
 \textit{Loosely Coupled: The Missing Pieces of Web Services, RDS Press, 2003}
+\bibitem{applemvc}
+\textit{https://developer.apple.com/library/mac/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html}
+\bibitem{designPatterns}
+Tony Bevis
+\textit{Java Design Pattern Essentials, Ability First, 2012}
 \end{thebibliography}
 \end{document}
 
