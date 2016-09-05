@@ -245,16 +245,24 @@ In 2001, Tzanetakis \textit{et al} described how the Discrete Wavelet Transform 
 \end{figure}
 
 
-After these steps each frequency band is normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}.
+After these steps each frequency band is normalised through a method of mean removal in order to ensure the signal is centred at zero for the autocorrelation stage. The autocorrelation function is then applied to each frequency band and its peaks correspond to the various periodicities of that signal's envelope. The first five peaks of the function and their corresponding periodicities are then calculated in beats per minute and added to a histogram, this process is repeated while iterating over the signal. The estimated tempo of the audio signal is then retrieved from the periodicity that corresponds to the highest peak within the histogram\cite{tzane1}. The DWT beat histogram flow diagram can be seen in Figure~\ref{fig: dwtFlow}.
 
-Originally, it was intended that Discrete Wavelet Transform beat detection component of the RTT\_Analyser would be implemented by the author. It was recognised in the project proposal that this could result in the rest of the project being delayed and therefore a mitigation to adapt the Matlab implementation of the Tzanetakis \textit{et al}\cite{tzane1} algorithm by Eng Eder de Souza\cite{desouze}. Due to the time spent in investigating how to adapt the Beatroot system to work with live audio a different solution was needed, this was provided by the Scala implementation by Marco Ziccardi\cite{marcoZin}.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/dwtflow.jpg}
+	\caption{Flow diagram of the beat histogram method described by Tzanetakis \textit{et al}\cite{tzane3}}
+	\label{fig: dwtFlow}
+\end{figure}
+
+
+Originally, it was intended that Discrete Wavelet Transform beat detection component of the RTT\_Analyser would be implemented by the author. It was recognised in the project proposal that this could result in the rest of the project being delayed and with the alternative solution being to adapt the Matlab implementation of the Tzanetakis \textit{et al}\cite{tzane1} algorithm by Eng Eder de Souza\cite{desouze}. Due to the time spent in investigating how to adapt the Beatroot system to work with live audio a different solution was needed, this was provided by the Scala implementation by Marco Ziccardi\cite{marcoZin}.
 
 \subsection{Performance Worm}
 The final beat detection algorithm employed in the RTT\_Analyser is the Performance Worm (PW) system, designed by Simon Dixon, Werner Goebl and Gerhard Widmer\cite{dixonGoeblWidmer}. The PW is based on a real time algorithm which is able to determine the tempo of the input raw audio, while keeping track of other possible tempo hypotheses that are rated and updated dynamically. Allowing for the most recently highest ranked tempo hypothesis to be returned to the user\cite{dixonGoeblWidmer}. 
 
-First the PW processes the raw audio which can either taken from a static recording or directly from a live input with a smoothing filter in order to obtain the RMS amplitude of the signal taken from a 40 ms window (explain RMS and smoothing filter). The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}. 
+First the PW processes the raw audio which can either be extracted from a static recording or directly from a live input with a smoothing filter\footnote{Process which attempts to reduce any noise found within a signal. A smoothing filter does this by reducing any points in the signal that are higher than adjacent points and reducing those points that are lower than adjacent point\cite{pragmaticSig}} in order to obtain the RMS amplitude\footnote{RMS stands for root mean square and is the process of squaring all of the amplitude values, then taking the average (mean) of the squared values, and then calculating the square root of the average value\cite{rms}.} of the signal taken from a 40ms window. The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times\cite{dixonGoeblWidmer}. 
 
-The signal is then processed by the multiple tempo tracking subsystem which uses a similar approach to the Beatroot system. The time intervals (inter-onset intervals or IOIs) of event pairs are first calculated. A clustering algorithm (Figure~\ref{fig: clusterAl}) is then applied in order to determine the significant clusters of IOIs, which are subsequently assumed to be the musical units held within the signal. As in the Beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. While running the clustering algorithm keeps 5 seconds of onset times within memory and begins processing by determining all IOIs between the onsets in memory. The tempo inducer then exploits a property of most Western music where time intervals are related by small approximate integer ratios. As the times held by the clusters can be considered to represent related notes, e.g. quarter and eighth notes. The tempo inducer then adjusts cluster times and weightings according to the information held by the sets of related clusters. Two clusters are considered to be related if the ratio of their time intervals is close to an interger. The highest weighted clusters are their respective tempo hypothesis is then returned as the tempo output\cite{dixonGoeblWidmer}.
+The signal is then processed by the multiple tempo tracking subsystem which uses a similar approach to the Beatroot system. The time intervals (inter-onset intervals or IOIs) of event pairs are first calculated. A clustering algorithm (Figure~\ref{fig: clusterAl}) is then applied in order to determine the significant clusters of IOIs, which are subsequently assumed to be the musical units held within the signal. As in the Beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. While running, the clustering algorithm keeps 5 seconds of onset times within memory and begins processing by determining all IOIs between the onsets in memory. The tempo inducer then exploits a property of most Western music where time intervals are related by small approximate integer ratios. As the times held by the clusters can be considered to represent related notes, e.g. quarter and eighth notes. The tempo inducer then adjusts cluster times and weightings according to the information held by the sets of related clusters. Two clusters are considered to be related if the ratio of their time intervals is close to an interger. The highest weighted clusters and their respective tempo hypothesis is then returned as the tempo output\cite{dixonGoeblWidmer}.
 
 
 \begin{figure}
@@ -281,34 +289,29 @@ The signal is then processed by the multiple tempo tracking subsystem which uses
 The basic premise for the RTT\_Analyser is to enable the user to play a live drum beat through the system and the tempo of the live audio is returned to user as well as being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT\_Analyser can be seen in Figure (add in).
 
 \subsection{Live Audio Processing}
-The live audio is processed using the Javax Sound package. In order to make the results reflective of the quality of microphone that any future applications might use it was decided that the RTT\_Analyser was designed to be used with the built in to the device it was being executed on. In order to ensure the captured audio matches CD quality the Javax Sound AudioFormat class was designed with the following constructors: 
-
-\begin{itemize}
-\item Encoding - This will be set to ``PCM.signed'', representing audio encoded to the native linear pulse code modulation, where pulse code modulation is the process of sampling and quantising the signal into discrete symbols for transmissions\cite{pulseWag}.
-\item Sample Rate - 44,100, set to match CD quality for the number of analog samples which will be analysed per second. 
-\item Sample Size in Bits - 24, based on a sound card with a 24 bit sample depth.
-\item Channels - 2, audio will be captured using the built in microphone, typically stereo of the device the RTT\_Analyser is being run on.
-\item Frame Size - 6, where the frame size is the number of bytes in a sample multiplied by the number of channels [17].
-\item Frame Rate - 44,100, same as sample rate.
-\item Big Endian (boolean) - false, as the project will be developed on an Intel core which uses a little-endian architecture\footnote{Endianess refers to the order of bytes which make up a digital word. Big endianess stores the most significant byte at a certain memory address and the remaining bytes being stored in the following higher memory addresses. The little-endian formate reverses the order storing the least significant at the lowest and most significant at the highest memory address [16].}.
-\end{itemize}
-
-The described audio format is then applied to the TargetDataLine, which provides access to the built in microphone of the device, if available. The TargetDataLine class is then attached to an instance of the Java AudioInputStream class which converts the captured audio into a stream of bytes for processing\cite{soundTrail}. In order to process the captured bytes the RTT\_Analyser then required the use of a concurrent system to allow for each of the three beat detection algorithms to be run in parallel, which was provided by the Akka Actors system.
+The live audio is processed using the Javax Sound package. In order to make the results reflective of the quality of microphone that any future applications might use it was decided that the RTT\_Analyser was designed to be used with the built in to the device it was being executed on. In order to process the captured bytes the RTT\_Analyser then required the use of a concurrent system to allow for each of the three beat detection algorithms to be run in parallel, which was provided by the Akka Actors system.
 
 \subsection{Akka Actors}
 The Akka Actor Model is specifically designed to provide the ability to write concurrent systems with a high level of abstraction that alleviates the developer from the need to handle locking and individual thread management. Therefore, making it much easier to write concurrent and parallel systems when compared to the traditional approaches used in Java\cite{akkaActors}.
 
-A fundamental construct of the Akka Actor system is that it strictly adheres too the Reactive Manifesto, which aims to ensure applications built under this are easier to develop and are amenable to change, allowing for a higher level of tolerance to failure and the ability to meet any such failure elegantly as opposed to disaster\cite{reactMan}. The Reactive Manifesto requires applications to satisfy one or more of the following requirements\cite{reactMan}:
+A fundamental construct of the Akka Actor system is that it strictly adheres too the Reactive Manifesto, which aims to ensure applications built under this are easier to develop and are amenable to change, allowing for a higher level of tolerance to failure and the ability to meet any such failure elegantly as opposed to disaster\cite{reactMan}. The Reactive Manifesto requires applications to satisfy one or more of the requirements listed below\cite{reactMan} and visualisation of how they interact can be seen in Figure~\ref{fig: reacMan}.
 
 
 \textbf{Responsive} - The system responds in a timely manner, if possible. By providing usability and utility responsiveness allows for any problems to be detected and resolved effectively.\\\\
 \textbf{Resilient} - The system should be able to remain responsive even in the event of a failure, which applies to all parts of the system not just the mission critical components. To achieve this each component needs to be isolated within the system, therefore allowing failed parts of the system to recover without effecting the responsiveness of the system as a whole.\\\\
 \textbf{Elastic} - The system will be able to maintain the same level of responsiveness despite varying workloads, reacting to changes in the rate of input by adapting the levels of resources allocated to service these inputs accordingly.\\\\
-\textbf{Message Driven} - Reactive systems rely on the use of asynchronous message passing in order to establish boundaries between components within the system, ensuring isolation, loose-coupling\footnote{add one} and location transparency\footnote{add another}. By utilising a non-blocking\footnote{another!} message-passing it is possible to ensure message recipients only consume resources when active, leading to a much reduced system overhead.\\\\
+\textbf{Message Driven} - Reactive systems rely on the use of asynchronous message passing in order to establish boundaries between components within the system, ensuring isolation, loose coupling\footnote{Loose coupling is a design approach of distributed systems which emphasises agility and ability to adapt to changes\cite{looseCouple}} and location transparency\footnote{The decoupling of the runtime instances from their references\cite{reactMan}}. By utilising a non-blocking\footnote{In concurrent programming algorithms which do not have their execution indefinietely postponed when competeing for a resuource is said to be non-blocking\cite{reactMan}.} message-passing it is possible to ensure message recipients only consume resources when active, leading to a much reduced system overhead.\\\\
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/reacManif.jpg}
+	\caption{Visualisation of the requirements of the Reactive Manifesto interact\cite{reactMan}}
+	\label{fig: reacMan}
+\end{figure}
 
 
 \subsubsection{The Actors}
-The actors within the actor model are objects which are used to encapsulate state and behaviour. They communicate exclusively through messages passed to a recipients mailbox and it can help to in fact think of them as group of people being assigned subtasks within an organisational structure. One of the key features of an actor system is that tasks are split up and delegated until they become small enough to be handled in one piece. This process not only ensures that the tasks being carried out by the actors are clearly defined but also the actors themselves can be designed in terms of the messages they are able to receive and how they should react to these messages and any failures that might occur. The actors within a system will naturally form a set hierarchy. For example, an actor system where an actor assigned the task of overseeing a certain function might split this function into a number of smaller tasks which it assigns some child actors that it supervises until the task is complete \cite{acotrsys}. The actors created within the RTT\_Analyser were a mix of stand alone actors and actors which were required to supervise subtasks carried out by child actors.
+The actors within the actor model are objects which are used to encapsulate state and behaviour. They communicate exclusively through messages passed to a recipients mailbox and it can help to think of them as group of people being assigned subtasks within an organisational structure. One of the key features of an actor system is that tasks are split up and delegated until they become small enough to be handled in one piece. This process not only ensures that the tasks being carried out by the actors are clearly defined but also the actors themselves can be designed in terms of the messages they are able to receive and how they should react to these messages and any failures that might occur. The actors within a system will naturally form a set hierarchy. For example, an actor system where an actor assigned the task of overseeing a certain function might split this function into a number of smaller tasks which it assigns to some child actors that it supervises until the task is complete \cite{acotrsys}. The actors created within the RTT\_Analyser were a mix of stand alone actors and actors which were required to supervise subtasks carried out by child actors.
 
 \subsection{Design Methods}
 The design patterns used b     
@@ -320,6 +323,20 @@ the Scala specific build tool, sbt (simple build too), which is a build tool tha
 
 \subsection{Live Audio Capture}
 To implement the RTT\_Analyser's live audio capture system the Javax Sound package was used. Initially, the SoundCaptureImpl class was created in Java to be responsible for the live audio capture and holding of the raw audio in a circular buffer before being processed by the respective beat detection algorithms. The sound capturing components of this class were based on those described in the Java Sound Programmer Guide\cite{javasound} and consisted of the code below:
+
+In order to ensure the captured audio matches CD quality the Javax Sound AudioFormat class was designed with the following constructors: 
+
+\begin{itemize}
+\item Encoding - This will be set to ``PCM.signed'', representing audio encoded to the native linear pulse code modulation, where pulse code modulation is the process of sampling and quantising the signal into discrete symbols for transmissions\cite{pulseWag}.
+\item Sample Rate - 44,100, set to match CD quality for the number of analog samples which will be analysed per second. 
+\item Sample Size in Bits - 24, based on a sound card with a 24 bit sample depth.
+\item Channels - 2, audio will be captured using the built in microphone, typically stereo of the device the RTT\_Analyser is being run on.
+\item Frame Size - 6, where the frame size is the number of bytes in a sample multiplied by the number of channels [17].
+\item Frame Rate - 44,100, same as sample rate.
+\item Big Endian (boolean) - false, as the project will be developed on an Intel core which uses a little-endian architecture\footnote{Endianess refers to the order of bytes which make up a digital word. Big endianess stores the most significant byte at a certain memory address and the remaining bytes being stored in the following higher memory addresses. The little-endian formate reverses the order storing the least significant at the lowest and most significant at the highest memory address [16].}.
+\end{itemize}
+
+The described audio format is then applied to the TargetDataLine, which provides access to the built in microphone of the device, if available. The TargetDataLine class is then attached to an instance of the Java AudioInputStream class which converts the captured audio into a stream of bytes for processing\cite{soundTrail}. 
 
 \begin{lstlisting}
     private AudioFormat format;
@@ -589,6 +606,14 @@ Daniel Hinojosa
 \textit{http://www.apple.com/uk/mac/garageband/}
 \bibitem{soundonsound}
 \textit{http://www.soundonsound.com/sos/may02/articles/synthsecrets0502.asp}
+\bibitem{pragmaticSig}
+Tom O'Haver
+\textit{A Pragmatic Introduction to Signal Processing with applications in scientific measurement, https://terpconnect.umd.edu/~toh/spectrum/, last update 2016}
+\bibitem{rms}
+\textit{https://csd.wisc.edu/vcd202/rms.html}
+\bibitem{looseCouple}
+Doug Kaye
+\textit{Loosely Coupled: The Missing Pieces of Web Services, RDS Press, 2003}
 \end{thebibliography}
 \end{document}
 
