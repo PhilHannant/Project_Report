@@ -9,18 +9,18 @@
 \contentsline {subsection}{\numberline {1.4}Project Aims}{8}
 \contentsline {section}{\numberline {2}RTT\_Analyser Beat Detection Algorithms}{9}
 \contentsline {subsection}{\numberline {2.1}Beatroot}{9}
-\contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{10}
-\contentsline {subsection}{\numberline {2.3}Performance Worm}{11}
-\contentsline {section}{\numberline {3}Solution Design and Architecture}{12}
+\contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{11}
+\contentsline {subsection}{\numberline {2.3}Performance Worm}{12}
+\contentsline {section}{\numberline {3}Solution Design and Architecture}{13}
 \contentsline {subsection}{\numberline {3.1}Live Audio Processing}{13}
-\contentsline {subsection}{\numberline {3.2}Akka Actors}{13}
+\contentsline {subsection}{\numberline {3.2}Akka Actors}{14}
 \contentsline {subsubsection}{\numberline {3.2.1}The Actors}{14}
-\contentsline {subsection}{\numberline {3.3}Design Methods}{14}
+\contentsline {subsection}{\numberline {3.3}Design Methods}{15}
 \contentsline {section}{\numberline {4}Implementation}{15}
 \contentsline {subsection}{\numberline {4.1}Live Audio Capture}{15}
 \contentsline {subsection}{\numberline {4.2}DWT Beat Dectection Implementation}{15}
 \contentsline {subsection}{\numberline {4.3}Tempo, Analyser, Stats and JSON}{16}
-\contentsline {subsection}{\numberline {4.4}Adaption of Beatroot}{17}
+\contentsline {subsection}{\numberline {4.4}Adaption of Beatroot}{18}
 \contentsline {subsection}{\numberline {4.5}The Actor System}{18}
 \contentsline {subsection}{\numberline {4.6}RTT\_Analyser User Interface and HTML Results Viewer}{18}
 \contentsline {section}{\numberline {5}Software Testing}{19}
