@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  5 SEP 2016 22:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  7 SEP 2016 00:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -48,11 +48,22 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+Package tocbibind Note: Using section or other style headings.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count88
+\c@@ppsavesec=\count89
+\c@@ppsaveapp=\count90
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/datetime/datetime.sty
 Package: datetime 2015/03/20 v2.60 Date Time Package
 (/usr/local/texlive/2015/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count88
+\etb@tempcnta=\count91
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fmtcount.sty
 Package: fmtcount 2015/05/05 v3.01
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty
@@ -64,13 +75,13 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks15
 \XKV@tempa@toks=\toks16
 )
-\XKV@depth=\count89
+\XKV@depth=\count92
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fcprefix.sty
 Package: fcprefix 2012/09/28
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
 Package: fcnumparser 2012/09/28
-\fc@digit@counter=\count90
+\fc@digit@counter=\count93
 )) (/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
@@ -78,37 +89,37 @@ File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks17
 \ex@=\dimen105
 )
-\c@padzeroesN=\count91
-\fc@tmpcatcode=\count92
-\@DT@modctr=\count93
-\@ordinalctr=\count94
-\@orgargctr=\count95
-\@strctr=\count96
-\@tmpstrctr=\count97
-\@DT@loopN=\count98
-\@DT@X=\count99
+\c@padzeroesN=\count94
+\fc@tmpcatcode=\count95
+\@DT@modctr=\count96
+\@ordinalctr=\count97
+\@orgargctr=\count98
+\@strctr=\count99
+\@tmpstrctr=\count100
+\@DT@loopN=\count101
+\@DT@X=\count102
 (/usr/local/texlive/2015/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2013/08/17
 )) (/usr/local/texlive/2015/texmf-dist/tex/latex/datetime/datetime-defaults.sty
 Package: datetime-defaults 2013/09/10
 )
-\@day=\count100
-\@month=\count101
-\@year=\count102
-\c@HOUR=\count103
-\c@HOURXII=\count104
-\c@MINUTE=\count105
-\c@TOHOUR=\count106
-\c@TOMINUTE=\count107
-\c@SECOND=\count108
-\currenthour=\count109
-\currentminute=\count110
-\currentsecond=\count111
+\@day=\count103
+\@month=\count104
+\@year=\count105
+\c@HOUR=\count106
+\c@HOURXII=\count107
+\c@MINUTE=\count108
+\c@TOHOUR=\count109
+\c@TOMINUTE=\count110
+\c@SECOND=\count111
+\currenthour=\count112
+\currentminute=\count113
+\currentsecond=\count114
 Package datetime Info: No datetime.cfg file found, using default settings on in
 put line 308.
-\@dtctr=\count112
-\dayofyear=\count113
-\dayofweek=\count114
+\@dtctr=\count115
+\dayofyear=\count116
+\dayofweek=\count117
 LaTeX Info: Redefining \today on input line 736.
 \dt@a=\toks18
 \dt@b=\toks19
@@ -125,24 +136,24 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 \caption@parindent=\dimen111
 \caption@hangindent=\dimen112
 )
-\c@ContinuedFloat=\count115
+\c@ContinuedFloat=\count118
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count116
+\lst@mode=\count119
 \lst@gtempboxa=\box26
 \lst@token=\toks20
-\lst@length=\count117
+\lst@length=\count120
 \lst@currlwidth=\dimen113
-\lst@column=\count118
-\lst@pos=\count119
+\lst@column=\count121
+\lst@pos=\count122
 \lst@lostspace=\dimen114
 \lst@width=\dimen115
-\lst@newlines=\count120
-\lst@lineno=\count121
+\lst@newlines=\count123
+\lst@lineno=\count124
 \lst@maxwidth=\dimen116
 (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
-\c@lstnumber=\count122
-\lst@skipnumbers=\count123
+\c@lstnumber=\count125
+\lst@skipnumbers=\count126
 \lst@framebox=\box27
 ) (/usr/local/texlive/2015/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2014/09/06 1.5e listings configuration
@@ -150,35 +161,35 @@ File: listings.cfg 2014/09/06 1.5e listings configuration
 Package: listings 2014/09/06 1.5e (Carsten Heinz)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
-\c@subfigure=\count124
-\c@subtable=\count125
+\c@subfigure=\count127
+\c@subtable=\count128
 ) (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux)
 \openout1 = `CS_Project_Report_PAHannant.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
-LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count126
+\scratchcounter=\count129
 \scratchdimen=\dimen117
 \scratchbox=\box28
-\nofMPsegments=\count127
-\nofMParguments=\count128
+\nofMPsegments=\count130
+\nofMParguments=\count131
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count129
+\MPscratchCnt=\count132
 \MPscratchDim=\dimen118
-\MPnumerator=\count130
-\makeMPintoPDFobject=\count131
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks22
 ) (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -222,19 +233,19 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count132
+\c@lstlisting=\count135
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 38.
+(Font)              <12> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 38.
+(Font)              <8> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 38.
+(Font)              <6> on input line 40.
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users
 /philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 2.
+(Font)              <10.95> on input line 3.
 )
 \tf@toc=\write3
 \openout3 = `CS_Project_Report_PAHannant.toc'.
@@ -244,26 +255,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ] <images/TradMet.jpg, id=17, 642.4pt x 481.8pt>
 File: images/TradMet.jpg Graphic file (type jpg)
 <use images/TradMet.jpg>
-Package pdftex.def Info: images/TradMet.jpg used on input line 74.
+Package pdftex.def Info: images/TradMet.jpg used on input line 76.
 (pdftex.def)             Requested size: 160.59961pt x 120.44969pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 79.
+(Font)              <9> on input line 81.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 79.
+(Font)              <5> on input line 81.
 <images/RW200.png, id=18, 652.4375pt x 768.8725pt>
 File: images/RW200.png Graphic file (type png)
 <use images/RW200.png>
-Package pdftex.def Info: images/RW200.png used on input line 83.
+Package pdftex.def Info: images/RW200.png used on input line 85.
 (pdftex.def)             Requested size: 130.48518pt x 153.77177pt.
 <images/Scope.jpg, id=19, 383.4325pt x 200.75pt>
 File: images/Scope.jpg Graphic file (type jpg)
 <use images/Scope.jpg>
-Package pdftex.def Info: images/Scope.jpg used on input line 93.
+Package pdftex.def Info: images/Scope.jpg used on input line 95.
 (pdftex.def)             Requested size: 117.43874pt x 61.48442pt.
 <images/coach.jpg, id=20, 584.1825pt x 266.9975pt>
 File: images/coach.jpg Graphic file (type jpg)
 <use images/coach.jpg>
-Package pdftex.def Info: images/coach.jpg used on input line 99.
+Package pdftex.def Info: images/coach.jpg used on input line 101.
 (pdftex.def)             Requested size: 176.15811pt x 80.51134pt.
 [4
 
@@ -272,18 +283,18 @@ annant/Documents/Project_Report/images/RW200.png>] <images/rmp-5.jpg, id=29, 60
 8.2725pt x 688.5725pt>
 File: images/rmp-5.jpg Graphic file (type jpg)
 <use images/rmp-5.jpg>
-Package pdftex.def Info: images/rmp-5.jpg used on input line 112.
+Package pdftex.def Info: images/rmp-5.jpg used on input line 114.
 (pdftex.def)             Requested size: 117.43874pt x 132.94199pt.
 <images/dt-1_ss_main_notation_gal.jpg, id=30, 913.4125pt x 668.4975pt>
 File: images/dt-1_ss_main_notation_gal.jpg Graphic file (type jpg)
 <use images/dt-1_ss_main_notation_gal.jpg>
 Package pdftex.def Info: images/dt-1_ss_main_notation_gal.jpg used on input lin
-e 118.
+e 120.
 (pdftex.def)             Requested size: 176.15811pt x 128.92332pt.
 <images/friendjam.png, id=31, 963.6pt x 642.4pt>
 File: images/friendjam.png Graphic file (type png)
 <use images/friendjam.png>
-Package pdftex.def Info: images/friendjam.png used on input line 129.
+Package pdftex.def Info: images/friendjam.png used on input line 131.
 (pdftex.def)             Requested size: 168.63252pt x 112.42168pt.
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
@@ -295,29 +306,29 @@ images/dt-1_ss_main_notation_gal.jpg> </Users/philhannant/Documents/Project_Rep
 ort/images/friendjam.png>] <images/staff.jpg, id=35, 1308.89pt x 285.065pt>
 File: images/staff.jpg Graphic file (type jpg)
 <use images/staff.jpg>
-Package pdftex.def Info: images/staff.jpg used on input line 144.
+Package pdftex.def Info: images/staff.jpg used on input line 146.
 (pdftex.def)             Requested size: 392.67003pt x 85.52016pt.
 [6 </Users/philhannant/Documents/Project_Report/images/staff.jpg>] <images/Onse
 t.jpg, id=39, 531.9875pt x 315.1775pt>
 File: images/Onset.jpg Graphic file (type jpg)
 <use images/Onset.jpg>
-Package pdftex.def Info: images/Onset.jpg used on input line 164.
+Package pdftex.def Info: images/Onset.jpg used on input line 166.
 (pdftex.def)             Requested size: 212.79123pt x 126.06876pt.
 [7] [8 </Users/philhannant/Documents/Project_Report/images/Onset.jpg>] <images/
 rectangWin.jpg, id=47, 552.0625pt x 260.975pt>
 File: images/rectangWin.jpg Graphic file (type jpg)
 <use images/rectangWin.jpg>
-Package pdftex.def Info: images/rectangWin.jpg used on input line 202.
+Package pdftex.def Info: images/rectangWin.jpg used on input line 204.
 (pdftex.def)             Requested size: 140.92792pt x 66.62141pt.
 <images/hamming.jpg, id=48, 391.4625pt x 307.1475pt>
 File: images/hamming.jpg Graphic file (type jpg)
 <use images/hamming.jpg>
-Package pdftex.def Info: images/hamming.jpg used on input line 208.
+Package pdftex.def Info: images/hamming.jpg used on input line 210.
 (pdftex.def)             Requested size: 140.92792pt x 110.57301pt.
 [9] <images/br-clusters.jpg, id=52, 1236.62pt x 616.3025pt>
 File: images/br-clusters.jpg Graphic file (type jpg)
 <use images/br-clusters.jpg>
-Package pdftex.def Info: images/br-clusters.jpg used on input line 221.
+Package pdftex.def Info: images/br-clusters.jpg used on input line 223.
 (pdftex.def)             Requested size: 309.15424pt x 154.07524pt.
 [10 </Users/philhannant/Documents/Project_Report/images/rectangWin.jpg> </Users
 /philhannant/Documents/Project_Report/images/hamming.jpg> </Users/philhannant/D
@@ -325,10 +336,10 @@ ocuments/Project_Report/images/br-clusters.jpg>] <images/FWR2.jpg, id=56, 1212.
 53pt x 275.0275pt>
 File: images/FWR2.jpg Graphic file (type jpg)
 <use images/FWR2.jpg>
-Package pdftex.def Info: images/FWR2.jpg used on input line 242.
+Package pdftex.def Info: images/FWR2.jpg used on input line 244.
 (pdftex.def)             Requested size: 303.13176pt x 68.7567pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--243
+Underfull \hbox (badness 10000) in paragraph at lines 245--245
 []\OT1/cmr/m/it/10 Figure 10: |Vi-sual rep-re-sen-ta-tion of Full Wave Rec-ti-f
 i-ca-tion (di-a-gram adapted from
  []
@@ -336,58 +347,58 @@ i-ca-tion (di-a-gram adapted from
 <images/dwtflow.jpg, id=57, 706.64pt x 582.175pt>
 File: images/dwtflow.jpg Graphic file (type jpg)
 <use images/dwtflow.jpg>
-Package pdftex.def Info: images/dwtflow.jpg used on input line 252.
+Package pdftex.def Info: images/dwtflow.jpg used on input line 254.
 (pdftex.def)             Requested size: 247.3277pt x 203.7643pt.
 [11 </Users/philhannant/Documents/Project_Report/images/FWR2.jpg>] [12 </Users/
 philhannant/Documents/Project_Report/images/dwtflow.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 269--284
+Underfull \hbox (badness 10000) in paragraph at lines 271--286
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 296.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 298.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 296.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 298.
 [13]
-Underfull \hbox (badness 10000) in paragraph at lines 313--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--317
+Underfull \hbox (badness 10000) in paragraph at lines 315--319
 
  []
 
 [14] <images/reacManif.jpg, id=73, 1126.2075pt x 483.8075pt>
 File: images/reacManif.jpg Graphic file (type jpg)
 <use images/reacManif.jpg>
-Package pdftex.def Info: images/reacManif.jpg used on input line 320.
+Package pdftex.def Info: images/reacManif.jpg used on input line 322.
 (pdftex.def)             Requested size: 281.5512pt x 120.95157pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 333--334
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+Underfull \hbox (badness 10000) in paragraph at lines 336--337
 
  []
 
@@ -395,79 +406,103 @@ Underfull \hbox (badness 10000) in paragraph at lines 334--335
 /mvc.png, id=77, 1308.89pt x 541.02126pt>
 File: images/mvc.png Graphic file (type png)
 <use images/mvc.png>
-Package pdftex.def Info: images/mvc.png used on input line 340.
+Package pdftex.def Info: images/mvc.png used on input line 342.
 (pdftex.def)             Requested size: 327.2217pt x 135.25497pt.
-[16 </Users/philhannant/Documents/Project_Report/images/mvc.png>] <images/start
-Cap.jpg, id=81, 1357.07pt x 321.2pt>
-File: images/startCap.jpg Graphic file (type jpg)
-<use images/startCap.jpg>
-Package pdftex.def Info: images/startCap.jpg used on input line 355.
-(pdftex.def)             Requested size: 407.12415pt x 96.36073pt.
-<images/addBytes.jpg, id=82, 1182.4175pt x 507.8975pt>
-File: images/addBytes.jpg Graphic file (type jpg)
-<use images/addBytes.jpg>
-Package pdftex.def Info: images/addBytes.jpg used on input line 366.
-(pdftex.def)             Requested size: 295.60365pt x 126.97406pt.
-[17 </Users/philhannant/Documents/Project_Report/images/startCap.jpg> </Users/p
-hilhannant/Documents/Project_Report/images/addBytes.jpg>] <images/liveAudioPro.
-jpg, id=86, 1375.1375pt x 1676.2625pt>
-File: images/liveAudioPro.jpg Graphic file (type jpg)
-<use images/liveAudioPro.jpg>
-Package pdftex.def Info: images/liveAudioPro.jpg used on input line 376.
-(pdftex.def)             Requested size: 343.78354pt x 419.0646pt.
-[18 </Users/philhannant/Documents/Project_Report/images/liveAudioPro.jpg>] <ima
-ges/messages.jpg, id=90, 1780.6525pt x 505.89pt>
+[16 </Users/philhannant/Documents/Project_Report/images/mvc.png>] <images/messa
+ges.jpg, id=81, 1780.6525pt x 505.89pt>
 File: images/messages.jpg Graphic file (type jpg)
 <use images/messages.jpg>
-Package pdftex.def Info: images/messages.jpg used on input line 396.
+Package pdftex.def Info: images/messages.jpg used on input line 366.
 (pdftex.def)             Requested size: 445.16203pt x 126.47218pt.
-[19] <images/LiveAudioActor.jpg, id=95, 1136.245pt x 638.385pt>
+<images/LiveAudioActor.jpg, id=82, 1136.245pt x 638.385pt>
 File: images/LiveAudioActor.jpg Graphic file (type jpg)
 <use images/LiveAudioActor.jpg>
-Package pdftex.def Info: images/LiveAudioActor.jpg used on input line 405.
+Package pdftex.def Info: images/LiveAudioActor.jpg used on input line 375.
 (pdftex.def)             Requested size: 340.87613pt x 191.51697pt.
-<images/processingRec.jpg, id=96, 1200.485pt x 1045.9075pt>
+<images/processingRec.jpg, id=83, 1200.485pt x 1045.9075pt>
 File: images/processingRec.jpg Graphic file (type jpg)
 <use images/processingRec.jpg>
-Package pdftex.def Info: images/processingRec.jpg used on input line 414.
+Package pdftex.def Info: images/processingRec.jpg used on input line 384.
 (pdftex.def)             Requested size: 360.14828pt x 313.77467pt.
-<images/actorprops.jpg, id=97, 1320.935pt x 222.8325pt>
+[17 </Users/philhannant/Documents/Project_Report/images/messages.jpg> </Users/p
+hilhannant/Documents/Project_Report/images/LiveAudioActor.jpg>] <images/actorpr
+ops.jpg, id=87, 1320.935pt x 222.8325pt>
 File: images/actorprops.jpg Graphic file (type jpg)
 <use images/actorprops.jpg>
-Package pdftex.def Info: images/actorprops.jpg used on input line 425.
+Package pdftex.def Info: images/actorprops.jpg used on input line 395.
 (pdftex.def)             Requested size: 462.33418pt x 77.99254pt.
-[20 </Users/philhannant/Documents/Project_Report/images/messages.jpg> </Users/p
-hilhannant/Documents/Project_Report/images/LiveAudioActor.jpg>] [21 </Users/phi
-lhannant/Documents/Project_Report/images/processingRec.jpg> </Users/philhannant
-/Documents/Project_Report/images/actorprops.jpg>] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 458--458
+<images/startCap.jpg, id=88, 1357.07pt x 321.2pt>
+File: images/startCap.jpg Graphic file (type jpg)
+<use images/startCap.jpg>
+Package pdftex.def Info: images/startCap.jpg used on input line 405.
+(pdftex.def)             Requested size: 407.12415pt x 96.36073pt.
+[18 </Users/philhannant/Documents/Project_Report/images/processingRec.jpg> </Us
+ers/philhannant/Documents/Project_Report/images/actorprops.jpg>] <images/addByt
+es.jpg, id=92, 1182.4175pt x 507.8975pt>
+File: images/addBytes.jpg Graphic file (type jpg)
+<use images/addBytes.jpg>
+Package pdftex.def Info: images/addBytes.jpg used on input line 416.
+(pdftex.def)             Requested size: 295.60365pt x 126.97406pt.
+[19 </Users/philhannant/Documents/Project_Report/images/startCap.jpg> </Users/p
+hilhannant/Documents/Project_Report/images/addBytes.jpg>] <images/liveAudioPro.
+jpg, id=97, 1375.1375pt x 1676.2625pt>
+File: images/liveAudioPro.jpg Graphic file (type jpg)
+<use images/liveAudioPro.jpg>
+Package pdftex.def Info: images/liveAudioPro.jpg used on input line 428.
+(pdftex.def)             Requested size: 343.78354pt x 419.0646pt.
+[20 </Users/philhannant/Documents/Project_Report/images/liveAudioPro.jpg>] <ima
+ges/statscalc.jpg, id=101, 1084.05pt x 1668.2325pt>
+File: images/statscalc.jpg Graphic file (type jpg)
+<use images/statscalc.jpg>
+Package pdftex.def Info: images/statscalc.jpg used on input line 441.
+(pdftex.def)             Requested size: 379.42319pt x 583.89014pt.
+<images/writes.jpg, id=102, 887.315pt x 805.0075pt>
+File: images/writes.jpg Graphic file (type jpg)
+<use images/writes.jpg>
+Package pdftex.def Info: images/writes.jpg used on input line 452.
+(pdftex.def)             Requested size: 221.8282pt x 201.25139pt.
+[21] [22 </Users/philhannant/Documents/Project_Report/images/statscalc.jpg>] <i
+mages/rtt.jpg, id=109, 1606.0pt x 1003.75pt>
+File: images/rtt.jpg Graphic file (type jpg)
+<use images/rtt.jpg>
+Package pdftex.def Info: images/rtt.jpg used on input line 466.
+(pdftex.def)             Requested size: 401.49902pt x 250.93689pt.
+<images/htmlResults.jpg, id=110, 1007.765pt x 933.4875pt>
+File: images/htmlResults.jpg Graphic file (type jpg)
+<use images/htmlResults.jpg>
+Package pdftex.def Info: images/htmlResults.jpg used on input line 475.
+(pdftex.def)             Requested size: 302.33183pt x 280.04842pt.
+[23 </Users/philhannant/Documents/Project_Report/images/writes.jpg>] [24 </User
+s/philhannant/Documents/Project_Report/images/rtt.jpg> </Users/philhannant/Docu
+ments/Project_Report/images/htmlResults.jpg>] [25]
+Underfull \hbox (badness 10000) in paragraph at lines 510--510
 []\OT1/cmr/bx/n/10.95 Drum Beat
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 486--486
+Underfull \hbox (badness 2088) in paragraph at lines 538--538
 \OT1/cmr/m/n/10.95 hat cym-bal, high tom-tom
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 494--494
+Underfull \hbox (badness 10000) in paragraph at lines 546--546
 []\OT1/cmr/m/n/10.95 OFF-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--498
+Underfull \hbox (badness 10000) in paragraph at lines 550--550
 []\OT1/cmr/m/n/10.95 OFF-
  []
 
 
-Overfull \hbox (24.65382pt too wide) in paragraph at lines 456--520
+Overfull \hbox (24.65382pt too wide) in paragraph at lines 508--572
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 15.23466pt on input line 520.
+LaTeX Warning: Float too large for page by 15.23466pt on input line 572.
 
-[23] [24] [25]
+[26] [27] [28]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -480,53 +515,53 @@ Missing character: There is no ¶ in font cmti10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 
-Overfull \hbox (15.15892pt too wide) in paragraph at lines 611--613
+Overfull \hbox (15.15892pt too wide) in paragraph at lines 663--665
 \OT1/cmr/m/it/10.95 https://docs.oracle.com/javase/8/docs/technotes/guides/soun
 d/programmer[]guide/contents.html 
  []
 
 
-Overfull \hbox (38.84946pt too wide) in paragraph at lines 631--632
+Overfull \hbox (38.84946pt too wide) in paragraph at lines 683--684
 []\OT1/cmr/m/it/10.95 https://www.playframework.com/documentation/2.5.x/api/sca
 la/index.html#play.api.libs.json.Writes 
  []
 
-[26]
+[29]
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ™ in font cmti10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 654--655
+Underfull \hbox (badness 10000) in paragraph at lines 706--707
 []\OT1/cmr/m/it/10.95 https://developer.apple.com/library/mac/documentation/Gen
 eral/Conceptual/DevPedia-
  []
 
-[27] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.a
-ux) ) 
+[30] [31] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHann
+ant.aux) ) 
 Here is how much of TeX's memory you used:
- 5299 strings out of 493089
- 81716 string characters out of 6134843
- 166355 words of memory out of 5000000
- 8686 multiletter control sequences out of 15000+600000
+ 5509 strings out of 493089
+ 84867 string characters out of 6134843
+ 166734 words of memory out of 5000000
+ 8885 multiletter control sequences out of 15000+600000
  11810 words of font info for 40 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,9n,92p,1993b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.
-pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></
+usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (27 pages, 5457212 bytes).
+_PAHannant.pdf (31 pages, 7482052 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
+ 177 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 
