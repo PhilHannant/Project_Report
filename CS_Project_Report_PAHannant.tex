@@ -586,7 +586,7 @@ difference& =expected tempo - calculated tempo\\
 \end{split}
 \end{equation}
 
-The average difference for each of the three beat detection algorithms beat samples split between style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo result returned were double that of the expected bpm value, possibily due to aliasing. A solution to the aliasing issue was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
+The average difference for each of the three beat detection algorithms beat samples split between style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo result returned were double that of the expected bpm value, possibly due to aliasing. A solution to the aliasing issue was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
 
 \begin{figure}
 \caption{AveDiff}
@@ -606,7 +606,7 @@ Calculated Tempo/Expected Tempo >= 1.95\\
 \label{fig: upAveDiff}
 \end{figure}
 
-Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results which when divded by two were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (seen in Figure~\ref{fig: corAveDiff}), it is clear that overall Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also clearly plays a part in their accuracy with the swing samples producing the least accurate results for all three algorithms.
+Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results which when divided by two were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (seen in Figure~\ref{fig: corAveDiff}), it is clear that overall Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also clearly plays a part in their accuracy with the swing samples producing the least accurate results for all three algorithms.
 
 
 \begin{figure}
@@ -646,9 +646,12 @@ During the testing process it was noted that the result doubling seemed to be pr
 \label{fig: lowTemCom}
 \end{figure}
 
-The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of the beat detection algorithms produce significantly less doubling when processing drum beats with higher tempos. If the style grouping is introduced, it is apparant that the doubling is most prevalant with the straight sample set. Out of the three algorithsm, the PW returns the highest count of doubled results suggesting a possible flaw in how the beat inducing algorithm converts peaks in the signal to the returned tempo result.
+The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of the beat detection algorithms produce significantly less doubling when processing drum beats with higher tempos. If the style grouping is introduced, it is apparent that the doubling is most prevalent with the straight sample set. Out of the three algorithms, the PW returns the highest count of doubled results suggesting a possible flaw in how the beat inducing algorithm converts peaks in the signal to the returned tempo result.
 
-\subsection{Beat Dectection Response Time}
+\subsection{Beat Detection Response Time}
+Due to the smaller window size utilised by the PW it is expected to perform the best within this comparison. It is nevertheless an interesting point to investigate. The response time was recorded by the RTT\_Analyser when the first returned tempo was plus or minus one bpm from the expected tempo result. 
+
+Before this could be calculated the all of the tempo results produced by the PW for expected tempos of seventy five were removed. As the PW's first result returned regardless of expected tempo was always seventy five. Despite this and as expected the PW returned the fastest tempo value. Returning a tempo within the margin of error for the straight KSH2 beat within 0.675 seconds when processing through the low-pass filter. Then without a filter a tempo was produced in 0.660 seconds. Demonstrating that if any future drum training tools require instant feedback then the PW needs to be considered.
 
 \maketitle \section{Evaluation and Discussion}
 
