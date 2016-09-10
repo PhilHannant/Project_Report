@@ -13,6 +13,7 @@
 \usepackage[font={small,it}]{caption}
 \usepackage{listings}
 \usepackage[font={small,it}]{subcaption}
+\usepackage{amssymb,amsmath}
 
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
@@ -492,15 +493,12 @@ When it was not possible to use TDD, particularly during the initial set-up and 
 \subsection{Drum Beat Sample Set}
 Once the RTT\_Analyser was working with the initial test sample drum beats the full testing cycle could begin. In order to carry out this testing a set of drum beats were written using the Apple sequencer program, GarageBand \cite{garage}. The writing of the drum beats took a slight deviation from the project proposal in that rather than create multiple full drum beats in a varying number of styles, the drum beats were instead tested in layers. For example, a simple four four (4/4) bass drum beat with a back beat and the time element being played on the hi-hat cymbal would account for three samples. The reason for this decision stemmed from how a cymbal behaves when it is played at high amplitudes (loudness), the vibrations it create become chaotic and its clearly identifiable signals disappear and it effectively becomes noise \cite{soundonsound}. Therefore in order to compare the drum sample with cymbals a baseline was required. Additionally, this change to the project proposal was considered to be able to provide a much more diverse data set which would hopefully help the understanding of how the different elements of a drum kit, not just cymbals, can affect the accuracy of the beat detection algorithms being tested by the RTT\_Analyser.\par
 
-In total number twenty nine drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
+In total number twenty eight drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
 
 \subsection{Beat Detection Testing}
-The full beat detection tests were carried out in an environment with as little background noise as possible, where the drum beats were played on an external speaker set to the same volume for all tests. Each drum beat was tested for thirty seconds over the tempo range of 60-160 bpm, the tempo was increased in five bpm increments. Resulting in twenty one tests for being carried out for each drum beat and producing a sample set consisting of six hundred and nine (609) results files.
+The full beat detection tests were carried out in an environment with as little background noise as possible, where the drum beats were played on an external speaker set to the same volume for all tests. Each drum beat was tested for thirty seconds over the tempo range of 60-160 bpm, the tempo was increased in five bpm increments. Resulting in twenty one tests for being carried out for each drum beat and producing a sample set consisting of five hundred and eighty eight (588) results files.
 
-During the testing it became apparant that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible cause for this was considered to be aliasing, caused when it is not possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. To investigate if this was the root cause and as this behaviour was being displayed by all three of the beat detection algorithms. It was decided that all of the drum samples would be reprocessed through the RTT\_Analyser but this time a low-pass filter would applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection.
-
-\maketitle \section{Results and Analysis}
-\maketitle \section{Evaulation and Discussion}
+During the testing it became apparent that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible cause for this was considered to be aliasing, caused when it is not possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. To investigate if this was the root cause and as this behaviour was being displayed by all three of the beat detection algorithms. It was decided that all of the drum samples would be reprocessed through the RTT\_Analyser but this time a low-pass filter would applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection.
 
 \begin{table}[htbp]
 \caption{List of Drum Beats Used in RTT\_Analyser Tests} 
@@ -571,7 +569,47 @@ SW-SH & Snare drum and hi-hat cymbal & Swing\\
 \label{tab: beats}
 \end{table}
 
+\maketitle \section{Results and Analysis}
+The twenty eight sample beats processed by the RTT\_Analyser yielded one hundred and thirty seven thousand, one hundred and eighty (137,180) separate tempo records. A breakdown of the number of tempo records recorded per beat detection algorithm can be seen in Figure~\ref{fig: totrec}. The separate JSON files were then consolidated into one file, converted into a CSV file and then connected to the data visualisation software package, Tableau\cite{tableau}.
 
+\begin{figure}
+\caption{total records}
+\label{fig: totrec}
+\end{figure}
+
+\subsection{Average Difference}
+The difference between the expected tempo and the calculated tempo was recorded for each tempo record. Calculated by subtracting the returned tempo from the expected tempo~\ref{eq: diff}. Therefore, if the difference is negative then the calculated tempo was greater than what was expected and less than if it is positive.
+
+\begin{equation}\label{eq: diff}
+\begin{split}
+difference& =expected tempo - calculated tempo\\
+\end{split}
+\end{equation}
+
+The average difference for each of the three beat detection algorithms beat samples split between style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo result returned were double that of the expected bpm value, possibily due to aliasing. A solution to the aliasing issue was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
+
+\begin{figure}
+\caption{AveDiff}
+\label{fig: aveDiff}
+\end{figure}
+
+In an attempt to investigate this further a flag was applied to the results set to highlight any tempo result approximately double the expected value. A record was flagged if it the calculated tempo divided by the expected tempo returned a result greater or equal to 1.95~\ref{eq: flag}. The flagged results were then filtered out of the data set and the updated results can be see in Figure~\ref{fig: upAveDiff}.
+
+\begin{equation}\label{eq: flag}
+\begin{split}
+$Calculated Tempo/Expected Tempo >= 1.95$ 
+\end{split}
+\end{equation}
+
+\begin{figure}
+\caption{updatedAveDiffs}
+\label{fig: upAveDiff}
+\end{figure}
+
+With the records 
+
+
+\maketitle \section{Evaluation and Discussion}
 
 
 
@@ -711,6 +749,8 @@ Tony Bevis
 \textit{http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Data/endian.html}
 \bibitem{oracle2}
 \textit{http://docs.oracle.com/javase/8/javafx/get\-started\-tutorial/jfx\-architecture.htm\#A1106328}
+\bibitem{tableau}
+\textit{http://www.tableau.com/}
 \end{thebibliography}
 
 \newpage
