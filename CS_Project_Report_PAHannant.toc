@@ -29,14 +29,14 @@
 \contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{26}
 \contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{26}
 \contentsline {subsection}{\numberline {6.2}Beat Detection Testing}{26}
-\contentsline {section}{\numberline {7}Results}{27}
-\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{27}
-\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{29}
-\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{32}
-\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{32}
-\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{32}
-\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{37}
+\contentsline {section}{\numberline {7}Results}{29}
+\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{29}
+\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{31}
+\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{31}
+\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{34}
+\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{36}
+\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{36}
 \contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{37}
-\contentsline {section}{\numberline {8}Evaluation and Discussion}{38}
-\contentsline {section}{References}{39}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{42}
+\contentsline {section}{\numberline {8}Evaluation and Discussion}{41}
+\contentsline {section}{References}{42}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{45}
