@@ -569,11 +569,13 @@ SW-SH & Snare drum and hi-hat cymbal & Swing\\
 \label{tab: beats}
 \end{table}
 
-\maketitle \section{Results and Analysis}
+\maketitle \section{Results}
 The twenty eight sample beats processed by the RTT\_Analyser yielded one hundred and thirty seven thousand, one hundred and eighty (137,180) separate tempo records. A breakdown of the number of tempo records recorded per beat detection algorithm can be seen in Figure~\ref{fig: totrec}. The separate JSON files were then consolidated into one file, converted into a CSV file and then connected to the data visualisation software package, Tableau\cite{tableau}.
 
-\begin{figure}
-\caption{total records}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.3]{images/totRec.jpg}
+\caption{Total number of tempo values recorded by the RTT\_Analyser}
 \label{fig: totrec}
 \end{figure}
 
@@ -588,8 +590,10 @@ difference& =expected tempo - calculated tempo\\
 
 The average difference for each of the three beat detection algorithms beat samples split between style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo result returned were double that of the expected bpm value, possibly due to aliasing. A solution to the aliasing issue was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
 
-\begin{figure}
-\caption{AveDiff}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{images/totAveDiff.jpg}
+\caption{Total average difference results}
 \label{fig: aveDiff}
 \end{figure}
 
@@ -601,42 +605,91 @@ Calculated Tempo/Expected Tempo >= 1.95\\
 \end{split}
 \end{equation}
 
-\begin{figure}
-\caption{updatedAveDiffs}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{images/totAveDiffFR.jpg}
+\caption{Total average difference results with flagged values removed}
 \label{fig: upAveDiff}
 \end{figure}
 
 Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results which when divided by two were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (seen in Figure~\ref{fig: corAveDiff}), it is clear that overall Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also clearly plays a part in their accuracy with the swing samples producing the least accurate results for all three algorithms.
 
 
-\begin{figure}
-\caption{correctedAveDiff}
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{images/totAveDiffCor.jpg}
+\caption{Total average difference results with correction applied}
 \label{fig: corAveDiff}
 \end{figure}
 
-All of the average difference values used from this point use the corrected values described in the previous section. Versions of the displayed uncorrected and flagged results can be found in Appendix...
+All of the average difference values used from this point use the original and corrected values described in the previous section. Versions of the flagged results can be found in Appendix...
 
-\subsection{Single Drum Sample Results}
-The next data set consists of any samples which were played using only one drum. All of the samples except for the HT (high tom-tom) and LT (low tom-tom) in the straight sample set were used as parts in the final complete drum patterns.\par
+% \subsection{Single Drum Sample Results}
+% The next data set consists of any samples which were played using only one drum. All of the samples except for the HT (high tom-tom) and LT (low tom-tom) in the straight sample set were used as parts in the final complete drum patterns.\par
 
-\subsubsection{Straight Single Drum Sample Results}
+% \subsubsection{Straight Single Drum Sample Results}
 
-The straight single drum result set can be seen in Figure~\ref{fig: ssdAveDiff}, again the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method calculated tempos with the highest level of accuracy. Performing the best for three of the four sample sets, although actually returning the lowest level of accuracy of the three beat detection methods the for the hi-hat sample.\par
+% The straight single drum result set can be seen in Figure~\ref{fig: ssdAveDiff}, again the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method calculated tempos with the highest level of accuracy. Performing the best for three of the four sample sets, although actually returning the lowest level of accuracy of the three beat detection methods the for the hi-hat sample.\par
 
-\begin{figure}
-\caption{Straight Single Drum Average Diff}
-\label{fig: ssdAveDiff}
-\end{figure}
+% \begin{figure}
+% \caption{Straight Single Drum Average Diff}
+% \label{fig: ssdAveDiff}
+% \end{figure}
 
-\subsubsection{Swing Single Drum Sample Results}
+% \subsubsection{Swing Single Drum Sample Results}
 
-Unlike the straight single drum data set the results produced for the swing samples were a lot more varied. The Tzanetakis \textit{et al}'s \cite{tzane1} DWT method was again the stand out performer. However, the average difference values returned by the Beatroot and PW methods.
+% Unlike the straight single drum data set the results produced for the swing samples were a lot more varied. The Tzanetakis \textit{et al}'s \cite{tzane1} DWT method was again the stand out performer. However, the Beatroot and PW methods returned average difference values significantly higher than those recorded for the straight single drum sample set (see Figure). Even when the corrected difference values were applied (Figure). Suggesting, these algorithms struggled with the more complex time patterns found in the swing sample set.
 
 \subsection{Straight Sample Results}
+The results recorded for the straight sample set clearly show that doubling is an issue. Demonstrated by all but one of the results returned is a negative value (Figure~\ref{fig: stradAveDiff}). A large majority of the average difference values are also significantly large (greater than five). It is the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method which exhibits the poorest level of accuracy within this data set. Regularly producing average difference values of greater than twenty.\par
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{images/SSSAD.jpg}
+\caption{Straight sample set average difference results}
+\label{fig: stradAveDiff}
+\end{figure}
+
+When the corrected difference values are applied to the data set the accuracy of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method increases significantly (Figure~\ref{fig: stradAveDiffCor}). Although, it does return its least accurate results for the samples consisting of a crash cymbal and the high and low tom-toms. The affect of the crash cymbal on the accuracy of the tempo recorded confirms the point mentioned previously. The low accuracy recorded by the DWT method for the HTLT2 sample set where the time element is played on the low tom-tom. Highlights the possibility that this method will not respond as well when there are not distinct frequencies playing each part of the drum beat. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.35]{images/SSSADC.jpg}
+\caption{Straight sample set average difference results with correction applied}
+\label{fig: stradAveDiffCor}
+\end{figure}
+
 
 \subsection{Swing Sample Results}
+The doubling of calculated tempo results was not so much of an issue within the Swing sample set. Both the original (Figure~\ref{fig: swingAveDiff}) and the corrected (Figure~\ref{fig: swingAveDiffCor}) difference values were significantly high. Although, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method's accuracy is again improved by the updated difference values. However, the Beatroot and PW's performance remains very similar across both data sets.
+
+\begin{figure}
+\caption{Swing Average Diff}
+\label{fig: swingAveDiff}
+\end{figure}
+
+\begin{figure}
+\caption{Swing Average Diff Corrected}
+\label{fig: swingAveDiffCor}
+\end{figure}
+
+The time element played on the ride and hi-hat cymbals using triplets both 
 
 \subsection{Off-Beat Sample Results}
+
+The last group of style results are those which ultilised a time element being played on the off-beat. The rest of the beat could be considered straight. It is to be expected then that the results exhibit a similar amount of potential doubling of the tempo values as with the straight data set (Figure~\ref{fig: offAveDiff}).
+
+\begin{figure}
+\caption{Off-Beat Average Diff }
+\label{fig: offAveDiff}
+\end{figure}
+
+When the corrected difference values are introduced the accuracy is again improved (Figure~\ref{fig: offAveDiffCor}). For the louder KSHHCRFTTF sample, the Beatroot and PW both recorded a lower level of accuracy with the low-pass filter than without. It is expected that the low-pass filter would help to remove some of the noise produced by the cymbals in this sample. However, this result suggests that by removing the higher frequencies produced by cymbals can adversely affect the accuracy of the tempo calculation methods.
+
+\begin{figure}
+\caption{Off-Beat Average Diff Corrected}
+\label{fig: offAveDiffCor}
+\end{figure}
 
 \subsection{Low Tempo Comparison}
 During the testing process it was noted that the result doubling seemed to be prominent for samples being played at the lower tempos. Usually anything with a bpm of one hundred and below. To investigate if the algorithms performed better with higher tempos regardless of style, a doubling count was applied to the data set. Using the same five percent margin applied previously. The comparison for tempos was made by visualising the double count and non-double count for the tempos of sixty to eighty, and the expected tempo values equal to twice the low tempo value (one hundred and twenty to one hundred and sixty. 
@@ -651,11 +704,25 @@ The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of
 \subsection{Beat Detection Response Time}
 Due to the smaller window size utilised by the PW it is expected to perform the best within this comparison. It is nevertheless an interesting point to investigate. The response time was recorded by the RTT\_Analyser when the first returned tempo was plus or minus one bpm from the expected tempo result. 
 
-Before this could be calculated the all of the tempo results produced by the PW for expected tempos of seventy five were removed. As the PW's first result returned regardless of expected tempo was always seventy five. Despite this and as expected the PW returned the fastest tempo value. Returning a tempo within the margin of error for the straight KSH2 beat within 0.675 seconds when processing through the low-pass filter. Then without a filter a tempo was produced in 0.660 seconds. Demonstrating that if any future drum training tools require instant feedback then the PW needs to be considered.
+Before this could be calculated the all of the tempo results produced by the PW for expected tempos of seventy five were removed. As the PW's first result returned regardless of expected tempo was always seventy five. Despite this and as expected the PW returned the fastest tempo value. Returning a tempo within the margin of error for the straight KSH2 beat within 0.675 seconds when processing through the low-pass filter. Then without a filter a tempo was produced in 0.660 seconds. 
+
+\subsection{Overall Tempo Accuracy}
+Finally, the overall tempo accuracy was calculated by counting the number of tempo results that were plus or minus one bpm away from the expected tempo. The results for the three beat detection methods with and without a filter were then compared. A corrected value was also included to show the possible level of accuracy if the issue of doubling was not present (Figure~\ref{fig: OTA}).
+
+\begin{figure}
+\caption{Overall Tempo Accuracy}
+\label{fig: OTA}
+\end{figure}
+
+Unsurprisingly, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method performed with the highest level of accuracy. Interestingly, without the corrected values all three systems produced a consistent level of accuracy when using the low-pass filter. Without the filter though, the DWT method produced the highest overall accuracy of 71.32\% and the PW produced the least of 57.12\%.\par
+
+The corrected results show that there is a clear distinction between the accuracy of the three methods. With the DWT method exhibiting the most potential followed by the Beatroot sytems and then the PW. The effectiveness of the low-pass filter is hard to ascertain from these results alone. However, based on the five percent increase to the overall tempo accuracy, it can be said that the PW benefitted the most from the inclusion of the filter.
 
 \maketitle \section{Evaluation and Discussion}
 
 dwt hihat worse
+Demonstrating that if any future drum training tools require instant feedback then the PW needs to be considered.
+dwt bad at low tempos
 
 \newpage
 \begin{thebibliography}{99}
