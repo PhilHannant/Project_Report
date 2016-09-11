@@ -35,8 +35,8 @@
 \contentsline {subsection}{\numberline {7.3}Swing Sample Results}{32}
 \contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{32}
 \contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{32}
-\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{34}
-\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{34}
-\contentsline {section}{\numberline {8}Evaluation and Discussion}{34}
-\contentsline {section}{References}{35}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{38}
+\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{37}
+\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{37}
+\contentsline {section}{\numberline {8}Evaluation and Discussion}{38}
+\contentsline {section}{References}{39}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{42}

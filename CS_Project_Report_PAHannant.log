@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  11 SEP 2016 17:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  11 SEP 2016 17:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,7 +578,15 @@ Package pdftex.def Info: images/totAveDiffCor.jpg used on input line 620.
 File: images/SSSAD.jpg Graphic file (type jpg)
 <use images/SSSAD.jpg>
 Package pdftex.def Info: images/SSSAD.jpg used on input line 648.
-(pdftex.def)             Requested size: 435.63402pt x 615.86005pt.
+(pdftex.def)             Requested size: 497.85118pt x 703.81705pt.
+
+Overfull \hbox (28.09619pt too wide) in paragraph at lines 648--649
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 39.25206pt on input line 651.
+
 [29 </Users/philhannant/Documents/Project_Report/images/totAveDiff.jpg>] [30 </
 Users/philhannant/Documents/Project_Report/images/totAveDiffFR.jpg> </Users/phi
 lhannant/Documents/Project_Report/images/totAveDiffCor.jpg>] [31 </Users/philha
@@ -587,9 +595,47 @@ nnant/Documents/Project_Report/images/SSSAD.jpg>] <images/SSSADC.jpg, id=145, 1
 File: images/SSSADC.jpg Graphic file (type jpg)
 <use images/SSSADC.jpg>
 Package pdftex.def Info: images/SSSADC.jpg used on input line 657.
-(pdftex.def)             Requested size: 435.63402pt x 615.86005pt.
-[32] [33 </Users/philhannant/Documents/Project_Report/images/SSSADC.jpg>] [34] 
-[35]
+(pdftex.def)             Requested size: 497.85118pt x 703.81705pt.
+
+Overfull \hbox (28.09619pt too wide) in paragraph at lines 657--658
+ [][] 
+ []
+
+
+LaTeX Warning: Float too large for page by 39.25206pt on input line 660.
+
+<images/SwiSSAD.jpg, id=146, 954.56625pt x 1003.75pt>
+File: images/SwiSSAD.jpg Graphic file (type jpg)
+<use images/SwiSSAD.jpg>
+Package pdftex.def Info: images/SwiSSAD.jpg used on input line 668.
+(pdftex.def)             Requested size: 429.55084pt x 451.68333pt.
+<images/SwiSSADC.jpg, id=147, 950.55125pt x 1008.76875pt>
+File: images/SwiSSADC.jpg Graphic file (type jpg)
+<use images/SwiSSADC.jpg>
+Package pdftex.def Info: images/SwiSSADC.jpg used on input line 675.
+(pdftex.def)             Requested size: 427.74411pt x 453.94174pt.
+<images/OBSSAD.jpg, id=148, 1814.78pt x 1222.5675pt>
+File: images/OBSSAD.jpg Graphic file (type jpg)
+<use images/OBSSAD.jpg>
+Package pdftex.def Info: images/OBSSAD.jpg used on input line 688.
+(pdftex.def)             Requested size: 453.6939pt x 305.64113pt.
+<images/OBSSADC.jpg, id=149, 1812.7725pt x 1236.62pt>
+File: images/OBSSADC.jpg Graphic file (type jpg)
+<use images/OBSSADC.jpg>
+Package pdftex.def Info: images/OBSSADC.jpg used on input line 697.
+(pdftex.def)             Requested size: 453.19202pt x 309.15424pt.
+[32] [33 </Users/philhannant/Documents/Project_Report/images/SSSADC.jpg>] [34 <
+/Users/philhannant/Documents/Project_Report/images/SwiSSAD.jpg>] [35 </Users/ph
+ilhannant/Documents/Project_Report/images/SwiSSADC.jpg>] [36 </Users/philhannan
+t/Documents/Project_Report/images/OBSSAD.jpg> </Users/philhannant/Documents/Pro
+ject_Report/images/OBSSADC.jpg>] <images/TempoAcc.jpg, id=165, 849.1725pt x 451
+.6875pt>
+File: images/TempoAcc.jpg Graphic file (type jpg)
+<use images/TempoAcc.jpg>
+Package pdftex.def Info: images/TempoAcc.jpg used on input line 722.
+(pdftex.def)             Requested size: 297.21483pt x 158.09299pt.
+[37 </Users/philhannant/Documents/Project_Report/images/TempoAcc.jpg>] [38] [39
+]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ³ in font cmr10!
 Missing character: There is no Ã in font cmr10!
@@ -602,33 +648,34 @@ Missing character: There is no ¶ in font cmti10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 
-Overfull \hbox (15.15892pt too wide) in paragraph at lines 812--814
+Overfull \hbox (15.15892pt too wide) in paragraph at lines 822--824
 \OT1/cmr/m/it/10.95 https://docs.oracle.com/javase/8/docs/technotes/guides/soun
 d/programmer[]guide/contents.html 
  []
 
-[36]
-Overfull \hbox (38.84946pt too wide) in paragraph at lines 832--833
+
+Overfull \hbox (38.84946pt too wide) in paragraph at lines 842--843
 []\OT1/cmr/m/it/10.95 https://www.playframework.com/documentation/2.5.x/api/sca
 la/index.html#play.api.libs.json.Writes 
  []
 
+[40]
 Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ™ in font cmti10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 855--856
+Underfull \hbox (badness 10000) in paragraph at lines 865--866
 []\OT1/cmr/m/it/10.95 https://developer.apple.com/library/mac/documentation/Gen
 eral/Conceptual/DevPedia-
  []
 
-[37] [38] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHann
+[41] [42] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHann
 ant.aux) ) 
 Here is how much of TeX's memory you used:
- 6410 strings out of 493089
- 95331 string characters out of 6134843
+ 6435 strings out of 493089
+ 95846 string characters out of 6134843
  181372 words of memory out of 5000000
- 9746 multiletter control sequences out of 15000+600000
+ 9766 multiletter control sequences out of 15000+600000
  15629 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,15n,92p,1993b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -644,10 +691,10 @@ usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (38 pages, 10271962 bytes).
+_PAHannant.pdf (42 pages, 12623302 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
+ 224 PDF objects out of 1000 (max. 8388607)
+ 128 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -645,7 +645,7 @@ The results recorded for the straight sample set clearly show that doubling is a
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.35]{images/SSSAD.jpg}
+\includegraphics[scale=0.4]{images/SSSAD.jpg}
 \caption{Straight sample set average difference results}
 \label{fig: stradAveDiff}
 \end{figure}
@@ -654,7 +654,7 @@ When the corrected difference values are applied to the data set the accuracy of
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.35]{images/SSSADC.jpg}
+\includegraphics[scale=0.4]{images/SSSADC.jpg}
 \caption{Straight sample set average difference results with correction applied}
 \label{fig: stradAveDiffCor}
 \end{figure}
@@ -664,12 +664,16 @@ When the corrected difference values are applied to the data set the accuracy of
 The doubling of calculated tempo results was not so much of an issue within the Swing sample set. Both the original (Figure~\ref{fig: swingAveDiff}) and the corrected (Figure~\ref{fig: swingAveDiffCor}) difference values were significantly high. Although, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method's accuracy is again improved by the updated difference values. However, the Beatroot and PW's performance remains very similar across both data sets.
 
 \begin{figure}
-\caption{Swing Average Diff}
+\centering
+\includegraphics[scale=0.45]{images/SwiSSAD.jpg}
+\caption{Swing average difference results}
 \label{fig: swingAveDiff}
 \end{figure}
 
 \begin{figure}
-\caption{Swing Average Diff Corrected}
+\centering
+\includegraphics[scale=0.45]{images/SwiSSADC.jpg}
+\caption{Swing average difference results with correction applied}
 \label{fig: swingAveDiffCor}
 \end{figure}
 
@@ -680,14 +684,18 @@ The time element played on the ride and hi-hat cymbals using triplets both
 The last group of style results are those which ultilised a time element being played on the off-beat. The rest of the beat could be considered straight. It is to be expected then that the results exhibit a similar amount of potential doubling of the tempo values as with the straight data set (Figure~\ref{fig: offAveDiff}).
 
 \begin{figure}
-\caption{Off-Beat Average Diff }
+\centering
+\includegraphics[scale=0.25]{images/OBSSAD.jpg}
+\caption{Off-Beat average difference results}
 \label{fig: offAveDiff}
 \end{figure}
 
 When the corrected difference values are introduced the accuracy is again improved (Figure~\ref{fig: offAveDiffCor}). For the louder KSHHCRFTTF sample, the Beatroot and PW both recorded a lower level of accuracy with the low-pass filter than without. It is expected that the low-pass filter would help to remove some of the noise produced by the cymbals in this sample. However, this result suggests that by removing the higher frequencies produced by cymbals can adversely affect the accuracy of the tempo calculation methods.
 
 \begin{figure}
-\caption{Off-Beat Average Diff Corrected}
+\centering
+\includegraphics[scale=.25]{images/OBSSADC.jpg}
+\caption{Off-Beat average difference results with correction applied}
 \label{fig: offAveDiffCor}
 \end{figure}
 
@@ -710,7 +718,9 @@ Before this could be calculated the all of the tempo results produced by the PW 
 Finally, the overall tempo accuracy was calculated by counting the number of tempo results that were plus or minus one bpm away from the expected tempo. The results for the three beat detection methods with and without a filter were then compared. A corrected value was also included to show the possible level of accuracy if the issue of doubling was not present (Figure~\ref{fig: OTA}).
 
 \begin{figure}
-\caption{Overall Tempo Accuracy}
+\centering
+\includegraphics[scale=0.35]{images/TempoAcc.jpg}
+\caption{Overall tempo accuracy}
 \label{fig: OTA}
 \end{figure}
 
