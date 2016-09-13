@@ -767,8 +767,9 @@ suggesting a possible flaw in how the beat inducing algorithm converts peaks in 
 \subsection{Challenges}
 One unforeseen challenge was presented by the original decision to use JSON files for data storage. Due to the inclusion of the PW beat detection algorithm in the RTT\_Analyser and the decision to run tests with a low-pass filter and without. The number of records recorded by the RTT\_Analyser increased significantly\footnote{The original estimate was for approximately 700 files each holding approximately ten results per beat detection method. The final number of results collection was 130,000 plus.}. Although, JSON was more than adequate at holding this much data. The issue arose when it was decided that the use of the data visualisation software package, Tableau\cite{tableau} would benefit the analysis of the results. As Tableau does not work with JSON files the data would need to be converted to another format. Despite, Tableau being compatible with SQL databases. The limited amount of time available resulted in the data being converted to an Excel\cite{excel} file. This required a large amount of data manipulation and due to the large volume of data a number of Visual Basic for Applications (VBA) macros were written to assist with this. Once the data was in the required format to be connected to Tableau it was possible to do any further manipulation a lot more efficiently within Tableau. 
 
+Another challenge, was presented during the adaptation of the Beatroot code base to work with live audio.
 
-Beatroot - code base, 
+To overcome this, the mitigation protocol set out in the project proposal was followed and an alternative system was sourced, the Performance Worm. In doing this, it ensured the project did not fall behind schedule and subsequently resulted in there being sufficient time to again focus on adapting Beatroot system, which was completed successfully the second time.
 
 \subsection{Successes}
 \subsection{Future Work}
