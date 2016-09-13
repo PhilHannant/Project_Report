@@ -748,19 +748,43 @@ Unsurprisingly, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method perform
 
 The corrected results show that there is a clear distinction between the accuracy of the three methods. With the DWT method exhibiting the most potential followed by the Beatroot system and then the PW. The effectiveness of the low-pass filter is hard to ascertain from these results alone. However, based on the five percent increase to the overall tempo accuracy, it can be said that the PW benefited the most from the inclusion of the filter.
 
-% \subsection{Filter/Non-Filter Comparison}
-% In order to ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser. It was necessary to formulate the following null hypothesis:\footnote{Described as a ‘no difference’ hypothesis to be tested by a significance test\cite{cambdic} and is assumed to be true until statistical evidence suggest otherwise} When accessing the accuracy tempo results produced by the RTT\_Analyser there will be no significant difference in the accuracy between when a low-pass filter was used or not.
+\subsection{Filter/Non-Filter Comparison}
+In order to ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser. It was necessary to formulate the following null hypothesis:\footnote{Described as a ‘no difference’ hypothesis to be tested by a significance test\cite{cambdic} and is assumed to be true until statistical evidence suggest otherwise} When accessing the accuracy tempo results produced by the RTT\_Analyser there will be no significant difference in the accuracy between when a low-pass filter was used or not.
 
-% The probability of the observed data (or data showing a more extreme departure from the null
-% hypothesis) when the null hypothesis is true. 
+The probability of the observed data (or data showing a more extreme departure from the null
+hypothesis) when the null hypothesis is true. 
+
+\subsection{Analysis}
+the PW may be less accurate when processing samples played with a swing style.
+dwt hihat worse
+Demonstrating that if any future drum training tools require instant feedback then the PW needs to be considered.
+dwt high  at low tempos
+suggesting a possible flaw in how the beat inducing algorithm converts peaks in the signal to the returned tempo result.
+
 \clearpage
 \maketitle \section{Evaluation and Discussion}
 
-Suggesting, the PW may be less accurate when processing samples played with a swing style.
-dwt hihat worse
-Demonstrating that if any future drum training tools require instant feedback then the PW needs to be considered.
-dwt bad at low tempos
-suggesting a possible flaw in how the beat inducing algorithm converts peaks in the signal to the returned tempo result.
+\subsection{Challenges}
+One unforeseen challenge was presented by the original decision to use JSON files for data storage. Due to the inclusion of the PW beat detection algorithm in the RTT\_Analyser and the decision to run tests with a low-pass filter and without. The number of records recorded by the RTT\_Analyser increased significantly\footnote{The original estimate was for approximately 700 files each holding approximately ten results per beat detection method. The final number of results collection was 130,000 plus.}. Although, JSON was more than adequate at holding this much data. The issue arose when it was decided that the use of the data visualisation software package, Tableau\cite{tableau} would benefit the analysis of the results. As Tableau does not work with JSON files the data would need to be converted to another format. Despite, Tableau being compatible with SQL databases. The limited amount of time available resulted in the data being converted to an Excel\cite{excel} file. This required a large amount of data manipulation and due to the large volume of data a number of Visual Basic for Applications (VBA) macros were written to assist with this. Once the data was in the required format to be connected to Tableau it was possible to do any further manipulation a lot more efficiently within Tableau. 
+
+
+Beatroot - code base, 
+
+\subsection{Successes}
+\subsection{Future Work}
+There are a number of possible routes to consider with regard to the future direction of the RTT\_Analyser. Including, adaption of the data storage method, adding more functions to the application and converting the RTT\_Analyser into a mobile training tool application.
+
+Due to the large amounts of data that the RTT\_Analyser recorded. The adaption of the RTT\_Analyser's data storage method from JSON files to a relational database needs to be considered. Doing
+
+A future functional addition to the RTT\_Analyser could be 
+
+Although, the accuracy of the beat detection algorithms used in the RTT\_Analyser are not on the same level as the midi training tools. They could still provide a useful tool to a drummer. One possible route would be to develop an application for mobile devices which combines a metronome with the RTT\_Analyser. A drummer could then use this application to aid their practice session by using the metronome to set the tempo. The application would then stop the metronome and the drummer would continue to play. While doing so the application would report as to whether they have remained at the same tempo as the metronome or if their tempo as fluctuated. Such a tool would definitely provide a useful training aid to any drummer that wants to work on their timing.
+
+
+
+
+
+
 
 \newpage
 \begin{thebibliography}{99}
@@ -903,6 +927,8 @@ Tony Bevis
 \bibitem{cambdic}
 B. S. Everitt and A. Skrondal
 \textit{The Cambridge Dictionary of Statistics, Fourth Edition, Cambridge University Press, 2010}
+\bibitem{excel}
+\textit{https://products.office.com/en-gb/excel}
 \end{thebibliography}
 
 \newpage

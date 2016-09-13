@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  11 SEP 2016 22:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  13 SEP 2016 23:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -662,11 +662,23 @@ File: images/TempoAcc.jpg Graphic file (type jpg)
 <use images/TempoAcc.jpg>
 Package pdftex.def Info: images/TempoAcc.jpg used on input line 742.
 (pdftex.def)             Requested size: 297.21483pt x 158.09299pt.
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no ˜ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no € in font cmr9!
+Missing character: There is no ™ in font cmr9!
 [37 </Users/philhannant/Documents/Project_Report/images/OBSSADC.jpg>] [38 </Use
 rs/philhannant/Documents/Project_Report/images/LowDoubling.jpg>] [39 </Users/ph
 ilhannant/Documents/Project_Report/images/lowStyle.jpg>] [40 </Users/philhannan
 t/Documents/Project_Report/images/ResponseTime.jpg> </Users/philhannant/Documen
-ts/Project_Report/images/TempoAcc.jpg>] [41
+ts/Project_Report/images/TempoAcc.jpg>]
+Overfull \hbox (16.11737pt too wide) in paragraph at lines 777--778
+[]\OT1/cmr/m/n/10.95 Due to the large amounts of data that the RTT[]Analyser re
+corded. The adap-tion of the RTT[]Analyser's
+ []
+
+[41
 
 ] [42]
 Missing character: There is no Ã in font cmr10!
@@ -681,13 +693,13 @@ Missing character: There is no ¶ in font cmti10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 
-Overfull \hbox (15.15892pt too wide) in paragraph at lines 850--852
+Overfull \hbox (15.15892pt too wide) in paragraph at lines 874--876
 \OT1/cmr/m/it/10.95 https://docs.oracle.com/javase/8/docs/technotes/guides/soun
 d/programmer[]guide/contents.html 
  []
 
 
-Overfull \hbox (38.84946pt too wide) in paragraph at lines 870--871
+Overfull \hbox (38.84946pt too wide) in paragraph at lines 894--895
 []\OT1/cmr/m/it/10.95 https://www.playframework.com/documentation/2.5.x/api/sca
 la/index.html#play.api.libs.json.Writes 
  []
@@ -697,7 +709,7 @@ Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ™ in font cmti10!
 
-Underfull \hbox (badness 10000) in paragraph at lines 893--894
+Underfull \hbox (badness 10000) in paragraph at lines 917--918
 []\OT1/cmr/m/it/10.95 https://developer.apple.com/library/mac/documentation/Gen
 eral/Conceptual/DevPedia-
  []
@@ -705,10 +717,10 @@ eral/Conceptual/DevPedia-
 [44] [45] (/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHann
 ant.aux) ) 
 Here is how much of TeX's memory you used:
- 6514 strings out of 493089
- 97136 string characters out of 6134843
- 177334 words of memory out of 5000000
- 9838 multiletter control sequences out of 15000+600000
+ 6515 strings out of 493089
+ 97143 string characters out of 6134843
+ 177338 words of memory out of 5000000
+ 9839 multiletter control sequences out of 15000+600000
  15629 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  53i,15n,92p,1993b,518s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -724,7 +736,7 @@ usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
 cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (45 pages, 15322617 bytes).
+_PAHannant.pdf (45 pages, 15327591 bytes).
 PDF statistics:
  237 PDF objects out of 1000 (max. 8388607)
  135 compressed objects within 2 object streams
