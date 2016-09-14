@@ -40,8 +40,7 @@
 \contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{40}
 \contentsline {subsection}{\numberline {7.9}Analysis}{40}
 \contentsline {section}{\numberline {8}Evaluation and Discussion}{41}
-\contentsline {subsection}{\numberline {8.1}Challenges}{41}
-\contentsline {subsection}{\numberline {8.2}Successes}{41}
-\contentsline {subsection}{\numberline {8.3}Future Work}{41}
-\contentsline {section}{References}{42}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{45}
+\contentsline {subsection}{\numberline {8.1}Project Successes and Challenges}{41}
+\contentsline {subsection}{\numberline {8.2}Future Work}{41}
+\contentsline {section}{References}{43}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{46}
