@@ -1,8 +1,8 @@
 \documentclass[a4paper, 11pt]{article}
 \setlength{\topmargin}{0.0in}
-\setlength{\textheight}{9.5in}
-\setlength{\oddsidemargin}{-.1in}
-\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\oddsidemargin}{.1in}
+\setlength{\textwidth}{6in}
 \usepackage{parskip}
 \usepackage{xkeyval}
 \usepackage{graphicx}
@@ -16,6 +16,8 @@
 \usepackage{listings}
 \usepackage[font={small,it}]{subcaption}
 \usepackage{amssymb,amsmath}
+\usepackage{ragged2e}
+\renewcommand{\baselinestretch}{1.1}
 
 \newdateformat{monthyeardate}{%
   \monthname[\THEMONTH], \THEYEAR}
@@ -31,13 +33,20 @@ Department of Computer Science and Information Systems\\
 \\Project Report\\
 MSc Computer Science\\
 \\\monthyeardate\today
+\vspace{20mm}
 }
 
-
-
-
-
 \normalsize
+
+
+\maketitle
+\section*{Abstract}
+
+
+
+\begin{justify}
+This report is substantially the result of my own work, expressed in my own words, except where explicitly indicated in the text. I give my permission for it to be submitted to the JISC Plagiarism Detection Service. The report may be freely copied and distributed provided the source is explicitly acknowledged.
+\end{justify}
 
 
 \maketitle
@@ -201,10 +210,11 @@ The original proposed solution incorporated two beat detection algorithms, Beatr
 The project report will now discuss the beat detection algorithms incorporated in the RTT\_Analyser as well as the system used to allow for simultaneous tempo calculation.  
 
 \subsection{Beatroot}
-Beatroot is a beat detection software package created by Simon Dixon \cite{dixon1}, which was designed to extract musical expression information musical recordings \cite{dixon3}. Beatroot was included in the RTT{\_}Analyser as the algorithm designed by Dixon was considered to be sufficiently fast enough to be implemented as part of a real-time system \cite{dixon4}.\par
+Beatroot is a beat detection software package created by Simon Dixon \cite{dixon1}, designed to extract musical expression information from musical recordings \cite{dixon3}. The algorithm designed by Simon Dixon is ideal for the RTT\_Analyser as it is considered to be sufficiently fast enough to be implemented as part of a real-time system \cite{dixon4}.\par
 
-Beatroot works by first obtaining a time-frequency representation of the signal based on a Short Time Fourier Transform (STFT) using a Hamming window \cite{dixon2}. The STFT is a form of Fourier transform (FT), which in the form of the Discrete Fourier Transform (DFT) can be used to find out how much of each frequency exists in a signal. Th A negative of the DFT is that it is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time \cite{polikapt2}}. A solution to this is to split a non-stationary signal into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the DFT can then be applied to. By splitting the signal into smaller segments the STFT is able to apply the DFT to these segments and essentially express a signal as a linear combination of elementary signals that are easily manipulated. The DFT returns a spectrum that contains information about how the energy held within the signal is distributed in the time and frequency domains \cite{tzane2}. The use of a Hamming window function in the STFT employed by Beatroot is an attempt to reduce the amount of additional frequencies appearing in the returned DFT spectrum, known as spectral leakage, which is caused when the steep sloped of a rectangular window (Figure~\ref{fig: rectan}) causes the frequencies to become distorted. The Hamming window counteracts this by using a bell shape, which has the effect of reducing amplitudes of its sidelobes \cite{lyons} and ensures the spectrum returned is less spread out and closer to the ideal theoretical result \cite{tzane2}. A visualisation of a Hamming window can be seen in Figure~\ref{fig: hamWin}. 
+Beatroot is comprised of two major components, the tempo induction and the beat tracking subsystems. Before tempo induction can take place, first a list of onsets needs to be retrieved\cite{dixon4}. This is achieved by obtaining a time-frequency representation with a Short Time Fourier Transform (STFT). The STFT is based on the Discrete Fourier Transform (DFT), which can be used to determine how much of a frequency exists within a signal. However, the DFT is unable to provide any details of when a frequency component occurs in time for non-stationary signals\footnote{Non-stationary signals are signals whose frequency contents changes over time \cite{polikapt2}}. A solution to this is to split a non-stationary signal into a number of smaller segments using a window function, which effectively created a series of stationary\footnote{The frequency contents of a stationary signal does not change over time} signals which the DFT can then be applied to. By splitting the signal into smaller segments the STFT is able to apply the DFT to these segments and essentially express a signal as a linear combination of elementary signals that are easily manipulated. The DFT returns a spectrum that contains information about how the energy held within the signal is distributed in the time and frequency domains \cite{tzane2}.\par
 
+The window function used by Beatroot within the STFT is the Hamming window, which can help to reduce the amount of additional frequencies appearing in the returned DFT spectrum, known as spectral leakage. This is caused when the steep slope of a rectangular window (Figure~\ref{fig: rectan}) causes the frequencies to become distorted. The Hamming window counteracts this by using a bell shape, which reduces the amplitudes of its sidelobes \cite{lyons} and ensures the spectrum returned is less spread out and closer to the ideal theoretical result \cite{tzane2}. A visualisation of a Hamming window can be seen in Figure~\ref{fig: hamWin}. 
 
 \begin{figure}[ht]
 \centering
@@ -224,8 +234,32 @@ Beatroot works by first obtaining a time-frequency representation of the signal 
 \label{fig: Wins}
 \end{figure}
 
+Beatroot uses the STFT as follows:
+\begin{equation}
+\begin{split}
+X(n, k) = \sum_{m=-\frac{N}{2}}^{\frac{N}{2}-1} x(hn+m)\hspace{2mm}w(m)\hspace{2mm}e^-{\frac{2jπmk}{N}}
+\end{split}
+\end{equation}
+Where a Hamming window $w(m)$ is calculated at a frame rate of 100 Hz, $N$ is the size of the window, $n$ represents the frame number being processed, $k$ is the index of frequency-domain component, and $h$ is the hop-size or number of samples between the start times of adjacent frames.
 
-Once the time-frequency representation is returned the next stage is to apply the spectral flux onset detection function, which is a method for measuring the change in magnitude of each returned frequency bin \cite{dixon2}. The onsets are then selected from the spectral flux onset detection function by a peak-picking algorithm which finds local maxima within the detection function. The next stage is to apply the tempo induction algorithm which is used to compute clusters of inter-onset intervals (IOI) by using the calculated onset times. Each cluster represents a hypothetical tempo, in seconds per beat \cite{dixon1}. The clustering algorithm works by assigning an IOI to a cluster if its difference from the cluster is less than 25ms. The cluster information is then combined by recognising the approximate integer relationships between clusters. An example of this can be seen in Figure~\ref{fig: br-clusters} where cluster C2 is twice as long as C1 and C4 is twice that of C2. This information along with the number of IOIs within a cluster is then used to weight each cluster which is then returned as a ranked list of tempo hypotheses \cite{dixon4}.
+The spectral flux function is then used as a method for measuring the change in magnitude of each returned frequency-domain sample \cite{dixon2} and is provided by: 
+
+\begin{equation}
+\begin{split}
+SF(n) = \sum_{k=-\frac{N}{2}}^{\frac{N}{2}-1} H(|X(n,k)| - |X(n-1, k)|)
+\end{split}
+\end{equation}
+
+Where $SF$ is the spectral flux and $H$ is the half-wave rectifier function given by the $H=\frac{x+|x|}{2}$, which is used to remove any negative values representing a falling signal. An example of the peaks returned by a spectral flux function can be seen in Figure~\ref{fig: spec-flux}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[scale=0.25]{images/spectralflux.png}
+	\caption{(Image Source: \cite{badlogic})}
+	\label{fig: spec-flux}
+\end{figure}
+
+The onsets detected are then selected by a peak-picking algorithm which finds local maxima within the detection function. The tempo induction algorithm is then used to compute clusters of inter-onset intervals (IOI) by using the calculated onset times. Each cluster represents a hypothetical tempo, in seconds per beat \cite{dixon1}. The clustering algorithm works by assigning an IOI to a cluster if its difference from the cluster is less than 25ms. The cluster information is then combined by recognising the approximate integer relationships between clusters. An example of this can be seen in Figure~\ref{fig: br-clusters} where cluster C2 is twice as long as C1 and C4 is twice that of C2. This information along with the number of IOIs within a cluster is then used to weight each cluster which is then returned as a ranked list of tempo hypotheses \cite{dixon4}.
 
 \begin{figure}[ht]
 	\centering
@@ -942,6 +976,8 @@ B. S. Everitt and A. Skrondal
 \textit{https://products.office.com/en-gb/excel}
 \bibitem{mongo}
 \textit{https://www.mongodb.com/}
+\bibitem{badlogic}
+\textit{http://www.badlogicgames.com/wordpress/?p=161}
 \end{thebibliography}
 
 \newpage

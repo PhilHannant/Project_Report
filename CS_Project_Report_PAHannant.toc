@@ -3,44 +3,44 @@
 \contentsline {subsection}{\numberline {1.1}Drumming Training Tools Background}{5}
 \contentsline {subsection}{\numberline {1.2}Drum Musical Theory}{7}
 \contentsline {subsubsection}{\numberline {1.2.1}Notation}{7}
-\contentsline {subsubsection}{\numberline {1.2.2}Notes}{7}
+\contentsline {subsubsection}{\numberline {1.2.2}Notes}{8}
 \contentsline {subsubsection}{\numberline {1.2.3}Time Signatures}{8}
-\contentsline {subsubsection}{\numberline {1.2.4}Playing Basics}{8}
-\contentsline {subsection}{\numberline {1.3}Beat Detection Background}{8}
-\contentsline {subsection}{\numberline {1.4}Project Aims}{9}
-\contentsline {section}{\numberline {2}RTT\_Analyser Beat Detection Algorithms}{10}
-\contentsline {subsection}{\numberline {2.1}Beatroot}{10}
-\contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{12}
-\contentsline {subsection}{\numberline {2.3}Performance Worm}{13}
-\contentsline {section}{\numberline {3}Solution Design and Architecture}{14}
-\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{14}
-\contentsline {subsection}{\numberline {3.2}Akka Actors}{15}
-\contentsline {subsubsection}{\numberline {3.2.1}The Actors}{16}
-\contentsline {subsection}{\numberline {3.3}Design Pattern}{16}
-\contentsline {section}{\numberline {4}Implementation}{17}
-\contentsline {subsection}{\numberline {4.1}The Actor System}{18}
-\contentsline {subsection}{\numberline {4.2}Live Audio Capture}{20}
-\contentsline {subsection}{\numberline {4.3}DWT Beat Detection Implementation}{21}
-\contentsline {subsection}{\numberline {4.4}Tempo, Analyser and Stats}{21}
-\contentsline {subsection}{\numberline {4.5}JSON Parsing}{21}
-\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{22}
-\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{24}
-\contentsline {section}{\numberline {5}Software Testing}{24}
-\contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{26}
-\contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{26}
-\contentsline {subsection}{\numberline {6.2}Beat Detection Testing}{27}
-\contentsline {section}{\numberline {7}Results}{29}
-\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{29}
-\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{31}
-\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{31}
-\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{34}
-\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{36}
-\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{36}
-\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{37}
-\contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{40}
-\contentsline {subsection}{\numberline {7.9}Analysis}{40}
-\contentsline {section}{\numberline {8}Evaluation and Discussion}{41}
-\contentsline {subsection}{\numberline {8.1}Project Successes and Challenges}{41}
-\contentsline {subsection}{\numberline {8.2}Future Work}{41}
-\contentsline {section}{References}{43}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{46}
+\contentsline {subsubsection}{\numberline {1.2.4}Playing Basics}{9}
+\contentsline {subsection}{\numberline {1.3}Beat Detection Background}{9}
+\contentsline {subsection}{\numberline {1.4}Project Aims}{10}
+\contentsline {section}{\numberline {2}RTT\_Analyser Beat Detection Algorithms}{11}
+\contentsline {subsection}{\numberline {2.1}Beatroot}{11}
+\contentsline {subsection}{\numberline {2.2}Discrete Wavelet Transform and Beat Detection Method}{14}
+\contentsline {subsection}{\numberline {2.3}Performance Worm}{16}
+\contentsline {section}{\numberline {3}Solution Design and Architecture}{16}
+\contentsline {subsection}{\numberline {3.1}Live Audio Processing}{17}
+\contentsline {subsection}{\numberline {3.2}Akka Actors}{18}
+\contentsline {subsubsection}{\numberline {3.2.1}The Actors}{19}
+\contentsline {subsection}{\numberline {3.3}Design Pattern}{20}
+\contentsline {section}{\numberline {4}Implementation}{21}
+\contentsline {subsection}{\numberline {4.1}The Actor System}{21}
+\contentsline {subsection}{\numberline {4.2}Live Audio Capture}{24}
+\contentsline {subsection}{\numberline {4.3}DWT Beat Detection Implementation}{25}
+\contentsline {subsection}{\numberline {4.4}Tempo, Analyser and Stats}{25}
+\contentsline {subsection}{\numberline {4.5}JSON Parsing}{26}
+\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{26}
+\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{27}
+\contentsline {section}{\numberline {5}Software Testing}{27}
+\contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{28}
+\contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{28}
+\contentsline {subsection}{\numberline {6.2}Beat Detection Testing}{29}
+\contentsline {section}{\numberline {7}Results}{35}
+\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{35}
+\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{36}
+\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{38}
+\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{38}
+\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{44}
+\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{47}
+\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{47}
+\contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{48}
+\contentsline {subsection}{\numberline {7.9}Analysis}{48}
+\contentsline {section}{\numberline {8}Evaluation and Discussion}{49}
+\contentsline {subsection}{\numberline {8.1}Project Successes and Challenges}{49}
+\contentsline {subsection}{\numberline {8.2}Future Work}{50}
+\contentsline {section}{References}{51}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{55}
