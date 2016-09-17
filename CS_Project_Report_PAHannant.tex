@@ -1,7 +1,7 @@
 \documentclass[a4paper, 11pt]{article}
 \setlength{\topmargin}{0.0in}
-\setlength{\textheight}{8.5in}
-\setlength{\oddsidemargin}{.1in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{.2in}
 \setlength{\textwidth}{6in}
 \usepackage{parskip}
 \usepackage{xkeyval}
@@ -796,10 +796,26 @@ Unsurprisingly, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method perform
 The corrected results show that there is a clear distinction between the accuracy of the three methods. With the DWT method exhibiting the most potential followed by the Beatroot system and then the PW. The effectiveness of the low-pass filter is hard to ascertain from these results alone. However, based on the five percent increase to the overall tempo accuracy, it can be said that the PW benefited the most from the inclusion of the filter.
 
 \subsection{Filter/Non-Filter Comparison}
-In order to ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser. It was necessary to formulate the following null hypothesis:\footnote{Described as a ‘no difference’ hypothesis to be tested by a significance test\cite{cambdic} and is assumed to be true until statistical evidence suggest otherwise} When accessing the accuracy tempo results produced by the RTT\_Analyser there will be no significant difference in the accuracy between when a low-pass filter was used or not.
+To ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser, the number of uncorrected tempo records within one bpm were collated for the sample sets with and without a filter. The number of records which fell within this accuracy margin and the percentage of the total number of tempo records can be seen in Figure~\ref{fig: allFilAcc}. 
 
-The probability of the observed data (or data showing a more extreme departure from the null
-hypothesis) when the null hypothesis is true. 
+\begin{figure}[htbp]
+\centering
+\vspace{-1in}
+\includegraphics[scale=0.3]{images/filterAcc.png}
+\caption{Filter/No Filter Accuracy Comparison, split by style and sample set}
+\label{fig: allFilAcc}
+\end{figure}
+
+The results show a slightly higher level of accuracy is provided for the sample set which used a low-pass filter but it is very marginal. The overall comparison of the total number of records can be seen in Figure~\ref{fig: overFilAcc}, which further highlights the slight increase in accuracy offered by the introduction of a low-pass filter. 
+
+\begin{figure}[htbp]
+\centering
+\vspace{-1in}
+\includegraphics[scale=0.3]{images/OverFilAc.jpg}
+\caption{Filter/No Filter Accuracy Comparison of total records}
+\label{fig: overFilAcc}
+\end{figure}
+
 
 \subsection{Analysis}
 the PW may be less accurate when processing samples played with a swing style.
