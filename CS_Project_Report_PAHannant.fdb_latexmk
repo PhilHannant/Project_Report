@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1474066656 "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.tex" "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.pdf" "CS_Project_Report_PAHannant" 1474066658
-  "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux" 1474066658 15144 7e569a0056dfeee68cd3328a56c2776e ""
-  "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.tex" 1474066652 89977 33133bea4ae09ba286db68a6ab5466d9 ""
+["pdflatex"] 1474071404 "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.tex" "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.pdf" "CS_Project_Report_PAHannant" 1474071406
+  "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.aux" 1474071406 15362 7aa727296c616abb72ba66826826d7fb ""
+  "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.tex" 1474071400 90651 3104f6a2e60a777dd818862b6006f473 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -108,9 +108,9 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1457264687 3849858 7e29a5a5da7f121efe62c50b21a1f5dd ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "CS_Project_Report_PAHannant.aux" 1474066658 15144 7e569a0056dfeee68cd3328a56c2776e ""
-  "CS_Project_Report_PAHannant.tex" 1474066652 89977 33133bea4ae09ba286db68a6ab5466d9 ""
-  "CS_Project_Report_PAHannant.toc" 1474066658 3193 6a33b8d3838b70ccd889a77a996d5438 ""
+  "CS_Project_Report_PAHannant.aux" 1474071406 15362 7aa727296c616abb72ba66826826d7fb ""
+  "CS_Project_Report_PAHannant.tex" 1474071400 90651 3104f6a2e60a777dd818862b6006f473 ""
+  "CS_Project_Report_PAHannant.toc" 1474071406 3193 5b399df74e8cb1d3238d6cb75dc1cd9e ""
   "images/FWR2.jpg" 1460404182 25673 a988f48e42151c7e74e5e2888c42895f ""
   "images/LiveAudioActor.jpg" 1473111451 356830 786d5083f6e8456e3a4d23b8097ce0ea ""
   "images/LowDoubling.jpg" 1473618014 1177272 27824d1a39852e36fcf5cdd4e7574127 ""
@@ -143,6 +143,7 @@
   "images/reacManif.jpg" 1472854855 120238 cc278bd350845650318945195bf682ca ""
   "images/rectangWin.jpg" 1473085598 18507 cbcd04421f518d1bc9e90bf18ac40c16 ""
   "images/rtt.jpg" 1473201351 307834 4d7a872cb254c03ad6cbc03ab5796033 ""
+  "images/spectralflux.png" 1474067554 4846 01425132fdeee39d156f09493eff9de2 ""
   "images/staff.jpg" 1473072847 88245 f18a86f1a9caa0bb2e04de49a115c9b7 ""
   "images/startCap.jpg" 1473110578 230576 cd3caf700870e16947394bf9854c824f ""
   "images/statscalc.jpg" 1473200945 833346 4317165375a9d8816048c8098e9800f4 ""
@@ -154,7 +155,7 @@
   (generated)
   "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.pdf"
   "CS_Project_Report_PAHannant.log"
-  "CS_Project_Report_PAHannant.aux"
+  "CS_Project_Report_PAHannant.toc"
   "/Users/philhannant/Documents/Project_Report/CS_Project_Report_PAHannant.log"
   "CS_Project_Report_PAHannant.pdf"
-  "CS_Project_Report_PAHannant.toc"
+  "CS_Project_Report_PAHannant.aux"

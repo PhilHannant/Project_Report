@@ -268,7 +268,7 @@ The onsets detected are then selected by a peak-picking algorithm which finds lo
 	\label{fig: br-clusters}
 \end{figure}
 
-The multiple agent architecture of Beatroot's beat tracking subsystem is then employed to find the sequences of events that closest match the original tempo hypotheses, each of these sequences is then rated and the most likely set of beat times is determined. Each of the agents is initialised with a tempo or beat rate hypothesis and an onset time. Further beats are then predicted by the agent based on these parameters. Any onsets corresponding with the predicted beat times are taken as a beat time, those falling outside are not considered to be a beat time, although the possibility that the onset is not on the beat is considered. The agents then rate themselves based on an evaluation function which looks at how evenly spaced the beat times are, the number of predicted beats which relate to actual events, and the salience\footnote{The salience is a measure of the note duration, density, pitch and density \cite{dixon1}, which is calculated from the spectral flux of the onset \cite{dixon4}} of the matched onsets. The agent with the highest score is then returned as the sequence of beats corresponding to the processed audio \cite{dixon4}, which is then used to determine the overall tempo of the audio by using the ``inter-beat intervals, measured in beats per second'' \cite{dixon1} to calculate beats per minute (bpm) of the audio.
+The multiple agent architecture of Beatroot's beat tracking subsystem is then employed to find the sequences of events that closest match the original tempo hypotheses, each of these sequences are rated and the most likely set of beat times is determined. Each of the agents are initialised with a tempo or beat rate hypothesis and an onset time. Further beats are then predicted by the agent based on these parameters. Any onsets corresponding with the predicted beat times are taken as a beat time, those falling outside are not considered to be a beat time, although the possibility that the onset is not on the beat is considered. The agents then rate themselves based on how evenly spaced the beat times are, the number of predicted beats which relate to actual events, and the salience\footnote{The salience is a measure of the note duration, density, pitch and density \cite{dixon1}, which is calculated from the spectral flux of the onset \cite{dixon4}} of the matched onsets. The agent with the highest score is then returned as the sequence of beats corresponding to the processed audio \cite{dixon4}, which is then used to determine the overall tempo of the audio by using the ``inter-beat intervals, measured in beats per second'' \cite{dixon1} to calculate beats per minute (bpm) of the audio.
 
 
 \subsection{Discrete Wavelet Transform and Beat Detection Method}
@@ -307,14 +307,19 @@ The final beat detection algorithm employed in the RTT\_Analyser is the Performa
 
 First the PW processes the raw audio which can either be extracted from a static recording or directly from a live input with a smoothing filter\footnote{Process which attempts to reduce any noise found within a signal. A smoothing filter does this by reducing any points in the signal that are higher than adjacent points and reducing those points that are lower than adjacent point \cite{pragmaticSig}} in order to obtain the RMS amplitude\footnote{RMS stands for root mean square and is the process of squaring all of the amplitude values, then taking the average (mean) of the squared values, and then calculating the square root of the average value \cite{rms}.} of the signal taken from a 40ms window. The note onsets are then calculated by the event detection module that finds the slope of the smoothed amplitude and then calculates the set of local peaks which are taken as the note onset times \cite{dixonGoeblWidmer}. 
 
-The signal is then processed by the multiple tempo tracking subsystem which uses a similar approach to the Beatroot system. The time intervals (inter-onset intervals or IOIs) of event pairs are first calculated. A clustering algorithm (Figure~\ref{fig: clusterAl}) is then applied in order to determine the significant clusters of IOIs, which are subsequently assumed to be the musical units held within the signal. As in the Beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. While running, the clustering algorithm keeps 5 seconds of onset times within memory and begins processing by determining all IOIs between the onsets in memory. The tempo inducer then exploits a property of most Western music where time intervals are related by small approximate integer ratios. As the times held by the clusters can be considered to represent related notes, e.g. quarter and eighth notes. The tempo inducer then adjusts cluster times and weightings according to the information held by the sets of related clusters. Two clusters are considered to be related if the ratio of their time intervals is close to an integer. The highest weighted clusters and their respective tempo hypothesis is then returned as the tempo output \cite{dixonGoeblWidmer}.
+The signal is then processed by the multiple tempo tracking subsystem which uses a similar approach to the Beatroot system. A clustering algorithm (Figure~\ref{fig: clusterAl}), first calculates the time intervals (inter-onset intervals or IOIs) between the pairs of onsets, which it holds in memory (approximately five seconds of audio). The intervals are then weighted by the mean of the amplitudes and each interval's IOIs are clustered using the best-first algorithm (shown in Figure~\ref{fig: clusterAl}). The significant clusters of IOIs determined by the best-first algorithm are subsequently assumed to be the musical units held within the signal. 
+
+As in the Beatroot system, these clusters are then used as the bases of the tempo hypotheses produced by the tempo tracking subsystem. The tempo inducer then exploits a property of most Western music where time intervals are related by small approximate integer ratios. As the times held by the clusters can be considered to represent related notes, e.g. quarter and eighth notes. The tempo inducer then adjusts cluster times and weightings according to the information held by the sets of related clusters. Two clusters are considered to be related if the ratio of their time intervals is close to an integer. The highest weighted clusters and their respective tempo hypothesis are then returned as the tempo output \cite{dixonGoeblWidmer}.
 
 
 \begin{figure}
-	\hspace{10mm} For each new onset\\
+	\hspace{10mm} \textbf{Inter-onset interval calculation}\\
+	\hspace*{10mm} For each new onset\\
 	\hspace*{20mm} For IOI times $\mathit{t}$ from 100ms to 2500ms in 10ms steps\\
 	\hspace*{30mm} Find pairs of onsets which are $\mathit{t}$ apart\\
 	\hspace*{30mm} Sum the mean amplitude of these onset pairs\\
+	\hspace*{20mm} \\
+	\hspace*{20mm} \textbf{Best-first algorithm}\\
 	\hspace*{20mm} Loop until all IOI time points are used\\
 	\hspace*{30mm} For times $\mathit{t}$ from 100ms to 2500ms in 10ms steps\\
 	\hspace*{40mm} Calculate window size $\mathit{s}$ as function of $\mathit{t}$\\
@@ -322,6 +327,8 @@ The signal is then processed by the multiple tempo tracking subsystem which uses
 	\hspace*{40mm} Store $\mathit{t}$ which gives maximum average amplitude\\
 	\hspace*{30mm} Create a cluster containing the stored maximum window\\
 	\hspace*{30mm} Mark the IOIs in the cluster as used\\
+	\hspace*{20mm} \\
+	\hspace*{20mm} \textbf{Cluster Combining}\\
 	\hspace*{20mm} For each cluster\\
 	\hspace*{30mm} Find related clusters (multiples or divisors)\\
 	\hspace*{30mm} Combine related clusters using weighted average\\
