@@ -60,7 +60,7 @@ This report is substantially the result of my own work, expressed in my own word
 \textbf{DFT} & Discrete Fourier Transform\\
 \textbf{DWT} & Discrete Wavelet Transform\\
 \textbf{JSON} & JavaScript Object Notification\\
-\textbf{PW} & Performance Worm
+\textbf{PW} & Performance Worm\\
 \textbf{SBT} & Simple Build Tool\\
 \textbf{STFT} & Short Time Fourier Transform\\
 \textbf{TDD} & Test Driven Development\\
@@ -560,11 +560,11 @@ On completion within both modes the results are stored within a JSON file automa
 \end{figure}
 
 \maketitle{}\section{Software Testing}
-During the development of the RTT\_Analyser, Test Driven Development (TDD) was employed where possible. TDD is a development process which employs test-first development and refactoring. Test-first development involves writing a test before just enough production code is written to pass that test \cite{tdd1}. Refactoring is a process of making small changes to code, is used to improve the design of the code, thus making it easier to understand and modify \cite{tdd2}. \par
+During the development of the RTT\_Analyser, Test Driven Development (TDD) was employed where possible. TDD is a development process that uses test-first development and refactoring. Test-first development involves writing a test before just enough production code is written to pass that test \cite{tdd1}. Refactoring is the process of making small changes to code and is used to improve the design of the code. Thus, making it easier to understand and modify \cite{tdd2}. \par
 
-The tests were written using the ScalaTest framework, which is one of the most dominant testing frameworks currently available. ScalaTest is designed with the intention of providing a test framework that makes testing more concise and uses the Scala language in a way to ensure testing is easy and fun \cite{testingScala}.
+The tests were written using the ScalaTest framework, which is one of the most dominant Scala testing frameworks currently available. ScalaTest is designed with the intention of providing a test framework that makes testing more concise and uses the Scala language in a way to ensure testing is easy and fun \cite{testingScala}.
 
-TDD was used at any stage of the development process where a piece of code with an expected behaviour was being implemented, it was not used for all classes as when dealing with live audio it was not possible to know the exact data that would be recorded due to the presence of background noise. Although, where the requirement was simply to return a value of a certain type, basic TDD tests were written. The classes that were ideally suited to TDD and were developed completely using it were the Tempo, Analyser implementations, StatsCalculator, JSONParser and HTMLWriter. \par
+TDD was used at any stage of the development process where a piece of code with an expected behaviour was being implemented. It was not used for all classes, as when dealing with live audio it was not possible to know the exact data that would be recorded due to the presence of background noise. Although, where the requirement was simply to return a value of a certain type, basic TDD tests were written. The classes that were ideally suited to TDD and were developed completely using it were the Tempo, Analyser implementations, StatsCalculator, JSONParser and HTMLWriter. \par
 
 A good example of TDD being applied during the development of the RTT\_Analyser was during the creation of the StatsCalculator. Designed to carry out average and median calculations on the stored Tempo objects held within the Analyser implementations enabled TDD to be employed successfully.
 
@@ -654,7 +654,7 @@ SW-SH & Snare drum and hi-hat cymbal & Swing\\
 \maketitle \section{Results}
 The twenty eight sample beats processed by the RTT\_Analyser yielded one hundred and thirty seven thousand, one hundred and eighty (137,180) separate tempo records. A breakdown of the number of tempo records recorded per beat detection algorithm can be seen in Figure~\ref{fig: totrec}. The separate JSON files were then consolidated into one file, converted into a CSV file and then connected to the data visualisation software package, Tableau\cite{tableau}.
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.3]{totRec.jpg}
 \caption{Total number of tempo values recorded by the RTT\_Analyser}
@@ -1034,7 +1034,7 @@ B. S. Everitt and A. Skrondal
 \bibitem{badlogic}
 \textit{http://www.badlogicgames.com/wordpress/?p=161}
 \bibitem{audioFormat}
-\textit{http://www.jsresources.org/faq\_audio.html#frame\_size}
+\textit{http://www.jsresources.org/faq\_audio.html\#frame\_size}
 \end{thebibliography}
 
 \newpage
