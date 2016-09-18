@@ -43,5 +43,5 @@
 \contentsline {subsection}{\numberline {8.2}Project Challenges}{52}
 \contentsline {subsection}{\numberline {8.3}Future Work}{53}
 \contentsline {section}{References}{55}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{59}
-\contentsline {section}{\numberline {B}Project Programming Code}{63}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{58}
+\contentsline {section}{\numberline {B}Project Programming Code}{62}
