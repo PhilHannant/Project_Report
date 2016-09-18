@@ -28,13 +28,13 @@
 \contentsline {section}{\numberline {5}Software Testing}{29}
 \contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{30}
 \contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{30}
-\contentsline {subsection}{\numberline {6.2}Beat Detection Testing}{30}
+\contentsline {subsection}{\numberline {6.2}Real Time Tempo Tests}{31}
 \contentsline {section}{\numberline {7}Results}{33}
 \contentsline {subsection}{\numberline {7.1}Overall Average Difference}{33}
 \contentsline {subsection}{\numberline {7.2}Straight Sample Results}{34}
 \contentsline {subsection}{\numberline {7.3}Swing Sample Results}{37}
 \contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{37}
-\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{37}
+\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{43}
 \contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{43}
 \contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{43}
 \contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{47}

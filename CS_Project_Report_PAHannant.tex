@@ -572,20 +572,23 @@ When it was not possible to use TDD, particularly during the initial set-up and 
 
 \maketitle{}\section{RTT\_Analyser Beat Detection Testing}
 \subsection{Drum Beat Sample Set}
-Once the RTT\_Analyser was working with the initial test sample drum beats the full testing cycle could begin. In order to carry out this testing a set of drum beats were written using the Apple sequencer program, GarageBand \cite{garage}. The writing of the drum beats took a slight deviation from the project proposal in that rather than create multiple full drum beats in a varying number of styles, the drum beats were instead tested in layers. For example, a simple four four (4/4) bass drum beat with a back beat and the time element being played on the hi-hat cymbal would account for three samples. The reason for this decision stemmed from how a cymbal behaves when it is played at high amplitudes (loudness), the vibrations it create become chaotic and its clearly identifiable signals disappear and it effectively becomes noise \cite{soundonsound}. Therefore in order to compare the drum sample with cymbals a baseline was required. Additionally, this change to the project proposal was considered to be able to provide a much more diverse data set which would hopefully help the understanding of how the different elements of a drum kit, not just cymbals, can affect the accuracy of the beat detection algorithms being tested by the RTT\_Analyser.\par
+Once the software testing of the RTT\_Analyser was complete, the full testing process could begin. The sample drum beats were written using the Apple sequencer program, GarageBand \cite{garage}. The writing of the drum beats took a slight deviation from the project proposal, rather than create multiple full drum beats in a varying number of styles, the drum beats were instead tested in layers. For example, a simple four four (4/4) bass drum beat with a back beat and the time element being played on the hi-hat cymbal would account for four samples. This decision stemmed from how a cymbal behaves when it is played at high amplitudes (loudness), the vibrations it create become chaotic and its clearly identifiable signals disappear, effectively becoming noise \cite{soundonsound}. Therefore, to compare the drum samples with cymbals a baseline was required. This change was also considered to help provide a much more diverse data set, hopefully helping the understanding of how the different elements of a drum kit, not just cymbals, can affect the accuracy of the beat detection algorithms being tested by the RTT\_Analyser.\par
 
-In total number twenty eight drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
+Additonally, three Garageband stock samples were added to the sample set. These samples were included in an attempt to provide insight as to whether the beat detection algorithms are able to work efficiently, even when drum beat being tested is fairly complex.
 
-\subsection{Beat Detection Testing}
-The full beat detection tests were carried out in an environment with as little background noise as possible, where the drum beats were played on an external speaker set to the same volume for all tests. Each drum beat was tested for thirty seconds over the tempo range of 60-160 bpm, the tempo was increased in five bpm increments. Resulting in twenty one tests for being carried out for each drum beat and producing a sample set consisting of five hundred and eighty eight (588) results files.
+In total, twenty eight drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
 
-During the testing it became apparent that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible cause for this was considered to be aliasing, caused when it is not possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. To investigate if this was the root cause and as this behaviour was being displayed by all three of the beat detection algorithms. It was decided that all of the drum samples would be reprocessed through the RTT\_Analyser but this time a low-pass filter would applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection.
+\subsection{Real Time Tempo Tests}
+The real time tempo detection tests were carried out in an environment with as little background noise as possible. The drum beats were played on an external speaker set to the same volume for all tests. Each drum beat was tested for thirty seconds over the tempo range of 60-160 bpm, where the tempo was increased in five bpm increments. Resulting in twenty one tests being carried out for each drum beat, producing a sample set consisting of 588 results files.
+
+During the real time tempo tests it became apparent that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible explanantion for this was considered to be aliasing. Resulting in it not being possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. As this behaviour was being displayed by all three of the beat detection algorithms. It was decided that all of the drum samples would be reprocessed through the RTT\_Analyser. However, this time a low-pass filter would applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection and the cutoff frequency was set to 100 Hz.
 \clearpage
 
 \begin{table}[htbp]
+\vspace{-1in}
 \caption{List of Drum Beats Used in RTT\_Analyser Tests} 
 \centering
-\begin{tabular}{|p{3cm}|p{5cm}|l|}
+\begin{tabular}{|p{3cm}|p{4cm}|l|}
 \hline
 \textbf{Drum Beat Code} & \textbf{Elements} & \textbf{Style} \\ [0.5ex]
 \hline 
@@ -652,7 +655,7 @@ SW-SH & Snare drum and hi-hat cymbal & Swing\\
 \end{table}
 \clearpage
 \maketitle \section{Results}
-The twenty eight sample beats processed by the RTT\_Analyser yielded one hundred and thirty seven thousand, one hundred and eighty (137,180) separate tempo records. A breakdown of the number of tempo records recorded per beat detection algorithm can be seen in Figure~\ref{fig: totrec}. The separate JSON files were then consolidated into one file, converted into a CSV file and then connected to the data visualisation software package, Tableau\cite{tableau}.
+The twenty eight sample beats processed by the RTT\_Analyser yielded 137,180 separate tempo records. A breakdown of the number of tempo records recorded per beat detection algorithm can be seen in Figure~\ref{fig: totrec}. The separate JSON files were then consolidated into one file, converted into a CSV file and connected to the data visualisation software package, Tableau\cite{tableau}.
 
 \begin{figure}[htbp]
 \centering
@@ -662,7 +665,7 @@ The twenty eight sample beats processed by the RTT\_Analyser yielded one hundred
 \end{figure}
 
 \subsection{Overall Average Difference}
-The difference between the expected tempo and the calculated tempo was determined by subtracting the calculated tempo from the expected tempo(~\ref{eq: diff}). If the difference is negative then the calculated tempo was greater than expected and less than if it is positive.
+The difference between the expected tempo and the calculated tempo was determined by subtracting the calculated tempo from the expected tempo (~\ref{eq: diff}). If the difference is negative then the calculated tempo was greater than expected and if a positive difference was returned the tempo was less than the expected value.
 
 \begin{equation}\label{eq: diff}
 \begin{split}
@@ -670,7 +673,7 @@ difference& =expected tempo - calculated tempo\\
 \end{split}
 \end{equation}
 
-The average difference for each of the three beat detection algorithms, split by style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo results returned were double that of the expected bpm value, possibly due to aliasing. A solution to the aliasing issue was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results, those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
+The average difference for each of the three beat detection algorithms, split by style can be seen in Figure~\ref{fig: aveDiff}. The best performing beat detection method can be seen to be the DWT based algorithm by Tzanetakis \textit{et al}'s \cite{tzane1}, for the samples without a filter in a Swing style. As mentioned previously, during the testing process some of the tempo results returned were double that of the expected bpm value, possibly due to aliasing. A solution to the aliasing issue, hereafter referred to as doubling, was to add a low-pass filter and looking at the results on the whole it can be considered to have worked to a certain degree. For six out of the nine sets of results, those samples processed with a low-pass filter produced a lower average difference than those without a filter. Although, the margin of error between the expected tempo and the calculated tempo are still suitably large.\par
 
 \begin{figure}[htbp]
 \centering
@@ -679,7 +682,7 @@ The average difference for each of the three beat detection algorithms, split by
 \label{fig: aveDiff}
 \end{figure}
 
-A flag was applied to the results set to highlight any tempo result approximately double the expected value. A record was flagged if its calculated tempo divided by the expected tempo returned a result greater or equal to 1.95(~\ref{eq: flag}). The flagged results were then filtered out of the data set and the updated results can be see in Figure~\ref{fig: upAveDiff}. With the flagged results removed the average difference value for all of the beat detection algorithms was greatly reduced except for the swing samples processed by the PW. 
+A flag was then applied to the results set to highlight any tempo result approximately double the expected value. A record was flagged, if the calculated tempo when divided by the expected tempo returned a result greater or equal to 1.95 (~\ref{eq: flag}). The flagged results were then filtered out of the data set and the updated results can be see in Figure~\ref{fig: upAveDiff}. With the flagged results removed the average difference value for all of the beat detection algorithms was greatly reduced except for the swing samples processed by the PW. 
 
 \begin{equation}\label{eq: flag}
 \begin{split}
@@ -694,7 +697,7 @@ Calculated Tempo/Expected Tempo >= 1.95\\
 \label{fig: upAveDiff}
 \end{figure}
 
-Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results which when divided by two were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (see in Figure~\ref{fig: corAveDiff}), it is clear that overall Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also affect the accuracy of the calculated tempos. With the swing samples producing the least accurate results for all three algorithms.
+Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results that when divided by two, were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (seen in Figure~\ref{fig: corAveDiff}), it is clear that overall the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also affect the accuracy of the calculated tempos. With the swing samples producing the least accurate results for all three algorithms.
 
 
 \begin{figure}[htbp]
@@ -723,16 +726,17 @@ Rather than just removing these results altogether, the next step was to attempt
 % Unlike the straight single drum data set the results produced for the swing samples were a lot more varied. The Tzanetakis \textit{et al}'s \cite{tzane1} DWT method was again the stand out performer. However, the Beatroot and PW methods returned average difference values significantly higher than those recorded for the straight single drum sample set (see Figure). Even when the corrected difference values were applied (Figure). Suggesting, these algorithms struggled with the more complex time patterns found in the swing sample set.
 
 \subsection{Straight Sample Results}
-The results recorded for the straight sample set clearly show that doubling is an issue. Demonstrated by all but one of the results returned is a negative value (Figure~\ref{fig: stradAveDiff}). A large majority of the average difference values are also significantly large (greater than five). It is the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method which exhibits the poorest level of accuracy within this data set. Regularly producing average difference values of greater than twenty.\par
+The results recorded for the straight sample set clearly show that doubling is an issue, demonstrated by all but one of the results returning a negative value (Figure~\ref{fig: stradAveDiff}). A large majority of the average difference values are also significantly large (greater than five). It is the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method which exhibits the poorest level of accuracy within this data set. Regularly producing average difference values of greater than twenty.\par
 
 \begin{figure}[htbp]
+\vspace{-1in}
 \centering
 \includegraphics[scale=0.38]{images/SSSAD.jpg}
 \caption{Straight sample set average difference results}
 \label{fig: stradAveDiff}
 \end{figure}
 
-When the corrected difference values are applied to the data set the accuracy of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method increases significantly (Figure~\ref{fig: stradAveDiffCor}). Although, it does return its least accurate results for the samples consisting of a crash cymbal and the high and low tom-toms. The affect of the crash cymbal on the accuracy of the tempo recorded confirms the point mentioned previously. The low accuracy recorded by the DWT method for the HTLT2 sample set where the time element is played on the low tom-tom. Highlights the possibility that this method will not respond as well when there are not distinct frequencies playing each part of the drum beat. \par
+When the corrected difference values are applied to the data set the accuracy of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method increases significantly (Figure~\ref{fig: stradAveDiffCor}). Although, it does return its least accurate results for the samples consisting of a crash cymbal and the high and low tom-toms. The affect of the crash cymbal on the accuracy of the tempo recorded confirms the suspicion that loud cymbals will adversely affect the accuracy of the beat detection algorithms. The low accuracy recorded by the DWT method for the HTLT2 sample set where the time element is played on the low tom-tom. Suggesting, the possibility that this method will not respond as well when there are not distinct frequencies playing each part of the drum beat. \par
 
 \begin{figure}[htbp]
 \centering
@@ -744,7 +748,7 @@ When the corrected difference values are applied to the data set the accuracy of
 Also, within this data set the results produced for the single drum samples can be observed to actually have some of lowest levels of accuracy. This is improved once the corrected values are introduced, suggesting that the issue of doubling was particularly prevalent for these samples. 
 
 \subsection{Swing Sample Results}
-The doubling of calculated tempos was not as prevalent within the Swing sample set. Both the original (Figure~\ref{fig: swingAveDiff}) and the corrected (Figure~\ref{fig: swingAveDiffCor}) difference values were significantly high. Although, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method's accuracy is again improved by the updated difference values. However, the Beatroot and PW's performance remains very similar across both data sets.
+The doubling of calculated tempos was not as prevalent within the Swing sample set. Both the original (Figure~\ref{fig: swingAveDiff}) and the corrected (Figure~\ref{fig: swingAveDiffCor}) difference values were significantly high. Although, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method's accuracy is again improved by the updated difference values, the Beatroot and PW's performance remains very similar across both data sets.
 
 \begin{figure}[htbp]
 \centering
@@ -760,7 +764,7 @@ The doubling of calculated tempos was not as prevalent within the Swing sample s
 \label{fig: swingAveDiffCor}
 \end{figure}
 
-The single drum elements within this data set were expected to cause some problems, due to their use of triplets. This can be seen for both th R and H sample sets within Figure~\ref{fig: swingAveDiff}. Once the corrected values are applied the DWT method does return a higher level of accuracy. However, the accuracy of both Beatroot and the PW are relatively unaffected by the introduction of the corrected values.
+The single drum elements within this data set were expected to cause some problems, due to their use of triplets. This can be seen for both the R and H sample sets within Figure~\ref{fig: swingAveDiff}. Once the corrected values are applied the DWT method does return a higher level of accuracy. However, the accuracy of both Beatroot and the PW are relatively unaffected by the introduction of the corrected values.
 
 \subsection{Off-Beat Sample Results}
 
@@ -792,7 +796,7 @@ During the testing process it was noted that the result doubling seemed to be pr
 \label{fig: lowTemCom}
 \end{sidewaysfigure}
 
-The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of the beat detection algorithms produce significantly less doubling when processing drum beats with higher tempos. If the style grouping is introduced (see Figure~\ref{fig: lowTemComStyle}, it is apparent that the doubling is most prevalent with the straight sample set. Out of the three algorithms, the PW returns the highest count of doubled results.
+The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of the beat detection algorithms produce significantly less doubling when processing drum beats with higher tempos. If the style grouping is introduced (see Figure~\ref{fig: lowTemComStyle}, it is apparent that the doubling is most prevalent with the straight sample set. Out of the three algorithms, the PW returns the highest count of doubled results. Although, this is to be expected as the PW returns a larger number of tempo values per sample.
 
 \begin{sidewaysfigure}[htbp]
 \centering
@@ -828,7 +832,7 @@ Unsurprisingly, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method perform
 The corrected results show that there is a clear distinction between the accuracy of the three methods. With the DWT method exhibiting the most potential followed by the Beatroot system and then the PW. The effectiveness of the low-pass filter is hard to ascertain from these results alone. However, based on the five percent increase to the overall tempo accuracy, it can be said that the PW benefited the most from the inclusion of the filter.
 
 \subsection{Filter/Non-Filter Comparison}
-To ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser, the number of uncorrected tempo records within one bpm were collated for the sample sets with and without a filter. The number of records which fell within this accuracy margin and the percentage of the total number of tempo records can be seen in Figure~\ref{fig: allFilAcc}. 
+To ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser, the number of uncorrected tempo records within one bpm were collated for the sample sets with and without a filter. The number of records that fell within this accuracy margin and the percentage of the total number of tempo records can be seen in Figure~\ref{fig: allFilAcc}. 
 
 \begin{figure}[htbp]
 \centering

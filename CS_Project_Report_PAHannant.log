@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  18 SEP 2016 01:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.6)  18 SEP 2016 11:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -562,45 +562,65 @@ Package pdftex.def Info: images/htmlResults.jpg used on input line 557.
 (pdftex.def)             Requested size: 302.33183pt x 280.04842pt.
 [29 </Users/philhannant/Documents/Project_Report/images/htmlResults.jpg>] [30] 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 590--590
+Underfull \hbox (badness 10000) in paragraph at lines 593--593
 []\OT1/cmr/bx/n/10.95 Drum Beat
  []
 
 
-Underfull \hbox (badness 2088) in paragraph at lines 618--618
-\OT1/cmr/m/n/10.95 hat cym-bal, high tom-tom
+Underfull \hbox (badness 1253) in paragraph at lines 605--605
+[]\OT1/cmr/m/n/10.95 Bass drum and snare
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 626--626
+Underfull \hbox (badness 1253) in paragraph at lines 607--607
+[]\OT1/cmr/m/n/10.95 Bass drum and snare
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--621
+[]\OT1/cmr/m/n/10.95 Bass drum, snare
+ []
+
+
+Underfull \hbox (badness 2608) in paragraph at lines 621--621
+\OT1/cmr/m/n/10.95 drum, hi-hat cym-bal,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 629--629
 []\OT1/cmr/m/n/10.95 OFF-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 630--630
+Underfull \hbox (badness 10000) in paragraph at lines 633--633
 []\OT1/cmr/m/n/10.95 OFF-
  []
 
 
-Overfull \hbox (60.78882pt too wide) in paragraph at lines 588--652
+Underfull \hbox (badness 1253) in paragraph at lines 645--645
+[]\OT1/cmr/m/n/10.95 Bass drum and snare
+ []
+
+
+Overfull \hbox (32.33606pt too wide) in paragraph at lines 591--655
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 119.21349pt on input line 652.
+LaTeX Warning: Float too large for page by 166.62416pt on input line 655.
 
 [32] <images/totRec.jpg, id=148, 594.22pt x 343.2825pt>
 File: images/totRec.jpg Graphic file (type jpg)
 <use images/totRec.jpg>
-Package pdftex.def Info: images/totRec.jpg used on input line 659.
+Package pdftex.def Info: images/totRec.jpg used on input line 662.
 (pdftex.def)             Requested size: 178.26736pt x 102.98553pt.
 <images/totAveDiff.jpg, id=149, 1812.7725pt x 989.6975pt>
 File: images/totAveDiff.jpg Graphic file (type jpg)
 <use images/totAveDiff.jpg>
-Package pdftex.def Info: images/totAveDiff.jpg used on input line 677.
+Package pdftex.def Info: images/totAveDiff.jpg used on input line 680.
 (pdftex.def)             Requested size: 453.19202pt x 247.42377pt.
 
-Overfull \hbox (19.57202pt too wide) in paragraph at lines 677--678
+Overfull \hbox (19.57202pt too wide) in paragraph at lines 680--681
  [][] 
  []
 
@@ -611,35 +631,32 @@ Overfull \hbox (19.57202pt too wide) in paragraph at lines 677--678
 eDiffFR.jpg, id=153, 1810.765pt x 967.615pt>
 File: images/totAveDiffFR.jpg Graphic file (type jpg)
 <use images/totAveDiffFR.jpg>
-Package pdftex.def Info: images/totAveDiffFR.jpg used on input line 692.
+Package pdftex.def Info: images/totAveDiffFR.jpg used on input line 695.
 (pdftex.def)             Requested size: 452.69014pt x 241.90315pt.
 
-Overfull \hbox (19.07014pt too wide) in paragraph at lines 692--693
+Overfull \hbox (19.07014pt too wide) in paragraph at lines 695--696
  [][] 
  []
 
 <images/totAveDiffCor.jpg, id=154, 1812.7725pt x 977.6525pt>
 File: images/totAveDiffCor.jpg Graphic file (type jpg)
 <use images/totAveDiffCor.jpg>
-Package pdftex.def Info: images/totAveDiffCor.jpg used on input line 702.
+Package pdftex.def Info: images/totAveDiffCor.jpg used on input line 705.
 (pdftex.def)             Requested size: 453.19202pt x 244.41252pt.
 
-Overfull \hbox (19.57202pt too wide) in paragraph at lines 702--703
+Overfull \hbox (19.57202pt too wide) in paragraph at lines 705--706
  [][] 
  []
 
 <images/SSSAD.jpg, id=155, 1244.65pt x 1759.57375pt>
 File: images/SSSAD.jpg Graphic file (type jpg)
 <use images/SSSAD.jpg>
-Package pdftex.def Info: images/SSSAD.jpg used on input line 730.
+Package pdftex.def Info: images/SSSAD.jpg used on input line 734.
 (pdftex.def)             Requested size: 472.97191pt x 668.64499pt.
 
-Overfull \hbox (39.35191pt too wide) in paragraph at lines 730--731
+Overfull \hbox (39.35191pt too wide) in paragraph at lines 734--735
  [][] 
  []
-
-
-LaTeX Warning: Float too large for page by 41.41505pt on input line 733.
 
 [34 </Users/philhannant/Documents/Project_Report/images/totAveDiff.jpg>] [35 </
 Users/philhannant/Documents/Project_Report/images/totAveDiffFR.jpg> </Users/phi
@@ -648,75 +665,75 @@ nnant/Documents/Project_Report/images/SSSAD.jpg>] <images/SSSADC.jpg, id=165, 1
 244.65pt x 1759.57375pt>
 File: images/SSSADC.jpg Graphic file (type jpg)
 <use images/SSSADC.jpg>
-Package pdftex.def Info: images/SSSADC.jpg used on input line 739.
+Package pdftex.def Info: images/SSSADC.jpg used on input line 743.
 (pdftex.def)             Requested size: 472.97191pt x 668.64499pt.
 
-Overfull \hbox (39.35191pt too wide) in paragraph at lines 739--740
+Overfull \hbox (39.35191pt too wide) in paragraph at lines 743--744
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 41.41505pt on input line 742.
+LaTeX Warning: Float too large for page by 41.41505pt on input line 746.
 
 <images/SwiSSAD.jpg, id=166, 954.56625pt x 1003.75pt>
 File: images/SwiSSAD.jpg Graphic file (type jpg)
 <use images/SwiSSAD.jpg>
-Package pdftex.def Info: images/SwiSSAD.jpg used on input line 751.
+Package pdftex.def Info: images/SwiSSAD.jpg used on input line 755.
 (pdftex.def)             Requested size: 429.55084pt x 451.68333pt.
 <images/SwiSSADC.jpg, id=167, 950.55125pt x 1008.76875pt>
 File: images/SwiSSADC.jpg Graphic file (type jpg)
 <use images/SwiSSADC.jpg>
-Package pdftex.def Info: images/SwiSSADC.jpg used on input line 758.
+Package pdftex.def Info: images/SwiSSADC.jpg used on input line 762.
 (pdftex.def)             Requested size: 427.74411pt x 453.94174pt.
 <images/OBSSAD.jpg, id=168, 1814.78pt x 1222.5675pt>
 File: images/OBSSAD.jpg Graphic file (type jpg)
 <use images/OBSSAD.jpg>
-Package pdftex.def Info: images/OBSSAD.jpg used on input line 771.
+Package pdftex.def Info: images/OBSSAD.jpg used on input line 775.
 (pdftex.def)             Requested size: 453.6939pt x 305.64113pt.
 
-Overfull \hbox (20.0739pt too wide) in paragraph at lines 771--772
+Overfull \hbox (20.0739pt too wide) in paragraph at lines 775--776
  [][] 
  []
 
 <images/OBSSADC.jpg, id=169, 1812.7725pt x 1236.62pt>
 File: images/OBSSADC.jpg Graphic file (type jpg)
 <use images/OBSSADC.jpg>
-Package pdftex.def Info: images/OBSSADC.jpg used on input line 780.
+Package pdftex.def Info: images/OBSSADC.jpg used on input line 784.
 (pdftex.def)             Requested size: 453.19202pt x 309.15424pt.
 
-Overfull \hbox (19.57202pt too wide) in paragraph at lines 780--781
+Overfull \hbox (19.57202pt too wide) in paragraph at lines 784--785
  [][] 
  []
 
-<images/LowDoubling.jpg, id=170, 2531.4575pt x 1702.36pt>
-File: images/LowDoubling.jpg Graphic file (type jpg)
-<use images/LowDoubling.jpg>
-Package pdftex.def Info: images/LowDoubling.jpg used on input line 790.
-(pdftex.def)             Requested size: 632.86284pt x 425.58896pt.
 [37] [38 </Users/philhannant/Documents/Project_Report/images/SSSADC.jpg>] [39 <
 /Users/philhannant/Documents/Project_Report/images/SwiSSAD.jpg>] [40 </Users/ph
 ilhannant/Documents/Project_Report/images/SwiSSADC.jpg>] [41 </Users/philhannan
 t/Documents/Project_Report/images/OBSSAD.jpg>] [42 </Users/philhannant/Document
-s/Project_Report/images/OBSSADC.jpg>] <images/lowStyle.jpg, id=190, 2878.755pt 
-x 1740.5025pt>
+s/Project_Report/images/OBSSADC.jpg>] <images/LowDoubling.jpg, id=189, 2531.457
+5pt x 1702.36pt>
+File: images/LowDoubling.jpg Graphic file (type jpg)
+<use images/LowDoubling.jpg>
+Package pdftex.def Info: images/LowDoubling.jpg used on input line 794.
+(pdftex.def)             Requested size: 632.86284pt x 425.58896pt.
+<images/lowStyle.jpg, id=190, 2878.755pt x 1740.5025pt>
 File: images/lowStyle.jpg Graphic file (type jpg)
 <use images/lowStyle.jpg>
-Package pdftex.def Info: images/lowStyle.jpg used on input line 799.
+Package pdftex.def Info: images/lowStyle.jpg used on input line 803.
 (pdftex.def)             Requested size: 719.687pt x 435.12456pt.
 
-Overfull \hbox (69.257pt too wide) in paragraph at lines 799--800
+Overfull \hbox (69.257pt too wide) in paragraph at lines 803--804
  [][] 
  []
 
 <images/ResponseTime.jpg, id=191, 813.0375pt x 385.44pt>
 File: images/ResponseTime.jpg Graphic file (type jpg)
 <use images/ResponseTime.jpg>
-Package pdftex.def Info: images/ResponseTime.jpg used on input line 811.
+Package pdftex.def Info: images/ResponseTime.jpg used on input line 815.
 (pdftex.def)             Requested size: 243.91313pt x 115.63289pt.
 <images/TempoAcc.jpg, id=192, 849.1725pt x 451.6875pt>
 File: images/TempoAcc.jpg Graphic file (type jpg)
 <use images/TempoAcc.jpg>
-Package pdftex.def Info: images/TempoAcc.jpg used on input line 821.
+Package pdftex.def Info: images/TempoAcc.jpg used on input line 825.
 (pdftex.def)             Requested size: 297.21483pt x 158.09299pt.
 [43] [44 </Users/philhannant/Documents/Project_Report/images/LowDoubling.jpg>] 
 [45 </Users/philhannant/Documents/Project_Report/images/lowStyle.jpg>] [46 </Us
@@ -725,15 +742,15 @@ annant/Documents/Project_Report/images/TempoAcc.jpg>] <images/filterAcc.png, id
 =206, 1221.06187pt x 2384.91pt>
 File: images/filterAcc.png Graphic file (type png)
 <use images/filterAcc.png>
-Package pdftex.def Info: images/filterAcc.png used on input line 836.
+Package pdftex.def Info: images/filterAcc.png used on input line 840.
 (pdftex.def)             Requested size: 366.3214pt x 715.47853pt.
 
-LaTeX Warning: Float too large for page by 15.9786pt on input line 839.
+LaTeX Warning: Float too large for page by 15.9786pt on input line 843.
 
 <images/OverFilAc.jpg, id=207, 1212.53pt x 252.945pt>
 File: images/OverFilAc.jpg Graphic file (type jpg)
 <use images/OverFilAc.jpg>
-Package pdftex.def Info: images/OverFilAc.jpg used on input line 846.
+Package pdftex.def Info: images/OverFilAc.jpg used on input line 850.
 (pdftex.def)             Requested size: 363.76181pt x 75.88408pt.
 [47] [48 </Users/philhannant/Documents/Project_Report/images/filterAcc.png>] [4
 9 </Users/philhannant/Documents/Project_Report/images/OverFilAc.jpg>] [50
@@ -751,13 +768,13 @@ Missing character: There is no ¶ in font cmti10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no © in font cmr10!
 
-Overfull \hbox (51.29391pt too wide) in paragraph at lines 974--976
+Overfull \hbox (51.29391pt too wide) in paragraph at lines 978--980
 \OT1/cmr/m/it/10.95 https://docs.oracle.com/javase/8/docs/technotes/guides/soun
 d/programmer[]guide/contents.html 
  []
 
 [53]
-Overfull \hbox (74.98445pt too wide) in paragraph at lines 994--995
+Overfull \hbox (74.98445pt too wide) in paragraph at lines 998--999
 []\OT1/cmr/m/it/10.95 https://www.playframework.com/documentation/2.5.x/api/sca
 la/index.html#play.api.libs.json.Writes 
  []
@@ -766,13 +783,13 @@ Missing character: There is no â in font cmti10!
 Missing character: There is no € in font cmti10!
 Missing character: There is no ™ in font cmti10!
 
-Overfull \hbox (12.65341pt too wide) in paragraph at lines 1017--1018
+Overfull \hbox (12.65341pt too wide) in paragraph at lines 1021--1022
 []\OT1/cmr/m/it/10.95 https://developer.apple.com/library/mac/documentation/Gen
 eral/Conceptual/DevPedia-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1024--1025
+Underfull \hbox (badness 10000) in paragraph at lines 1028--1029
 []\OT1/cmr/m/it/10.95 http://docs.oracle.com/javase/8/javafx/get-started-tutori
 al/jfx-
  []
@@ -803,7 +820,7 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 Output written on /Users/philhannant/Documents/Project_Report/CS_Project_Report
-_PAHannant.pdf (56 pages, 15775184 bytes).
+_PAHannant.pdf (56 pages, 15775377 bytes).
 PDF statistics:
  292 PDF objects out of 1000 (max. 8388607)
  172 compressed objects within 2 object streams
