@@ -362,7 +362,7 @@ As in the Beatroot system, these clusters are then used as the bases of the temp
 \end{figure}
 
 \maketitle{} \section{Solution Design and Architecture}
-The basic premise for the RTT\_Analyser is to enable the user to play a live drum beat through the system, the tempo of the live audio is then returned to user while being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated. A general schematic of the work-flow of the RTT\_Analyser can be seen in Figure (add in).
+The basic premise for the RTT\_Analyser is to enable the user to play a live drum beat through the system, the tempo of the live audio is then returned to user while being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated.
 
 \subsection{Live Audio Processing}
 \label{sec: liveaudio}
@@ -437,7 +437,16 @@ The RTT\_Analyser was developed in the Scala specific build tool, sbt (simple bu
 \subsection{The Actor System}
 Although the actors were not the first element of the RTT\_Analysert to be implemented, introducing them first helps to provide some context for the how the other components communicate.\par
 
-The actor system is constructed of five different actors in total and the messages permitted to be passed between the RTT\_Analyser's actors were all implemented as case classes within a sealed trait (Figure~\ref{fig: messages}). A sealed trait ensures that the only classes extending the trait are in the same file \cite{odesky}, which works well with the actor's pattern matching recieve method.\par
+The actor system is constructed of five different actors and a diagram of the actor hierachy can be seen in Figure~\ref{fig: actorHe}. 
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.25]{images/ActorHierachy.jpg}
+\caption{UML drawing of the RTT\_Analyser's actor hierachy, operations within each actor represent the messages they can recieve}
+\label{fig: actorHe}
+\end{figure} 
+
+The messages permitted to be passed between the RTT\_Analyser's actors were all implemented as case classes within a sealed trait (Figure~\ref{fig: messages}). A sealed trait ensures that the only classes extending the trait are in the same file \cite{odesky}, which works well with the actor's pattern matching recieve method.\par
 
 \begin{figure}[htbp]
 \centering

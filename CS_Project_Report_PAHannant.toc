@@ -19,13 +19,13 @@
 \contentsline {subsection}{\numberline {3.3}Design Pattern}{20}
 \contentsline {section}{\numberline {4}Implementation}{20}
 \contentsline {subsection}{\numberline {4.1}The Actor System}{21}
-\contentsline {subsection}{\numberline {4.2}Live Audio Capture}{24}
+\contentsline {subsection}{\numberline {4.2}Live Audio Capture}{23}
 \contentsline {subsection}{\numberline {4.3}DWT Beat Detection Implementation}{25}
 \contentsline {subsection}{\numberline {4.4}Tempo, Analyser and Stats}{25}
-\contentsline {subsection}{\numberline {4.5}JSON Parsing}{28}
-\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{28}
-\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{29}
-\contentsline {section}{\numberline {5}Software Testing}{30}
+\contentsline {subsection}{\numberline {4.5}JSON Parsing}{27}
+\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{27}
+\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{27}
+\contentsline {section}{\numberline {5}Software Testing}{29}
 \contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{31}
 \contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{31}
 \contentsline {subsection}{\numberline {6.2}Real Time Tempo Tests}{32}
