@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, 11pt, draft]{article}
 \setlength{\topmargin}{0.0in}
 \setlength{\textheight}{9in}
 \setlength{\oddsidemargin}{.2in}
@@ -47,9 +47,9 @@ This report is substantially the result of my own work, expressed in my own word
 \clearpage
 \maketitle
 \section*{Abstract}
-This project report presents an invetigation into the suitability of three beat detection algorithms to be used in a drumming training tool. The system captures live audio and passes it to the beat detection algorithms for tempo calcualtion. The result of which is then passed back to the user.\par
+This project report presents an investigation into the suitability of three beat detection algorithms to be used in a drumming training tool. The system captures live audio and passes it to the beat detection algorithms for tempo calculation. The result of which is then passed back to the user.\par
 
-An extensive sample set of drum beats were created in order to replicate a drummers performance and processed through the system. The tempo calculation results were recorded by the system and then analysed in the attempt to draw conclusions regarding, if any of the three beat detection algorithms could form the basis for a future training tool. 
+An extensive sample set of drum beats were created to replicate a drummer's performance. The samples were processed through the system and the calculated tempo results recorded. The collected data was then analysed regarding if any of the three beat detection algorithms could be used to form the basis for a future training tool. 
 
 \maketitle
 \newpage
@@ -134,7 +134,7 @@ The Roland catelogue also includes the DT-1 tutor software package, which provid
 % \end{subfigure}%
 % \begin{subfigure}{.5\textwidth}
   \centering
-  \includegraphics[width=0.75\linewidth]{images/dt-1_ss_main_notation_gal.jpg}
+  \includegraphics[width=0.5\linewidth]{images/dt-1_ss_main_notation_gal.jpg}
   \caption{Screen shot of the DT-1 V-Drums Tutor}
   \label{fig: dt-1}
 % \end{subfigure}
@@ -145,15 +145,15 @@ Roland have even started to design games within this field. Their latest release
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[scale=0.175]{images/friendjam.png}
+\includegraphics[scale=0.2]{images/friendjam.png}
 \caption{Example of the Roland Friend Jam software package}
 \label{fig: friendjam}
 \end{figure}
 
-Despite these developments there have been a limited number of tools available to be used with acoustic drums. A look at the the App Store\footnote{Apple's application store - itunes.apple.com/uk/appstore‎} and Google Play\footnote{Google's application store for Android devices - play.google.com/store}, reveals a small number of general live bpm detectors an no applications which are focused towards a drummers training needs.\par
+Despite these developments there have been a limited number of tools available to be used with acoustic drums. A look at the the App Store\footnote{Apple's application store - itunes.apple.com/uk/appstore‎} and Google Play\footnote{Google's application store for Android devices - play.google.com/store}, reveals a small number of general live bpm detectors but no applications focused towards a drummers training needs.\par
 
 \subsection{Drum Musical Theory}
-In order to understand the fundamentals of musical timing some theory needs to be examined. Firstly, the concept of a drummer playing time must be considered. Time, in a drumming sense is an informal term used to describe the consistent rhythmic pattern that a drummer will play on the hi-hat or ride cymbal \cite{drum-bible} and it can be considered one of the most important components of any drum beat. 
+In order to understand the fundamentals of musical timing some theory needs to be examined. Firstly, the concept of a drummer playing time must be considered. Time, in a drumming sense is an informal term used to describe the consistent rhythmic pattern that a drummer will play on the hi-hat or ride cymbal \cite{drum-bible} and it can be considered one of the most important components of any drum beat. It is also important to note that when a drummer is playing a drum beat, they may play one or more parts of a drum kit simultaneously.  
 
 \subsubsection{Notation}
 Drum music notation is written on staff, which is made up of five individual lines (Figure~\ref{fig: staff}). The clef found on the far left of the staff indicates the pitch of the notes \cite{oxford-comp} and as percussion instruments are non-pitched they use the percussion-clef. On traditional musical notation, the lines and spaces between them represent a tone to be played. However, as drums are not considered tonal, the notes written on the staff indicate a certain drum or cymbal. The staff is separated into individual measures which are known as bars \cite{drum-note} and it is these bars that are the basis of musical time. A bar of drum music typically consists of different notes representing which instruments to be played and when. The number of notes within a bar may also vary depending on their length. 
@@ -166,7 +166,8 @@ Drum music notation is written on staff, which is made up of five individual lin
 \end{figure}
 
 \subsubsection{Notes}
-The notes used in drum notation not only represent the percussive instrument to be played but also the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example, two eighth notes represent the same time value as a single quarter note. It is also possible to divide note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there are three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}. For the purpose of this project it is the count of these beats that are used to calculate the tempo of a certain drum beat.
+The notes used in drum notation not only represent the percussive instrument to be played but also the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example, two eighth notes represent the same time value as a single quarter note. It is also possible to divide note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there are three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}. Although, such a time element on a cymbal is not considered to be a beat, the notes produced by the action of playing a cymbal need to on the beat. Therefore, for the purpose of this project, it is the count of the prominent beats within a drum beat that are used to calculate a drum beat's tempo.
+
 
 \subsubsection{Time Signatures}\label{sec: ts}
 Time signatures appear on the staff just after the clef and are written as a fraction where the top number indicates the number of beats that there are in a bar, as seen in Figure~\ref{fig: staff}. With the bottom number representing the size of the note that makes up the duration of one beat. For example the straight time four four (4/4) or common time signature indicates four beats in each bar or measure where each beat is made up of one quarter note \cite{drum-note}. Within these bar lines beats can be further divided by using a technique known as subdivision, which is a method for reducing the pulse or rhythm pattern into smaller parts than those originally written. For example, counting a four four (4/4) measure in eighth (1/8) or sixteenth (1/16) notes. 
@@ -200,7 +201,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 \item RTT\_Analyser implements a system capable of parallel processing, allowing for the same captured live audio data to be sent to the chosen beat detection algorithms in order for the tempo to be calculated simultaneously.
 \item While processing live audio the RTT\_Analyser stores a predetermined data set in order to allow for performance analysis of the beat detection algorithms.
 \item The RTT\_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
-\item An extensive sample set of drum beats will need to be created to ensure the system is tested sufficiently
+\item An extensive sample set of drum beats will need to be created. The samples will be produced with exact tempos in order to provide a ground truth regarding the accuracy of the beat detection algorithms. 
 \end{enumerate}
 
 
