@@ -155,7 +155,7 @@ Drum music notation is written on staff, which is made up of five individual lin
 \end{figure}
 
 \subsubsection{Notes}
-The notes used in drum notation not only represent the percussive instrument to be played but also the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example, two eighth notes represent the same time value as a single quarter note. It is also possible to divide note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there are three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}. Although, such a time element on a cymbal is not considered to be a beat, the notes produced by the action of playing a cymbal need to on the beat. Therefore, for the purpose of this project, it is the count of the prominent beats within a drum beat that are used to calculate a drum beat's tempo.
+The notes used in drum notation not only represent the percussive instrument to be played but also the duration it should be played for. Notes come in different lengths and the key values are the whole (1/1), half (1/2), quarter (1/4), eighth (1/8) and sixteenth (1/16). For example, two eighth notes represent the same time value as a single quarter note. It is also possible to divide note values by three instead of two, these notes are known as triplets. An eighth note triplet is played fifty percent faster than a normal eighth note, therefore for every two eighth notes there are three eighth note triplets \cite{drum-note}. An example of the eighth-note triplets being used is in a twelve eight (12/8) jazz shuffle, the time element played on the ride cymbal or hi-hat is charaterised by playing the first and third triplet of an eighth-note triplet grouping \cite{drum-bible}. Although, such a time element on a cymbal is not considered to be a beat, the notes produced by the action of playing a cymbal need to on the beat. Therefore, for the purpose of this project, it is the count of the prominent beats within a drum beat that are used to calculate a drum beats tempo.
 
 
 \subsubsection{Time Signatures}\label{sec: ts}
@@ -192,7 +192,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 \item The RTT\_Analyser will provide the user with real time feedback of the most recent tempo calculation returned
 \item An extensive sample set of drum beats was created. The samples were produced with exact tempos in order to provide a ground truth regarding the accuracy of the beat detection algorithms. 
 \end{enumerate}
-
+\clearpage
 
 
 \maketitle{}\section{RTT\_Analyser Beat Detection Algorithms}
@@ -352,6 +352,7 @@ As in the Beatroot system, these clusters are then used as the bases of the temp
 	\caption{Clustering algorithm used in the Performance Worm Multiple Tempo Tracking Subsystem \cite{dixonGoeblWidmer}}
 	\label{fig: clusterAl}
 \end{figure}
+\clearpage
 
 \maketitle{} \section{Solution Design and Architecture}
 The basic premise for the RTT\_Analyser is to enable the user to play a live drum beat through the system, the tempo of the live audio is then returned to user while being stored for future analysis. Initially, the RTT\_Analyser opens the inbuilt microphone of the device upon which the software is being run. After establishing the live audio stream the RTT\_Analyser beat detection algorithms are sent the live audio data in the format of a byte array. These live audio bytes are then decoded according to the individual algorithm's requirements before being processed and the tempo calculated.
@@ -378,7 +379,7 @@ The Akka Actor Model is specifically designed to provide the ability to write co
 A fundamental construct of the Akka Actor system is that it strictly adheres to the Reactive Manifesto, which aims to ensure applications are easier to develop and amenable to change. This allows for a higher level of tolerance to failure and the ability to meet any such failure elegantly \cite{reactMan}. The Reactive Manifesto requires applications to satisfy one or more of the requirements listed below \cite{reactMan} and visualisation of how they interact can be seen in Figure~\ref{fig: reacMan}.
 
 
-\textbf{Responsive} - The system responds in a timely manner where possible. It provides usability and utility responsiveness os it is possible to detect and resolve problems effectively.\\\\
+\textbf{Responsive} - The system responds in a timely manner where possible. It provides usability and utility responsiveness so it is possible to detect and resolve problems effectively.\\\\
 \textbf{Resilient} - The system should be able to remain responsive even in the event of a failure, which applies to all parts of the system not just the mission critical components. To achieve this each component needs to be isolated within the system, therefore allowing failed parts of the system to recover without effecting the responsiveness of the system as a whole.\\\\
 \textbf{Elastic} - The system will be able to maintain the same level of responsiveness despite varying workloads. Reacting to changes in the rate of input by adapting the levels of resources allocated accordingly.\\\\
 \textbf{Message Driven} - Reactive systems rely on the use of asynchronous message passing in order to establish boundaries between components within the system, ensuring isolation, loose coupling\footnote{Loose coupling is a design approach of distributed systems which emphasises agility and ability to adapt to changes \cite{looseCouple}} and location transparency\footnote{The decoupling of the runtime instances from their references \cite{reactMan}}. By utilising non-blocking\footnote{In concurrent programming algorithms which do not have their execution indefinitely postponed when competing for a resource is said to be non-blocking \cite{reactMan}.} message-passing it is possible to ensure message recipients only consume resources when active, leading to a much reduced system overhead.\\\\
@@ -435,7 +436,7 @@ The actor system is constructed of five different actors and a diagram of the ac
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{images/ActorHierachy.jpg}
-\caption{UML drawing of the RTT\_Analyser's actor hierarchy, operations within each actor represent the messages they can recieve}
+\caption{UML drawing of the RTT\_Analyser's actor hierarchy, operations within each actor represent the messages they can receive}
 \label{fig: actorHe}
 \end{figure} 
 
@@ -457,7 +458,7 @@ The \texttt{LiveAudioActor} (Figure~\ref{fig: liveaudioactor}) assumes the role 
 \label{fig: liveaudioactor}
 \end{figure}
 
-The \texttt{ProcessingActor}(Figure~\ref{fig: processingActor}), a child of the \texttt{LiveAudioActor} can be considered the coordinator of the storing and processing captured audio data, and the writing of the calculated tempos. In order to ensure the processing remains as isolated as possible the \texttt{ProcessingActor} employs two worker actors, \texttt{BeatrootActor} and \texttt{DWTActor}, carrying out the task of iniating the tempo calculation. The beat detection worker actors do not return any messages to the \texttt{ProcessingActor}, instead a reference to the \texttt{ProcessingActor}, in the form of an ActorRef handle is passed to the respective beat detection system. The calculated tempo values are then sent back directly to the \texttt{ProcessingActor} to be stored and subsequently saved to file when appropriate.\par
+The \texttt{ProcessingActor}(Figure~\ref{fig: processingActor}), a child of the \texttt{LiveAudioActor} can be considered the coordinator of the storing and processing captured audio data, and the writing of the calculated tempos. In order to ensure the processing remains as isolated as possible the \texttt{ProcessingActor} employs two worker actors, \texttt{BeatrootActor} and \texttt{DWTActor}, carrying out the task of initiating the tempo calculation. The beat detection worker actors do not return any messages to the \texttt{ProcessingActor}, instead a reference to the \texttt{ProcessingActor}, in the form of an ActorRef handle is passed to the respective beat detection system. The calculated tempo values are then sent back directly to the \texttt{ProcessingActor} to be stored and subsequently saved to file when appropriate.\par
 
 \begin{figure}[h]
 \centering
@@ -563,6 +564,7 @@ On completion within both modes the results are stored within a JSON file automa
 \caption{Example of the RTT\_Analyser's HTML results view}
 \label{fig: htmlView}
 \end{figure}
+\clearpage
 
 \maketitle{}\section{Software Testing}
 During the development of the RTT\_Analyser, Test Driven Development (TDD) was employed where possible. TDD is a development process that uses test-first development and refactoring. Test-first development involves writing a test before just enough production code is written to pass that test \cite{tdd1}. Refactoring is the process of making small changes to code and is used to improve the design of the code, Thus, making it easier to understand and modify \cite{tdd2}. \par
@@ -575,11 +577,12 @@ A good example of TDD being applied during the development of the RTT\_Analyser 
 
 When it was not possible to use TDD, particularly during the initial set-up and testing of the beat detection algorithms with live audio. A simpler testing approach was taken, consisting of running the system with a selection of sample drum beats of varying tempos, with console logs used to test that the system was performing the desired tempo calculations.
 
+\clearpage
 \maketitle{}\section{RTT\_Analyser Beat Detection Testing}
 \subsection{Drum Beat Sample Set}
 Once the software testing of the RTT\_Analyser was complete, the full testing process could begin. The sample drum beats were written using the Apple sequencer program, GarageBand \cite{garage}. The writing of the drum beats took a slight deviation from the project proposal, rather than create multiple full drum beats in a varying number of styles, the drum beats were instead tested in layers. For example, a simple four four (4/4) bass drum beat with a back beat and the time element being played on the hi-hat cymbal would account for four samples. This decision stemmed from how a cymbal behaves when it is played at high amplitudes (loudness), the vibrations it create become chaotic and its clearly identifiable signals disappear, effectively becoming noise \cite{soundonsound}. Therefore, to compare the drum samples with cymbals a baseline was required. This change was also considered to help provide a much more diverse data set, hopefully helping the understanding of how the different elements of a drum kit, not just cymbals, can affect the accuracy of the beat detection algorithms being tested by the RTT\_Analyser.\par
 
-Additionally, three Garageband stock samples were added to the sample set. These samples were included in an attempt to provide insight as to whether the beat detection algorithms are able to work efficiently, even when drum beat being tested is fairly complex. 
+Additionally, three GarageBand stock samples were added to the sample set. These samples were included in an attempt to provide insight as to whether the beat detection algorithms are able to work efficiently, even when drum beat being tested is fairly complex. 
 
 In total, twenty eight drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
 
@@ -878,7 +881,7 @@ Another success was the actor system used in the RTT\_Analyser. The development 
 
 One challenge experienced during the development of the RTT\_Analyser, was that the adaption of the Beatroot system to work with live audio took longer than anticipated. This was mainly due to the difficulty of working with a large pre-existing code base. To overcome this, the mitigation protocol set out in the project proposal was followed and an alternative system was sourced; the PW. This ensured that the project did not fall any further behind schedule.\par 
 
-The delay in development caused by this issue, led to insufficient time for the author to implement the Tzanetakis \textit{et al}'s \cite{tzane1} beat detection algorithm. Although, there was a mitigation protocol in place, there was insufficent time to implement this, so a different course of action was chosen. A preexisting Scala implementation of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method by Marco Ziccard\cite{marcoZin} was used. Using this implementation, allowed for the regaining of the time. This ensured the project not only remained on schedule, but there was also sufficient time to try adapting the Beatroot system again. This was completed successfully on the second attempt.\par
+The delay in development caused by this issue, led to insufficient time for the author to implement the Tzanetakis \textit{et al}'s \cite{tzane1} beat detection algorithm. Although, there was a mitigation protocol in place, there was insufficent time to implement this, so a different course of action was chosen. A preexisting Scala implementation of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method by Marco Ziccardi\cite{marcoZin} was used. Using this implementation, allowed for the regaining of the time. This ensured the project not only remained on schedule, but there was also sufficient time to try adapting the Beatroot system again. This was completed successfully on the second attempt.\par
 
 One unforeseen challenge was presented by the original decision to use JSON files for data storage. Due to the inclusion of the PW beat detection algorithm in the RTT\_Analyser and the decision to run tests with a low-pass filter and without, the number of records recorded by the RTT\_Analyser increased significantly. The original estimate was for approximately 700 files each holding approximately ten results per beat detection method. The final number of results collection was 130,000 plus. JSON is more than adequate for holding this much data, an issue arose when the data visualisation software package, Tableau\cite{tableau} was used. As Tableau does not work with JSON files, the data would need to be converted to another format. Due to limited time the data was converted to an Excel\cite{excel} file. This required a large amount of data manipulation to be carried out. A number of Visual Basic for Applications (VBA) macros were written to perform the data manipulation, and once the data was in the required format it was connected to Tableau where any further manipulation and analysis of the data could be performed much more efficiently. 
 
