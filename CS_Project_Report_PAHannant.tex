@@ -123,7 +123,7 @@ Following the development of the MIDI driven electronic drum kit came the develo
 
 % The V-Drum Rhythm Coach line is an advanced version of the traditional practice pad, which utilises the COACH system (Figure~\ref{fig: rmp-5}. 
 
-The Roland catelogue also includes the DT-1 tutor software package, which provides drummers with an interactive experience helping to improve their rhythm, coordination and sight reading \cite{roland} (Figure~\ref{fig: dt-1}).\par 
+The Roland catalogue also includes the DT-1 tutor software package, which provides drummers with an interactive experience helping to improve their rhythm, coordination and sight reading \cite{roland} (Figure~\ref{fig: dt-1}).\par 
 \begin{figure}[h]
 \centering
   \includegraphics[width=0.5\linewidth]{images/dt-1_ss_main_notation_gal.jpg}
@@ -150,7 +150,7 @@ Drum music notation is written on staff, which is made up of five individual lin
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.3]{images/staff.jpg}
-	\caption{Example of a staff used in musical notation}
+	\caption{Example of a staff used in musical notation \cite{drum-note}}
 	\label{fig: staff}
 \end{figure}
 
@@ -196,7 +196,7 @@ The original core features of the RTT\_Analyser developed for this project are:
 
 
 \maketitle{}\section{RTT\_Analyser Beat Detection Algorithms}
-The original proposed solution incorporated two beat detection algorithms; the Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. The initial the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. An alternative system needed to be found in order to mitigate this issue. Conveniently the Beatroot software package also contained another beat detection system; the Performance Worm (PW)\cite{dixon3}. To ensure the project remained on track, it was decided to replace the Beatroot system with the PW. Once the project was back on schedule, adaptation of the Beatroot system to work with live audio was resumed. This was successfully completed prior to the development of the user interface. It was susequently decided to encoportate all three beat detection algorithms into the final piece of
+The original proposed solution incorporated two beat detection algorithms; the Beatroot system \cite{dixon1} and the DWT method \cite{tzane1}. The initial the adaptation of the Beatroot system to be used with live audio took longer than the proposed time-frame. An alternative system needed to be found in order to mitigate this issue. Conveniently the Beatroot software package also contained another beat detection system; the Performance Worm (PW)\cite{dixon3}. To ensure the project remained on track, it was decided to replace the Beatroot system with the PW. Once the project was back on schedule, adaptation of the Beatroot system to work with live audio was resumed. This was successfully completed prior to the development of the user interface. It was subsequently decided to incorporate all three beat detection algorithms into the final piece of
 
 The project report will now discuss the three beat detection algorithms incorporated in the RTT\_Analyser.
 
@@ -248,7 +248,7 @@ Where $SF$ is the spectral flux and $H$ is the half-wave rectifier function give
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.5]{images/spectralflux.png}
-	\caption{(Image Source: \cite{badlogic})}
+	\caption{Example of the peaks returned by spectral flux analysis \cite{badlogic}}
 	\label{fig: spec-flux}
 \end{figure}
 
@@ -257,7 +257,7 @@ The onsets detected are then selected by a peak-picking algorithm which finds lo
 \begin{figure}[ht]
 	\centering
 	\includegraphics[scale=0.25]{br-clusters}
-	\caption{(Image Source: \cite{dixon4})}
+	\caption{Example of the relationships between the C1, C2 and C4 clusters \cite{dixon4}}
 	\label{fig: br-clusters}
 \end{figure}
 
@@ -402,7 +402,7 @@ The RTT\_Analyser was developed using the Model View Controller (MVC) design pat
 \begin{itemize}
 \item \textbf{Model} - is represented by the data and associated applications \cite{designPatterns}, within the RTT\_Analyser the model is provided by the beat detection algorithms, the live audio capturing and processing components.\\
 \item \textbf{View} - is the graphical interface displayed to the user which updates itself automatically \cite{designPatterns}. For the RTT\_Analyser the view is represented by the user interface\\
-\item \textbf{Controller} - is the part of the application that responds to the user interactions, liasing with both the model and the view components\cite{designPatterns}. The controller for the RTT\_Analyser is the actor system, which is responsible for message passing between the model and view components.
+\item \textbf{Controller} - is the part of the application that responds to the user interactions, liaising with both the model and the view components\cite{designPatterns}. The controller for the RTT\_Analyser is the actor system, which is responsible for message passing between the model and view components.
 \end{itemize}
 
 \begin{figure}[h]
@@ -430,16 +430,16 @@ The RTT\_Analyser was developed in the Scala specific build tool, sbt (simple bu
 \subsection{The Actor System}
 Although the actors were not the first element of the RTT\_Analyser to be implemented, introducing them first helps to provide some context for the how the other components communicate.\par
 
-The actor system is constructed of five different actors and a diagram of the actor hierachy can be seen in Figure~\ref{fig: actorHe}. 
+The actor system is constructed of five different actors and a diagram of the actor hierarchy can be seen in Figure~\ref{fig: actorHe}. 
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.25]{images/ActorHierachy.jpg}
-\caption{UML drawing of the RTT\_Analyser's actor hierachy, operations within each actor represent the messages they can recieve}
+\caption{UML drawing of the RTT\_Analyser's actor hierarchy, operations within each actor represent the messages they can recieve}
 \label{fig: actorHe}
 \end{figure} 
 
-The messages permitted to be passed between the RTT\_Analyser's actors were all implemented as case classes within a sealed trait (Figure~\ref{fig: messages}). A sealed trait ensures that the only classes extending the trait are in the same file \cite{odesky}, which works well with the actor's pattern matching recieve method.\par
+The messages permitted to be passed between the RTT\_Analyser's actors were all implemented as case classes within a sealed trait (Figure~\ref{fig: messages}). A sealed trait ensures that the only classes extending the trait are in the same file \cite{odesky}, which works well with the actor's pattern matching receive method.\par
 
 \begin{figure}[h]
 \centering
@@ -462,7 +462,7 @@ The \texttt{ProcessingActor}(Figure~\ref{fig: processingActor}), a child of the 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.3]{images/processingRec.jpg}
-\caption{Recieve method of the ProcessingActor class}
+\caption{Receive method of the ProcessingActor class}
 \label{fig: processingActor}
 \end{figure}
 
@@ -509,10 +509,10 @@ The final addition to the \texttt{LiveAudioProcessor} class was the inclusion of
 	\caption{LiveAudioProcessor}
 	\label{fig: liveAudPro}
 \end{figure}
-
+\clearpage
 
 \subsection{Tempo, Analyser and Stats}
-The \texttt{Tempo} object, implemented as a method of encapsulating the RTT\_Analyser's calculated tempo results, is comprised of the calculated and expected tempos, and difference between these values. Additonally, an \texttt{Option}\footnote{The \texttt{Option} type is Scala's alternative to Java's \texttt{null} value, the \texttt{Option} type is in fact a container which either holds a value or is empty. It provides a much safer alternative to the error prone \texttt{null} value \cite{mariusEr}.} count of beats detected and the time at which the tempo result was calculated is included.\par 
+The \texttt{Tempo} object, implemented as a method of encapsulating the RTT\_Analyser's calculated tempo results, is comprised of the calculated and expected tempos, and difference between these values. Additionally, an \texttt{Option}\footnote{The \texttt{Option} type is Scala's alternative to Java's \texttt{null} value, the \texttt{Option} type is in fact a container which either holds a value or is empty. It provides a much safer alternative to the error prone \texttt{null} value \cite{mariusEr}.} count of beats detected and the time at which the tempo result was calculated is included.\par 
 
 The \texttt{Analyser} object was designed to hold the calculated \texttt{Tempo} objects within a \texttt{ListBuffer}, chosen for its scalability. The \texttt{Analyser} trait was extended to create three case classes corresponding to the relevant beat detection algorithms. The \texttt{Analyser} implementations also contained an \texttt{Option Stats} value.\par
 The \texttt{Stats} object is an object used to hold the average and median values of the calculated tempos, difference between the expected and calculated tempos. The time taken to calculate a tempo within plus or minus one bpm of the expected value was also recorded in order to assess the accuracy of the beat detection algorithms. The \texttt{StatsCalculator} was a helper class responsible for carrying out computation of the values held with the \texttt{Stats} object and was implemented using the code seen in Figure~\ref{fig: statsC}.
@@ -523,6 +523,7 @@ The \texttt{Stats} object is an object used to hold the average and median value
 \caption{Stats calculation methods used by the StatsCalculator}
 \label{fig: statsC}
 \end{figure}
+\clearpage
 
 \subsection{JSON Parsing}
 
@@ -556,9 +557,9 @@ Before the user could begin live audio capture, the expected bpm, file name and 
 
 On completion within both modes the results are stored within a JSON file automatically and also written to an HTML file. The results can then be viewed in a web browser using the \textit{Results} button. The HTML tables were produced in \texttt{HtmlWriter} object which used reflection where possible to obtain the relevant field names, before using a number of tail recursive methods to write the field values and HTML tags to a \texttt{StringBuilder} object, chosen for it's mutability. The HTML tables are subsequently saved to an HTML file which is opened and viewed via the default browser. An example of the displayed results can be seen in Figure~\ref{fig: htmlView}.
 
-\begin{figure}[htbp]
+\begin{figure}[ht]
 \centering
-\includegraphics[scale=0.3]{images/htmlResults.jpg}
+\includegraphics[scale=0.2]{images/htmlResults.jpg}
 \caption{Example of the RTT\_Analyser's HTML results view}
 \label{fig: htmlView}
 \end{figure}
@@ -578,14 +579,14 @@ When it was not possible to use TDD, particularly during the initial set-up and 
 \subsection{Drum Beat Sample Set}
 Once the software testing of the RTT\_Analyser was complete, the full testing process could begin. The sample drum beats were written using the Apple sequencer program, GarageBand \cite{garage}. The writing of the drum beats took a slight deviation from the project proposal, rather than create multiple full drum beats in a varying number of styles, the drum beats were instead tested in layers. For example, a simple four four (4/4) bass drum beat with a back beat and the time element being played on the hi-hat cymbal would account for four samples. This decision stemmed from how a cymbal behaves when it is played at high amplitudes (loudness), the vibrations it create become chaotic and its clearly identifiable signals disappear, effectively becoming noise \cite{soundonsound}. Therefore, to compare the drum samples with cymbals a baseline was required. This change was also considered to help provide a much more diverse data set, hopefully helping the understanding of how the different elements of a drum kit, not just cymbals, can affect the accuracy of the beat detection algorithms being tested by the RTT\_Analyser.\par
 
-Additonally, three Garageband stock samples were added to the sample set. These samples were included in an attempt to provide insight as to whether the beat detection algorithms are able to work efficiently, even when drum beat being tested is fairly complex. 
+Additionally, three Garageband stock samples were added to the sample set. These samples were included in an attempt to provide insight as to whether the beat detection algorithms are able to work efficiently, even when drum beat being tested is fairly complex. 
 
 In total, twenty eight drum samples were produced and the full details of the elements which each drum beat was comprised of and style of the drum beat can be seen in Table~\ref{tab: beats}. A full visualisation of the drum beats used can be found in Appendix A.
 
 \subsection{Real Time Tempo Tests}
 The real time tempo detection tests were carried out in an environment with minimal background noise. The drum beats were played on an external speaker set to the same volume for all tests. Each drum beat was tested for thirty seconds over the tempo range of 60-160 bpm, where the tempo was increased in five bpm increments. Resulting in twenty one tests being carried out for each drum beat, producing a sample set consisting of 588 results files.
 
-During the real time tempo tests it became apparent that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible explanantion for this was considered to be aliasing. This resulted in it not being possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. As this behaviour was being displayed by all three of the beat detection algorithms, it was decided that all of the drum samples would be reprocessed through the RTT\_Analyser. However, this time a low-pass filter was applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection and the cutoff frequency was set to 100 Hz.
+During the real time tempo tests it became apparent that at lower tempos the RTT\_Analyser was returning values which were roughly twice that of the expected tempo. A possible explanation for this was considered to be aliasing. This resulted in it not being possible to distinguish between the values from sampled audio as they contain periodic replications of the original spectrum\cite{lyons}. As this behaviour was being displayed by all three of the beat detection algorithms, it was decided that all of the drum samples would be reprocessed through the RTT\_Analyser. However, this time a low-pass filter was applied to the point at which the audio is captured. The low-pass filter was provided by the source\_code.biz Java dsp collection and the cutoff frequency was set to 100 Hz.
 \clearpage
 
 \begin{table}[htbp]
@@ -701,7 +702,7 @@ Calculated Tempo/Expected Tempo >= 1.95\\
 \caption{Total average difference results with flagged values removed}
 \label{fig: upAveDiff}
 \end{figure}
-
+\clearpage
 Rather than just removing these results altogether, the next step was to attempt to correct any of the flagged tempo results that when divided by two, were within plus or minus five percent of the expected tempo result. With this adaption applied to the data set (seen in Figure~\ref{fig: corAveDiff}), it is clear that overall the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method is the most accurate. The different musical styles within the samples also affect the accuracy of the calculated tempos. With the swing samples producing the least accurate results for all three algorithms.
 
 
@@ -733,7 +734,7 @@ Rather than just removing these results altogether, the next step was to attempt
 \subsection{Straight Sample Results}
 The results recorded for the straight sample set clearly show that doubling is an issue, demonstrated by all but one of the results returning a negative value (Figure~\ref{fig: stradAveDiff}). A large majority of the average difference values are also significantly large (greater than five). It is the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method which exhibits the poorest level of accuracy within this data set. Regularly producing average difference values of greater than twenty.\par
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \vspace{-1in}
 \centering
 \includegraphics[scale=0.38]{images/SSSAD.jpg}
@@ -741,9 +742,9 @@ The results recorded for the straight sample set clearly show that doubling is a
 \label{fig: stradAveDiff}
 \end{figure}
 
-When the corrected difference values are applied to the data set the accuracy of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method increases significantly (Figure~\ref{fig: stradAveDiffCor}). Although, it does return its least accurate results for the samples consisting of a crash cymbal and the high and low tom-toms. The affect of the crash cymbal on the accuracy of the tempo recorded confirms the suspicion that loud cymbals will adversely affect the accuracy of the beat detection algorithms. The low accuracy recorded by the DWT method for the HTLT2 sample set where the time element is played on the low tom-tom. Suggesting, the possibility that this method will not respond as well when there are not distinct frequencies playing each part of the drum beat. \par
+When the corrected difference values are applied to the data set the accuracy of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method increases significantly (Figure~\ref{fig: stradAveDiffCor}). Although, it does return its least accurate results for the samples consisting of a crash cymbal and the high and low tom-toms. The affect of the crash cymbal on the accuracy of the tempo recorded confirms the suspicion that loud cymbals will adversely affect the accuracy of the beat detection algorithms. The low accuracy recorded by the DWT method for the HTLT2 sample where the time element is played on the low tom-tom. Suggesting, the possibility that this method will not respond as well when there are not distinct frequencies playing each part of the drum beat. \par
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.38]{images/SSSADC.jpg}
 \caption{Straight sample set average difference results with correction applied}
@@ -755,14 +756,14 @@ Also, within this data set the results produced for the single drum samples can 
 \subsection{Swing Sample Results}
 The doubling of calculated tempos was not as prevalent within the Swing sample set. Both the original (Figure~\ref{fig: swingAveDiff}) and the corrected (Figure~\ref{fig: swingAveDiffCor}) difference values were significantly high. Although, the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method's accuracy is again improved by the updated difference values, the Beatroot and PW's performance remains very similar across both data sets.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.45]{images/SwiSSAD.jpg}
 \caption{Swing average difference results}
 \label{fig: swingAveDiff}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.45]{images/SwiSSADC.jpg}
 \caption{Swing average difference results with correction applied}
@@ -775,7 +776,7 @@ The single drum elements within this data set were expected to cause some proble
 
 The last group of style results utilise a time element being played on the off-beat. The rest of the beat is considered to be straight. It is to be expected then that the results exhibit a similar amount of potential doubling of the tempo values as with the straight data set (Figure~\ref{fig: offAveDiff}).
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=0.25]{images/OBSSAD.jpg}
 \caption{Off-Beat average difference results}
@@ -784,7 +785,7 @@ The last group of style results utilise a time element being played on the off-b
 
 When the corrected difference values are introduced the accuracy is again improved (Figure~\ref{fig: offAveDiffCor}). For the louder KSHHCRFTTF sample, the Beatroot and PW both recorded a lower level of accuracy with the low-pass filter than without. It is expected that the low-pass filter would help to remove some of the noise produced by the cymbals in this sample. However, this result suggests that by removing the higher frequencies produced by cymbals can adversely affect the accuracy of these two tempo calculation methods.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[scale=.25]{images/OBSSADC.jpg}
 \caption{Off-Beat average difference results with correction applied}
@@ -794,7 +795,7 @@ When the corrected difference values are introduced the accuracy is again improv
 \subsection{Low Tempo Comparison}
 During the testing process it was noted that the result doubling seemed to be prominent for samples being played at lower tempos. Usually anything with a bpm of one hundred and below. To investigate if the algorithms performed better with higher tempos regardless of style, a doubling count was applied to the data set. Using the same error margin applied previously. 
 
-\begin{sidewaysfigure}[h]
+\begin{sidewaysfigure}[htbp]
 \centering
 \includegraphics[scale=0.25]{images/LowDoubling.jpg}
 \caption{Low tempo comparison}
@@ -803,7 +804,7 @@ During the testing process it was noted that the result doubling seemed to be pr
 
 The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of the beat detection algorithms produce significantly less doubling when processing drum beats with higher tempos. If the style grouping is introduced (see Figure~\ref{fig: lowTemComStyle}, it is apparent that the doubling is most prevalent with the straight sample set. Out of the three algorithms, the PW returns the highest count of doubled results. Although, this is to be expected as the PW returns a larger number of tempo values per sample.
 
-\begin{sidewaysfigure}[h]
+\begin{sidewaysfigure}[htbp]
 \centering
 \includegraphics[scale=0.25]{images/lowStyle.jpg}
 \caption{Low tempo comparison with style groupings}
@@ -813,7 +814,7 @@ The results viewed in Figure~\ref{fig: lowTemCom}, confirm that the all three of
 \subsection{Beat Detection Response Time}
 Due to the smaller window size utilised by the PW it is expected to perform the best within this comparison. The response time was recorded by the RTT\_Analyser when the first returned tempo was plus or minus one bpm from the expected tempo result. 
 
-Before this could be calculated the all of the tempo results produced by the PW for expected tempos of seventy five were removed. As the PW's first result returned regardless of expected tempo was always seventy five. Despite this and as expected the PW returned the fastest tempo value (see Figure~\ref{fig: resTime}). Returning a tempo within the margin of error for the straight KSH2 beat within 0.675 seconds when processing through the low-pass filter. Then without a filter a tempo was produced in 0.660 seconds. 
+Before this could be calculated all of the tempo results produced by the PW for expected tempos of seventy five were removed. As the PW's first result returned regardless of expected tempo was always seventy five. Despite this and as expected the PW returned the fastest tempo value (see Figure~\ref{fig: resTime}). It returned a tempo within the margin of error for the straight KSH2 beat within 0.675 seconds when processing through the low-pass filter. Then without a filter a tempo was produced in 0.660 seconds. The Beatroot was the next fastest, followed by the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method.
 
 \begin{figure}[ht]
 \centering
@@ -838,27 +839,32 @@ The corrected results show that there is a clear distinction between the accurac
 
 \subsection{Filter/Non-Filter Comparison}
 To ascertain the effectiveness of the low-pass filter applied to the RTT\_Analyser, the number of uncorrected tempo records within one bpm were collated for the sample sets with and without a filter. The number of records that fell within this accuracy margin and the percentage of the total number of tempo records can be seen in Figure~\ref{fig: allFilAcc}. 
+\clearpage
 
-\begin{figure}[ht]
+\begin{figure}[htbp]
 \centering
 \vspace{-1in}
 \includegraphics[scale=0.3]{images/filterAcc.png}
 \caption{Filter/No Filter Accuracy Comparison, split by style and sample set}
 \label{fig: allFilAcc}
 \end{figure}
+\clearpage
 
 The results show a slightly higher level of accuracy is provided for the sample set which used a low-pass filter but it is very marginal. The overall comparison of the total number of records can be seen in Figure~\ref{fig: overFilAcc}, which further highlights the slight increase in accuracy offered by the introduction of a low-pass filter. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \centering
-\vspace{-1in}
 \includegraphics[scale=0.3]{images/OverFilAc.jpg}
 \caption{Filter/No Filter Accuracy Comparison of total records}
 \label{fig: overFilAcc}
 \end{figure}
-
 \clearpage
 \maketitle \section{Evaluation and Discussion}
+The intention of this project was to investigate whether three beat detection algorithms were accurate enough to form the basis of a drumming training tool to be used with acoustic drums. The results provided by RTT\_Analyser demonstrate that the investigated algorithms are unable to provide the same level of accuracy as the MIDI systems used in electronic drum kits.\par 
+
+Out of the three beat detection algorithms tested the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method produced the highest level of accuracy, before and after the corrected values were applied. This algorithm did however, return the slowest response time, which would need to be a consideration if it was decided to be included any future training tools.\par
+
+The PW consistently produced the quickest response times. However, it also produced the lowest level of accuracy out of the three algorithms and was particularly susceptible to doubling the calculated tempo result. Finally, the Beatroot system consistently performed between the other two algorithms, always ranking in second place. \par
 
 \subsection{Project Successes}
 
@@ -872,7 +878,7 @@ Another success was the actor system used in the RTT\_Analyser. The development 
 
 One challenge experienced during the development of the RTT\_Analyser, was that the adaption of the Beatroot system to work with live audio took longer than anticipated. This was mainly due to the difficulty of working with a large pre-existing code base. To overcome this, the mitigation protocol set out in the project proposal was followed and an alternative system was sourced; the PW. This ensured that the project did not fall any further behind schedule.\par 
 
-The delay in development caused by this issue, led to insufficient time for the author to implement the Tzanetakis \textit{et al}'s \cite{tzane1} beat detection algorithm. Although, there was a mitigation protocol in place, there was insufficent time to implement this, so a different course of action was chosen. A preexisting Scala implementation of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method by Marco Ziccard\cite{marcoZin} was used. Using this implementation, allowed for the regaining of the time lost during the initial failed attempt to adapt the Beatroot system. This ensured the project not only remained on schedule, but there was also sufficient time to try adapting the Beatroot system again. This was completed successfully on the second attempt.\par
+The delay in development caused by this issue, led to insufficient time for the author to implement the Tzanetakis \textit{et al}'s \cite{tzane1} beat detection algorithm. Although, there was a mitigation protocol in place, there was insufficent time to implement this, so a different course of action was chosen. A preexisting Scala implementation of the Tzanetakis \textit{et al}'s \cite{tzane1} DWT method by Marco Ziccard\cite{marcoZin} was used. Using this implementation, allowed for the regaining of the time. This ensured the project not only remained on schedule, but there was also sufficient time to try adapting the Beatroot system again. This was completed successfully on the second attempt.\par
 
 One unforeseen challenge was presented by the original decision to use JSON files for data storage. Due to the inclusion of the PW beat detection algorithm in the RTT\_Analyser and the decision to run tests with a low-pass filter and without, the number of records recorded by the RTT\_Analyser increased significantly. The original estimate was for approximately 700 files each holding approximately ten results per beat detection method. The final number of results collection was 130,000 plus. JSON is more than adequate for holding this much data, an issue arose when the data visualisation software package, Tableau\cite{tableau} was used. As Tableau does not work with JSON files, the data would need to be converted to another format. Due to limited time the data was converted to an Excel\cite{excel} file. This required a large amount of data manipulation to be carried out. A number of Visual Basic for Applications (VBA) macros were written to perform the data manipulation, and once the data was in the required format it was connected to Tableau where any further manipulation and analysis of the data could be performed much more efficiently. 
 
@@ -884,11 +890,11 @@ A key improvement to the RTT\_Analyser would be to alleviate the doubling issue 
 
 Alternatively, the analysis could be performed on the drum beat samples before they are processed by the RTT\_Analyser. The goal of this analysis would be to produce a frequency map of the samples. This data could then be compared with the output of the RTT\_Analyser in an attempt to discover if there are particular frequencies for which doubling occurs.\par
 
-The user interface utilised by the RTT\_Analyser is intended to be basic, however, if a some new features were added to it it could provide an improved user expereince. One such feature could be a visualisation of the audio as it is being captured, which could assist the frequency map function in determining the cause of the doubling issue.
+The user interface utilised by the RTT\_Analyser is intended to be basic, however, if a some new features were added to it it could provide an improved user experience. One such feature could be a visualisation of the audio as it is being captured, which could assist the frequency map function in determining the cause of the doubling issue.
 
 If further drum beat testing is to be carried out, then adapting the data storage method of the RTT\_Analyser from JSON files to a relational database should be considered. One option is to set up a MongoDB\cite{mongo} database to hold the RTT\_Analyser's data. An advantage of this is that the data structure used by MongoDB is very similar to structure of JSON objects. This would enable the existing data structures used by the RTT\_Analyser to be maintained. Alternatively, the RTT\_Analyser could be adapted to work with an SQL database, which could be the easier option, due to the author's familiarity with SQL.\par  
 
-Although, the accuracy of the beat detection algorithms used in the RTT\_Analyser is not on the same level as the midi training tools, they could still provide a useful tool for a drummer. One possible route would be to develop an application for mobile devices which combines a metronome with the RTT\_Analyser. A drummer could then use this application to aid their practice session by using the metronome to set the tempo. After a predetermined amount of time the metronome would stop and the drummer continues to play. While doing so, the application would report as to whether they have remained at the same tempo as the metronome or if their tempo has fluctuated. Such a tool would definitely provide a useful training aid to any drummer wanting to work on their timing.
+Although, the accuracy of the beat detection algorithms used in the RTT\_Analyser is not on the same level as the MIDI training tools, they could still provide a useful tool for a drummer. One possible route would be to develop an application for mobile devices which combines a metronome with the RTT\_Analyser. A drummer could then use this application to aid their practice session by using the metronome to set the tempo. After a predetermined amount of time the metronome would stop and the drummer continues to play. While doing so, the application would report as to whether they have remained at the same tempo as the metronome or if their tempo has fluctuated. Such a tool would definitely provide a useful training aid to any drummer wanting to work on their timing.
 
 
 

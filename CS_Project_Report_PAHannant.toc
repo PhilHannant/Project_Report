@@ -21,27 +21,27 @@
 \contentsline {subsection}{\numberline {4.1}The Actor System}{22}
 \contentsline {subsection}{\numberline {4.2}Live Audio Capture}{24}
 \contentsline {subsection}{\numberline {4.3}DWT Beat Detection Implementation}{24}
-\contentsline {subsection}{\numberline {4.4}Tempo, Analyser and Stats}{25}
-\contentsline {subsection}{\numberline {4.5}JSON Parsing}{26}
-\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{27}
-\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{27}
-\contentsline {section}{\numberline {5}Software Testing}{29}
-\contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{29}
-\contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{29}
-\contentsline {subsection}{\numberline {6.2}Real Time Tempo Tests}{30}
-\contentsline {section}{\numberline {7}Results}{35}
-\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{35}
-\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{36}
-\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{37}
-\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{38}
-\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{38}
-\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{39}
-\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{39}
-\contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{39}
-\contentsline {section}{\numberline {8}Evaluation and Discussion}{52}
-\contentsline {subsection}{\numberline {8.1}Project Successes}{52}
-\contentsline {subsection}{\numberline {8.2}Project Challenges}{52}
-\contentsline {subsection}{\numberline {8.3}Future Work}{53}
-\contentsline {section}{References}{55}
-\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{58}
-\contentsline {section}{\numberline {B}Project Programming Code}{62}
+\contentsline {subsection}{\numberline {4.4}Tempo, Analyser and Stats}{28}
+\contentsline {subsection}{\numberline {4.5}JSON Parsing}{30}
+\contentsline {subsection}{\numberline {4.6}Adaption of Beatroot}{30}
+\contentsline {subsection}{\numberline {4.7}RTT\_Analyser User Interface and HTML Results Viewer}{31}
+\contentsline {section}{\numberline {5}Software Testing}{32}
+\contentsline {section}{\numberline {6}RTT\_Analyser Beat Detection Testing}{33}
+\contentsline {subsection}{\numberline {6.1}Drum Beat Sample Set}{33}
+\contentsline {subsection}{\numberline {6.2}Real Time Tempo Tests}{33}
+\contentsline {section}{\numberline {7}Results}{36}
+\contentsline {subsection}{\numberline {7.1}Overall Average Difference}{36}
+\contentsline {subsection}{\numberline {7.2}Straight Sample Results}{39}
+\contentsline {subsection}{\numberline {7.3}Swing Sample Results}{42}
+\contentsline {subsection}{\numberline {7.4}Off-Beat Sample Results}{42}
+\contentsline {subsection}{\numberline {7.5}Low Tempo Comparison}{42}
+\contentsline {subsection}{\numberline {7.6}Beat Detection Response Time}{48}
+\contentsline {subsection}{\numberline {7.7}Overall Tempo Accuracy}{48}
+\contentsline {subsection}{\numberline {7.8}Filter/Non-Filter Comparison}{48}
+\contentsline {section}{\numberline {8}Evaluation and Discussion}{53}
+\contentsline {subsection}{\numberline {8.1}Project Successes}{53}
+\contentsline {subsection}{\numberline {8.2}Project Challenges}{53}
+\contentsline {subsection}{\numberline {8.3}Future Work}{54}
+\contentsline {section}{References}{56}
+\contentsline {section}{\numberline {A}Drum Sample Beat Patterns}{59}
+\contentsline {section}{\numberline {B}Project Programming Code}{63}
